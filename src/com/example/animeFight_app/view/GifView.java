@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Movie;
 import android.view.View;
+import com.example.animeFight_app.R;
 
 import java.io.InputStream;
 
@@ -20,7 +21,7 @@ public class GifView extends View {
     public GifView(Context context) {
         super(context);
         //todo il faut initialiser le is
-//        is = context.getResources().openRawResource(R.drawable.earth);
+        is = context.getResources().openRawResource(R.drawable.main);
         movie = Movie.decodeStream(is);
     }
 

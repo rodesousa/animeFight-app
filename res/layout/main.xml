@@ -3,20 +3,21 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
->
+              android:weightSum="1" android:background="@drawable/main">
     <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="134dp"
+            android:layout_height="48dp"
             android:text="@string/appName"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="107dp"
             android:textColor="#ff2423"
-            android:gravity="center"/>
+            android:gravity="center" android:layout_gravity="center_horizontal"/>
     <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="79dp"
             android:text="@string/enter"
             android:id="@+id/button"
             android:layout_gravity="center_horizontal"/>
+
 </LinearLayout>
 
