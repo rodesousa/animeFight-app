@@ -17,7 +17,8 @@
             android:layout_height="79dp"
             android:text="@string/enter"
             android:id="@+id/button"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:onClick="callCoreAct" />
 
 </LinearLayout>
 
