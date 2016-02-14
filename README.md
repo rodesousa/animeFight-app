@@ -3,3 +3,12 @@
 
 # animeFight-app
 
+### Source Build
+
+- java-7-openjdk
+- Android 6.0
+
+### ATTENTION
+
+Dans local.properties, mettre le path de la sdk !
+
