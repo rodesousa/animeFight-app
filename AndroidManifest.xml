@@ -13,5 +13,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.CoreActivity"/>
+        <activity android:name=".Activity.EventActivity"/>
+        <activity android:name=".Activity.StoryActivity"/>
     </application>
 </manifest>

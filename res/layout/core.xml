@@ -17,13 +17,14 @@
                 android:layout_height="79dp"
                 android:text="@string/story"
                 android:layout_gravity="center_horizontal"
-        />
+                android:onClick="callStory"/>
+
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="79dp"
                 android:text="@string/event"
                 android:layout_gravity="center_horizontal"
-        />
+                android:onClick="callEventAct"/>
 
     </LinearLayout>
 

@@ -17,8 +17,18 @@ public class CoreActivity extends Activity {
         setContentView(R.layout.core);
     }
 
-    public void returnToMain(View view) {
+    public void returnCoreToMain(View view) {
         Intent intent = new Intent(this, MyActivity.class);
+        startActivity(intent);
+    }
+
+    public void callStory(View view) {
+        Intent intent = new Intent(this, StoryActivity.class);
+        startActivity(intent);
+    }
+
+    public void callEventAct(View view) {
+        Intent intent = new Intent(this, EventActivity.class);
         startActivity(intent);
     }
 }
