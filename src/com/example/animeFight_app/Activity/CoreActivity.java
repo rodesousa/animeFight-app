@@ -14,10 +14,11 @@ public class CoreActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.core);
     }
 
     public void returnToMain(View view) {
         Intent intent = new Intent(this, MyActivity.class);
+        startActivity(intent);
     }
 }

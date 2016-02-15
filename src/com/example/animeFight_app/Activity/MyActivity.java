@@ -18,5 +18,6 @@ public class MyActivity extends Activity {
 
     public void callCoreAct(View view) {
         Intent intent = new Intent(this, CoreActivity.class);
+        startActivity(intent);
     }
 }
