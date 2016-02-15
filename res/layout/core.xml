@@ -1,12 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" android:weightSum="1">
-    <TextView android:layout_width="125dp" android:layout_height="97dp" android:layout_gravity="center_horizontal"
-              android:text="@string/test" android:textColor="@android:color/background_dark"/>
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent" android:weightSum="1">
 
-    <Button android:layout_width="107dp" android:layout_height="0dp" android:layout_weight="0.18"
-            android:layout_gravity="center_horizontal" android:text="@string/retour" android:onClick="returnToMain"/>
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu" android:height="100dp" android:gravity="center"/>
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gokuhouse" android:layout_weight="0.72"/>
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Chez ap" android:layout_weight="0.24" android:gravity="center"/>
 
 </LinearLayout>
