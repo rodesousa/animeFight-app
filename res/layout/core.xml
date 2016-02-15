@@ -3,19 +3,42 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent" android:weightSum="1">
 
-    <TextView
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Menu" android:height="100dp" android:gravity="center"/>
+            android:text="@string/menu"
+            android:height="100dp"
+            android:gravity="center"
+    >
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="79dp"
+                android:text="@string/story"
+                android:layout_gravity="center_horizontal"
+        />
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="79dp"
+                android:text="@string/event"
+                android:layout_gravity="center_horizontal"
+        />
+
+    </LinearLayout>
 
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/gokuhouse" android:layout_weight="0.72"/>
+            android:background="@drawable/gokuhouse"
+            android:layout_weight="0.64"
+            android:paddingBottom="100dp"/>
 
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Chez ap" android:layout_weight="0.24" android:gravity="center"/>
+            android:text="@string/todo"
+            android:gravity="center"
+            android:layout_weight="0.21"/>
 
 </LinearLayout>

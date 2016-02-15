@@ -4,5 +4,8 @@
     <string name="appName">Project Noname</string>
     <string name="enter">Enter</string>
     <string name="retour">Retour</string>
-    <string name="test">Core Activity !!!!!</string>
+    <string name="story">Story</string>
+    <string name="event">Event</string>
+    <string name="menu">Menu</string>
+    <string name="todo">Chez ap</string>
 </resources>
