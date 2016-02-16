@@ -15,5 +15,6 @@
         <activity android:name=".Activity.CoreActivity"/>
         <activity android:name=".Activity.EventActivity"/>
         <activity android:name=".Activity.StoryActivity"/>
+        <activity android:name=".Activity.FightActivity"/>
     </application>
 </manifest>

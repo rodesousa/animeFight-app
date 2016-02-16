@@ -22,4 +22,9 @@ public class StoryActivity extends Activity {
         Intent intent = new Intent(this, CoreActivity.class);
         startActivity(intent);
     }
+
+    public void fight(View view){
+        Intent intent = new Intent(this, FightActivity.class);
+        startActivity(intent);
+    }
 }
