@@ -10,15 +10,26 @@ import java.util.List;
 public class Team implements Serializable {
     private List<Character> characters;
 
-    public Team() {
-        characters = new ArrayList<>(2);
+
+
+    public Character getCharacter(int position) {
+        //TODO ta mere -1
+        return characters.get(position-1);
     }
 
-    public List<Character> getCharacters() {
-        return characters;
+    public void addCharacter(Character character){
+        this.characters.add(character);
+    }
+
+    public Team() {
+        this.characters = new ArrayList<Character>();
     }
 
     public void setCharacters(List<Character> characters) {
         this.characters = characters;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
     }
 }

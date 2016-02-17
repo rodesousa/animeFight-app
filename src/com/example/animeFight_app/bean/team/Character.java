@@ -21,6 +21,43 @@ public class Character implements Serializable {
     private Defense defense;
     private Attack attack;
 
+    private String imagePath;
+
+    public Character(String name) {
+        Name = name;
+    }
+    public Character() {
+
+    }
+    public String getImagePath(){
+        return this.getName();
+    }
+
+    public Attack getAttack() {
+        return attack;
+    }
+
+    public Defense getDefense() {
+        return defense;
+    }
+
+    public Life getLife() {
+        return life;
+    }
+
+    public Trinket getTrinket() {
+        return trinket;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public Armor getArmor() {
+        return armor;
+    }
+
+
     public String getName() {
         return Name;
     }
@@ -28,4 +65,30 @@ public class Character implements Serializable {
     public void setName(String name) {
         Name = name;
     }
+
+
+    public void setArmor(Armor armor) {
+        this.armor = armor;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public void setTrinket(Trinket trinket) {
+        this.trinket = trinket;
+    }
+
+    public void setLife(Life life) {
+        this.life = life;
+    }
+
+    public void setDefense(Defense defense) {
+        this.defense = defense;
+    }
+
+    public void setAttack(Attack attack) {
+        this.attack = attack;
+    }
+
 }

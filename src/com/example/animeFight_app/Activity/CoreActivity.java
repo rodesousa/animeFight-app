@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import com.example.animeFight_app.R;
 import com.example.animeFight_app.mock.MockModel;
 import com.example.animeFight_app.model.Model;
@@ -45,4 +46,10 @@ public class CoreActivity extends Activity {
     public void setModel(Model model) {
         this.model = model;
     }
+
+    public void callEventTeamManagement(View view) {
+        Intent intent = new Intent(this, TeamManagementActivity.class);
+        startActivity(intent);
+    }
+
 }

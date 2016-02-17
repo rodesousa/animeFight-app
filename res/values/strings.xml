@@ -5,8 +5,33 @@
     <string name="enter">Enter</string>
     <string name="retour">Retour</string>
     <string name="story">Story</string>
+    <string name="teamManagement">team</string>
     <string name="event">Event</string>
     <string name="menu">Menu</string>
     <string name="todo">Chez ap</string>
+
     <string name="ennemi">ennemi</string>
+
+
+    <string name="teamManagementWeapon">Weapon</string>
+    <string name="teamManagementArmor">Armor</string>
+    <string name="teamManagementTrinket">Trinket</string>
+    <string name="teamManagementSatsui">Satsui</string>
+
+    <string name="teamManagementSkill1">Skill1</string>
+    <string name="teamManagementSkill2">Skill2</string>
+    <string name="teamManagementSkill3">Skill3</string>
+    <string name="teamManagementSkill4">Skill4</string>
+
+    <string name="character1">char1</string>
+    <string name="character2">char2</string>
+    <string name="character3">char3</string>
+    <string name="character4">char4</string>
+    <string name="character5">char5</string>
+    <string name="character6">char6</string>
+    <string name="character7">char7</string>
+    <string name="character8">char8</string>
+
+
 </resources>
+
