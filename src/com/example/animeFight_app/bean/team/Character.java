@@ -26,10 +26,12 @@ public class Character implements Serializable {
     public Character(String name) {
         Name = name;
     }
+
     public Character() {
 
     }
-    public String getImagePath(){
+
+    public String getImagePath() {
         return this.getName();
     }
 
@@ -57,7 +59,6 @@ public class Character implements Serializable {
         return armor;
     }
 
-
     public String getName() {
         return Name;
     }
@@ -65,7 +66,6 @@ public class Character implements Serializable {
     public void setName(String name) {
         Name = name;
     }
-
 
     public void setArmor(Armor armor) {
         this.armor = armor;
@@ -90,5 +90,4 @@ public class Character implements Serializable {
     public void setAttack(Attack attack) {
         this.attack = attack;
     }
-
 }

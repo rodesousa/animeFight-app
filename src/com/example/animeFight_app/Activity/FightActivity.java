@@ -24,10 +24,6 @@ public class FightActivity extends Activity {
         Model model = (Model) getIntent().getSerializableExtra("Model");
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.test);
-        LinearLayout.LayoutParams params =
-                new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT, 0.0F);
 
         for (Character charac : model.getTeam().getCharacters()
                 ) {

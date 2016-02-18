@@ -10,9 +10,11 @@ import java.io.Serializable;
 public class Model implements Serializable {
 
     private Team team;
+    private State state;
 
     public Model() {
         team = new Team();
+        state = new State();
     }
 
     public Team getTeam() {
@@ -21,5 +23,13 @@ public class Model implements Serializable {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 }

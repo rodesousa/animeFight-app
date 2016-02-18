@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+              android:orientation="vertical">
+    <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:gravity="center">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="CHOOSE YOUR FUCKING WORLD !!!"
+                android:textStyle="normal|bold"
+                android:textSize="20dp"
+                android:textColor="@android:color/holo_red_dark"
+                android:gravity="center"
+                android:paddingBottom="100dp" android:layout_marginTop="30dp"/>
+    </TableRow>
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+            <ImageButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/dbzicon"
+                    android:layout_weight="0.64"
+                    android:onClick="choiceDBZ"
+                    android:paddingBottom="100dp"/>
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.64"
+                    android:paddingBottom="100dp"/>
+
+            <ImageButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.64"
+                    android:onClick="choiceOP"
+                    android:background="@drawable/luffy"
+                    android:paddingBottom="100dp"/>
+        </TableRow>
+
+        <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.64"
+                    android:paddingBottom="100dp"/>
+
+            <ImageButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.64"
+                    android:onClick="choiceNaruto"
+                    android:background="@drawable/naruto2"
+                    android:paddingBottom="100dp"/>
+
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.64"
+                    android:paddingBottom="100dp"/>
+
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

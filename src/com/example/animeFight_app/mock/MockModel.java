@@ -10,14 +10,16 @@ public class MockModel {
 
     public static Model factoryModel() {
         Model model = new Model();
+        //Character
         Character shinkawa = new Character();
         Character lowtuz = new Character();
         shinkawa.setName("Shinkawa");
-        lowtuz.setName("lowtuz");
+        lowtuz.setName("Lowtuz");
 
         model.getTeam().getCharacters().add(lowtuz);
         model.getTeam().getCharacters().add(shinkawa);
         return model;
     }
+
 
 }
