@@ -1,7 +1,5 @@
 package com.example.animeFight_app.model;
 
-import com.example.animeFight_app.model.world.World;
-
 import java.io.Serializable;
 
 /**
@@ -9,11 +7,10 @@ import java.io.Serializable;
  */
 public class State implements Serializable {
     private boolean begining;
-    private World world;
+    private int step;
 
     public State() {
         this.begining = true;
-        world = new World();
     }
 
     public boolean isBegining() {
@@ -24,11 +21,15 @@ public class State implements Serializable {
         this.begining = begining;
     }
 
-    public World getWorld() {
-        return world;
+    public int getStep() {
+        return step;
     }
 
-    public void setWorld(World world) {
-        this.world = world;
+    public void setStep(int step) {
+        this.step = step;
     }
+
+    public final int CORE = 1;
+    public final int STORIES = 2;
+    public final int ARCS = 3;
 }

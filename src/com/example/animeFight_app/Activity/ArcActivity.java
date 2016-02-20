@@ -11,47 +11,50 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.animeFight_app.R;
+import com.example.animeFight_app.fight.Fight;
 import com.example.animeFight_app.model.Model;
-import com.example.animeFight_app.story.Arc;
 
 import java.util.List;
 
 /**
  * Created by rodesousa on 15/02/16.
  */
-public class StoryActivity extends Activity {
+public class ArcActivity extends Activity {
 
     private Model model;
+    private int indiceArc;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.story_arc);
+
         model = (Model) getIntent().getSerializableExtra("Model");
+        indiceArc = (int) getIntent().getSerializableExtra("ArcId");
 
         //Recup le textView pour y mettre le Titre de la story
         TextView tv = (TextView) findViewById(R.id.titre);
         tv.setTextSize(20);
         tv.setTextColor(Color.RED);
         tv.setTypeface(tv.getTypeface(), Typeface.BOLD);
-        tv.setText("Bienvenue dans le monde de \n" + model.getWorld().getStory().toString());
+        tv.setText("Arc : \n" + model.getWorld().getStory().getArcList().get(indiceArc).toString());
 
         //add buttons
-        addButtons(model.getWorld().getStory().getArcList());
+        addButtons(model.getWorld().getStory().getArcList().get(indiceArc).getFightList());
     }
 
-    private void storyActivity(View view) {
-        Intent intent = new Intent(this, ArcActivity.class);
-        model.getState().setStep(model.getState().ARCS);
+    private void arcActivity(final View view) {
+        Intent intent = new Intent(this, FightActivity.class);
+        intent.putExtra("FigtId", view.getId());
         intent.putExtra("Model", model);
-        intent.putExtra("ArcId", view.getId());
+        intent.putExtra("ArcId", indiceArc);
         startActivity(intent);
     }
 
     /**
      * Ajout des button dynamiquement
      */
-    private void addButtons(List<Arc> arcOrStory) {
+    private void addButtons(List<Fight> arcOrStory) {
         LinearLayout layout = (LinearLayout) findViewById(R.id.story_arc);
         int i = 0;
         for (Object arc : arcOrStory) {
@@ -63,7 +66,7 @@ public class StoryActivity extends Activity {
             margin.setMargins(70, 0, 70, 0);
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(final View v) {
-                    storyActivity(v);
+                    arcActivity(v);
                 }
             });
             layout.addView(button);

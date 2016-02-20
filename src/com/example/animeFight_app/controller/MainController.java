@@ -22,8 +22,4 @@ public class MainController implements Serializable {
     public Model getModel() {
         return model;
     }
-
-    public void setModel(Model model) {
-        this.model = model;
-    }
 }
