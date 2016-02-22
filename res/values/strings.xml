@@ -12,6 +12,10 @@
 
     <string name="ennemi">ennemi</string>
 
+    <string name="change">change</string>
+    <string name="returnn">return</string>
+    <string name="testdescription">Une armure extremement lourde, portee par les membres de la Legion.</string>
+
 
     <string name="teamManagementWeapon">Weapon</string>
     <string name="teamManagementArmor">Armor</string>

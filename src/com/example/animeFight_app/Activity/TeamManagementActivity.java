@@ -19,6 +19,10 @@ public class TeamManagementActivity extends Activity{
     private Character selectedCharacter;
     private Team myTeam;
     private ImageView mainImage;
+    private ImageView mainTrinket;
+    private ImageView mainWeapon;
+    private ImageView mainArmor;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,5 +78,17 @@ public class TeamManagementActivity extends Activity{
         displaySelectedCharacter();
     }
 
+    public void callWeaponInspect(View view) {
+        Intent intent = new Intent(this, InspectActivity.class);
+        startActivity(intent);
+    }
+    public void callArmorInspect(View view) {
+        Intent intent = new Intent(this, InspectActivity.class);
+        startActivity(intent);
+    }
+    public void callTrinketInspect(View view) {
+        Intent intent = new Intent(this, InspectActivity.class);
+        startActivity(intent);
+    }
 
 }

@@ -32,7 +32,7 @@ public class Character implements Serializable {
     }
 
     public String getImagePath() {
-        return this.getName();
+        return "char_"+this.getName();
     }
 
     public Attack getAttack() {

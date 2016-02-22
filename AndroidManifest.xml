@@ -18,5 +18,7 @@
         <activity android:name=".Activity.FightActivity"/>
         <activity android:name=".Activity.TeamManagementActivity"/>
         <activity android:name=".Activity.ArcActivity"/>
+        <activity android:name=".Activity.InspectActivity"/>
+        <activity android:name=".Activity.SelectActivity"/>
     </application>
 </manifest>
