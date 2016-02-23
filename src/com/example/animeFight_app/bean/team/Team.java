@@ -1,35 +1,39 @@
 package com.example.animeFight_app.bean.team;
 
+import com.example.animeFight_app.utils.Option;
+
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by rohamdi on 17/02/2016.
  */
 public class Team implements Serializable {
-    private List<Character> characters;
+    private Tacticien tacticien;
+    private Formation formation;
 
-
-
-    public Character getCharacter(int position) {
-        //TODO ta mere -1
-        return characters.get(position-1);
+    public Team(Formation characters, Tacticien tacticien) {
+        this.formation = characters;
+        this.tacticien = tacticien;
     }
 
-    public void addCharacter(Character character){
-        this.characters.add(character);
+    public Team(Tacticien tacticien) {
+        this.tacticien = tacticien;
     }
 
-    public Team() {
-        this.characters = new ArrayList<Character>();
+    public Tacticien getTacticien() {
+        return tacticien;
     }
 
-    public void setCharacters(List<Character> characters) {
-        this.characters = characters;
+    public List<Option<Character>> getCharacters() {
+        return formation.flat();
     }
 
-    public List<Character> getCharacters() {
-        return characters;
+    public Formation getFormation() {
+        return formation;
+    }
+
+    public Character getCharacter(int i) {
+        return getCharacters().get(i).get();
     }
 }

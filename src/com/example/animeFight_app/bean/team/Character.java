@@ -13,18 +13,18 @@ import java.io.Serializable;
  * Created by rohamdi on 17/02/2016.
  */
 public class Character implements Serializable {
-    private String Name;
+    private String name;
     private Armor armor;
     private Weapon weapon;
     private Trinket trinket;
     private Life life;
     private Defense defense;
     private Attack attack;
-
+    private int vitesse;
     private String imagePath;
 
     public Character(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public Character() {
@@ -32,7 +32,7 @@ public class Character implements Serializable {
     }
 
     public String getImagePath() {
-        return "char_"+this.getName();
+        return "char_" + this.toString();
     }
 
     public Attack getAttack() {
@@ -59,12 +59,13 @@ public class Character implements Serializable {
         return armor;
     }
 
-    public String getName() {
-        return Name;
+    @Override
+    public String toString() {
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public void setArmor(Armor armor) {
@@ -89,5 +90,13 @@ public class Character implements Serializable {
 
     public void setAttack(Attack attack) {
         this.attack = attack;
+    }
+
+    public int getVitesse() {
+        return vitesse;
+    }
+
+    public void setVitesse(int vitesse) {
+        this.vitesse = vitesse;
     }
 }

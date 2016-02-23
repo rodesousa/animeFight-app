@@ -9,12 +9,12 @@ import java.io.Serializable;
  * Created by rodesousa on 17/02/16.
  */
 public class Model implements Serializable {
-    private final Team team;
+    private Team team;
     private final State state;
     private World world;
 
     public Model() {
-        team = new Team();
+        team = null;
         state = new State();
         world = new World();
     }
@@ -29,5 +29,9 @@ public class Model implements Serializable {
 
     public World getWorld() {
         return world;
+    }
+
+    public void setTeam(Team t) {
+        this.team = t;
     }
 }
