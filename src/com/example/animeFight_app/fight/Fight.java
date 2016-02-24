@@ -9,6 +9,9 @@ import java.util.List;
 
 /**
  * Created by rodesousa on 19/02/16.
+ * C'est objet Fight qui determine ce qu'est un fight.
+ * Du coup cela veut dire que tout les fights embarque la résolution de son combat, un choix judicieux si on souhaite
+ * que certains combat ont d'autre règles
  */
 public class Fight implements Serializable {
     private Team teamEnnemis;
@@ -32,6 +35,11 @@ public class Fight implements Serializable {
         return teamEnnemis;
     }
 
+    /**
+     * todo
+     * pour l'instant c'est joueur vs ennemis mais à extends pour team vs team
+     * @param player
+     */
     public void initFight(final Team player) {
         Team playerLocal = player;
         List<Option<Character>> teamEnnemi = teamEnnemis.getFormation().getCharacters().get(0);

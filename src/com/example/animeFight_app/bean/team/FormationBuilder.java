@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * L'objet formation est un poil compliqué, on passe par le design pattern builder pour construire notre objet.
+ * Il y a plusieurs paramètre d'entré pour avoir une fléxibilité.
  * Created by rodesousa on 23/02/16.
  */
 public class FormationBuilder {

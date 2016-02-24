@@ -14,6 +14,7 @@ import com.example.animeFight_app.utils.Option;
 import java.util.List;
 
 /**
+ * Activity des combats. On recupère l'objet Formation pour le print sur la view
  * Created by rodesousa on 16/02/16.
  */
 public class FightActivity extends Activity {

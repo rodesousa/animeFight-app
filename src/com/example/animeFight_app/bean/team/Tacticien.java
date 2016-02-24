@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 /**
  * Created by rodesousa on 22/02/16.
+ * todo
+ * x et y sont les paramètre de la formation. C'est pas ouf mais pas d'autre idée.
  */
 public class Tacticien extends Character implements Serializable {
 

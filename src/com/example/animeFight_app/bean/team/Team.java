@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * Created by rohamdi on 17/02/2016.
+ * <p>
+ * Tout ce qui compose une team.
  */
 public class Team implements Serializable {
     private Tacticien tacticien;
@@ -25,14 +27,16 @@ public class Team implements Serializable {
         return tacticien;
     }
 
-    public List<Option<Character>> getCharacters() {
-        return formation.flat();
-    }
-
     public Formation getFormation() {
         return formation;
     }
 
+    // pour faciliter l'accès aux données
+    public List<Option<Character>> getCharacters() {
+        return formation.flat();
+    }
+
+    // pour faciliter l'accès aux données
     public Character getCharacter(int i) {
         return getCharacters().get(i).get();
     }

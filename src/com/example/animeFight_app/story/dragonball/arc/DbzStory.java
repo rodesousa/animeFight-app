@@ -19,18 +19,20 @@ public class DbzStory extends Story implements Serializable {
     private static DbzStory DBZ = new DbzStory();
 
     private DbzStory() {
-        super("Dragon Ball", makeFactory());
+        super("Dragon Ball");
     }
 
     public static DbzStory getDBZ() {
         return DBZ;
     }
 
-    private Object readResolve() {
+    @Override
+    protected Object readResolve() {
         return DBZ;
     }
 
-    private static List<Arc> makeFactory() {
+    @Override
+    protected List<Arc> makeStory() {
         List<Arc> arc = new ArrayList<>();
         Tacticien tacticien = new Tacticien("Piccolo-san", 3, 2);
 

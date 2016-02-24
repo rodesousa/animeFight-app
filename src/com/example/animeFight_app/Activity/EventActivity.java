@@ -7,6 +7,7 @@ import com.example.animeFight_app.R;
 
 
 /**
+ * Activity des events
  * Created by rodesousa on 15/02/16.
  */
 public class EventActivity extends Activity {

@@ -17,6 +17,7 @@ import com.example.animeFight_app.story.Arc;
 import java.util.List;
 
 /**
+ * Activity du mode story. On a l'ensemble des arcs d'une story
  * Created by rodesousa on 15/02/16.
  */
 public class StoryActivity extends Activity {

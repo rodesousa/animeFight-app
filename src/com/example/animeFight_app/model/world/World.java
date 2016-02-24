@@ -12,6 +12,8 @@ import java.util.Objects;
 
 /**
  * Created by rodesousa on 18/02/16.
+ *
+ * L'objet model le plus haut qui concerne le mode stor
  */
 public class World implements Serializable {
     private Story story;

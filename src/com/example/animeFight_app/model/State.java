@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 /**
  * Created by rodesousa on 18/02/16.
+ *
+ * Tout ce qui est model pour l'etat du jeu
  */
 public class State implements Serializable {
     private boolean begining;

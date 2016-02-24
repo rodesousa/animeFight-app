@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by rodesousa on 18/02/16.
+ * COntient la list des fight d'un arc
  */
 public class Arc implements Serializable {
 

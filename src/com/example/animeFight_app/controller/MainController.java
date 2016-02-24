@@ -9,6 +9,7 @@ import java.io.Serializable;
  * Created by rodesousa on 18/02/16.
  */
 public class MainController implements Serializable {
+
     private Model model;
 
     public MainController() {

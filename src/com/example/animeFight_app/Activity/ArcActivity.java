@@ -17,6 +17,7 @@ import com.example.animeFight_app.model.Model;
 import java.util.List;
 
 /**
+ * C'est l'activity des différents arc. On voit l'ensemble des combats d'un arc !
  * Created by rodesousa on 15/02/16.
  */
 public class ArcActivity extends Activity {

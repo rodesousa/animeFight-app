@@ -19,18 +19,20 @@ public class NarutoStory extends Story implements Serializable {
     private static NarutoStory NARUTO = new NarutoStory();
 
     private NarutoStory() {
-        super("Naruto", makeFactory());
+        super("Naruto");
     }
 
     public static NarutoStory getNARUTO() {
         return NARUTO;
     }
 
-    private Object readResolve() {
+    @Override
+    protected Object readResolve() {
         return NARUTO;
     }
 
-    private static List<Arc> makeFactory() {
+    @Override
+    protected List<Arc> makeStory() {
         List<Arc> arc = new ArrayList<>();
         Tacticien tacticien = new Tacticien("Piccolo-san", 3, 2);
 

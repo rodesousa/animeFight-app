@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import com.example.animeFight_app.R;
 
+/**
+ * La toute premièere activity. C'est celle ou on se log
+ */
 public class MyActivity extends Activity {
     /**
      * Called when the activity is first created.

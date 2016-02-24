@@ -19,18 +19,20 @@ public class OnePieceStory extends Story implements Serializable {
     private static OnePieceStory ONEPIECE = new OnePieceStory();
 
     private OnePieceStory() {
-        super("One Piece", makeFactory());
+        super("One Piece");
     }
 
     public static OnePieceStory getONEPIECE() {
         return ONEPIECE;
     }
 
-    private Object readResolve() {
+   @Override
+    protected Object readResolve() {
         return ONEPIECE;
     }
 
-    private static List<Arc> makeFactory() {
+    @Override
+    protected List<Arc> makeStory() {
         List<Arc> arc = new ArrayList<>();
         Tacticien tacticien = new Tacticien("Piccolo-san", 3, 2);
 
