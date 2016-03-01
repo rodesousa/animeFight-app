@@ -1,4 +1,6 @@
-package fr.android.animefight.bean.team;
+package fr.android.animefight.bean;
+
+import fr.android.animefight.bean.Character;
 
 import java.io.Serializable;
 

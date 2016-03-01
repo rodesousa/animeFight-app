@@ -1,7 +1,11 @@
 package fr.android.animefight.story.onepiece.arc;
 
-import fr.android.animefight.bean.team.Character;
-import fr.android.animefight.bean.team.*;
+import fr.android.animefight.bean.Character;
+import fr.android.animefight.bean.Tacticien;
+import fr.android.animefight.bean.charac.categorie.CategorieB;
+import fr.android.animefight.bean.team.Formation;
+import fr.android.animefight.bean.team.FormationBuilder;
+import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.fight.Fight;
 import fr.android.animefight.story.Arc;
 import fr.android.animefight.story.Story;
@@ -26,7 +30,7 @@ public class OnePieceStory extends Story implements Serializable {
         return ONEPIECE;
     }
 
-   @Override
+    @Override
     protected Object readResolve() {
         return ONEPIECE;
     }
@@ -41,10 +45,10 @@ public class OnePieceStory extends Story implements Serializable {
         Formation first = FormationBuilder.FormationWithCharacters(Arrays.asList(
                 new Character("Coby"),
                 new Character("Nami")));
-        Formation alvida = FormationBuilder.FormationWithCharacter(new Character("Alvida"));
-        Formation zorro = FormationBuilder.FormationWithCharacter(new Character("Zorro"));
-        Formation hermep = FormationBuilder.FormationWithCharacter(new Character("Hermep"));
-        Formation last = FormationBuilder.FormationWithCharacter(new Character("Morgan"));
+        Formation alvida = FormationBuilder.FormationWithCharacter(CategorieB.init("Alvida"));
+        Formation zorro = FormationBuilder.FormationWithCharacter(CategorieB.init("Zorro"));
+        Formation hermep = FormationBuilder.FormationWithCharacter(CategorieB.init("Hermep"));
+        Formation last = FormationBuilder.FormationWithCharacter(CategorieB.init("Morgan"));
 
         arc.add(
                 new Arc(nameArc,

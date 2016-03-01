@@ -1,15 +1,17 @@
-package fr.android.animefight.bean.team;
+package fr.android.animefight.bean;
 
+import fr.android.animefight.bean.charac.Categorie;
 import fr.android.animefight.bean.items.equipable.Armor;
 import fr.android.animefight.bean.items.equipable.Trinket;
 import fr.android.animefight.bean.items.equipable.Weapon;
-import fr.android.animefight.bean.team.stats.Attack;
-import fr.android.animefight.bean.team.stats.Defense;
-import fr.android.animefight.bean.team.stats.Life;
 
 import java.io.Serializable;
 
 /**
+ * un character doit toujours eêtre initialiser par sa categorie.
+ * Exemple:
+ * CategorieA.init(String nameDuCharacter) : Character
+ *
  * Created by rohamdi on 17/02/2016.
  */
 public class Character implements Serializable {
@@ -17,11 +19,14 @@ public class Character implements Serializable {
     private Armor armor;
     private Weapon weapon;
     private Trinket trinket;
-    private Life life;
-    private Defense defense;
-    private Attack attack;
+    private int life;
+    private int lifeCurrent;
+    private int defense;
+    private int attack;
     private int vitesse;
     private String imagePath;
+    private Categorie categorie;
+
 
     public Character(String name) {
         this.name = name;
@@ -33,18 +38,6 @@ public class Character implements Serializable {
 
     public String getImagePath() {
         return "char_" + this.toString();
-    }
-
-    public Attack getAttack() {
-        return attack;
-    }
-
-    public Defense getDefense() {
-        return defense;
-    }
-
-    public Life getLife() {
-        return life;
     }
 
     public Trinket getTrinket() {
@@ -80,20 +73,32 @@ public class Character implements Serializable {
         this.trinket = trinket;
     }
 
-    public void setLife(Life life) {
+    public int getVitesse() {
+        return vitesse;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
         this.life = life;
     }
 
-    public void setDefense(Defense defense) {
-        this.defense = defense;
+    public int getLifeCurrent() {
+        return lifeCurrent;
     }
 
-    public void setAttack(Attack attack) {
-        this.attack = attack;
+    public void setLifeCurrent(int lifeCurrent) {
+        this.lifeCurrent = lifeCurrent;
     }
 
-    public int getVitesse() {
-        return vitesse;
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 
     public void setVitesse(int vitesse) {

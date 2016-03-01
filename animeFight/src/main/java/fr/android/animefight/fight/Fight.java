@@ -1,6 +1,6 @@
 package fr.android.animefight.fight;
 
-import fr.android.animefight.bean.team.Character;
+import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.utils.Option;
 

@@ -1,7 +1,10 @@
 package fr.android.animefight.story.dragonball.arc;
 
-import fr.android.animefight.bean.team.Character;
-import fr.android.animefight.bean.team.*;
+import fr.android.animefight.bean.Tacticien;
+import fr.android.animefight.bean.charac.categorie.CategorieB;
+import fr.android.animefight.bean.team.Formation;
+import fr.android.animefight.bean.team.FormationBuilder;
+import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.fight.Fight;
 import fr.android.animefight.story.Arc;
 import fr.android.animefight.story.Story;
@@ -38,8 +41,8 @@ public class DbzStory extends Story implements Serializable {
 
         //ARC1
         String nameArc = "Le commencement !";
-        Formation bulma = FormationBuilder.FormationWithCharacter(new Character("Bulma"));
-        Formation ptero = FormationBuilder.FormationWithCharacter(new Character("Ptero"));
+        Formation bulma = FormationBuilder.FormationWithCharacter(CategorieB.init("Bulma"));
+        Formation ptero = FormationBuilder.FormationWithCharacter(CategorieB.init("Ptero"));
 
         arc.add(
                 new Arc(nameArc,

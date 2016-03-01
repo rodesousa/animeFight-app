@@ -1,7 +1,11 @@
 package fr.android.animefight.story.naruto.arc;
 
-import fr.android.animefight.bean.team.Character;
-import fr.android.animefight.bean.team.*;
+import fr.android.animefight.bean.Character;
+import fr.android.animefight.bean.Tacticien;
+import fr.android.animefight.bean.charac.categorie.CategorieB;
+import fr.android.animefight.bean.team.Formation;
+import fr.android.animefight.bean.team.FormationBuilder;
+import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.fight.Fight;
 import fr.android.animefight.story.Arc;
 import fr.android.animefight.story.Story;
@@ -42,8 +46,8 @@ public class NarutoStory extends Story implements Serializable {
         Formation konoha = FormationBuilder.FormationWithCharacters(Arrays.asList(
                 new Character("Ninja Konoha 1"),
                 new Character("Ninja Konoha 2")));
-        Formation misuki = FormationBuilder.FormationWithCharacter(new Character("Misuki"));
-        Formation iruka = FormationBuilder.FormationWithCharacter(new Character("Iruka"));
+        Formation misuki = FormationBuilder.FormationWithCharacter(CategorieB.init("Misuki"));
+        Formation iruka = FormationBuilder.FormationWithCharacter(CategorieB.init("Iruka"));
 
         arc.add(
                 new Arc(nameArc,

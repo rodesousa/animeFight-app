@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.android.animefight.R;
-import fr.android.animefight.bean.team.Character;
+import fr.android.animefight.bean.Character;
 import fr.android.animefight.model.Model;
 import fr.android.animefight.utils.Option;
 

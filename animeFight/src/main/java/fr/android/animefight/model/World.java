@@ -1,4 +1,4 @@
-package fr.android.animefight.model.world;
+package fr.android.animefight.model;
 
 import fr.android.animefight.story.Story;
 import fr.android.animefight.story.dragonball.arc.DbzStory;

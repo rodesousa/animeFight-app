@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import fr.android.animefight.R;
-import fr.android.animefight.bean.team.Character;
+import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.mock.MyTeam;
 

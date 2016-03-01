@@ -1,7 +1,6 @@
 package fr.android.animefight.model;
 
 import fr.android.animefight.bean.team.Team;
-import fr.android.animefight.model.world.World;
 
 import java.io.Serializable;
 
