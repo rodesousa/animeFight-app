@@ -1,7 +1,5 @@
 package fr.android.animefight.bean;
 
-import fr.android.animefight.bean.Character;
-
 import java.io.Serializable;
 
 /**
@@ -11,10 +9,12 @@ import java.io.Serializable;
  */
 public class Tacticien extends Character implements Serializable {
 
-    public Tacticien(String name, int x, int y) {
+    public Tacticien(String name, int x, int y, int life) {
         super(name);
         this.x = x;
         this.y = y;
+        this.setLife(life);
+        this.setLifeCurrent(life);
     }
 
     private int x;

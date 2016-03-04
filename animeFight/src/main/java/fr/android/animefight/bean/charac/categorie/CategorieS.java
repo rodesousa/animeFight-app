@@ -14,6 +14,7 @@ public class CategorieS extends Categorie {
     public static Character init() {
         Character tmp = new Character("todo");
         tmp.setLife(130);
+        tmp.setLifeCurrent(130);
         tmp.setVitesse(70);
         tmp.setCategorie(new CategorieB());
         return tmp;

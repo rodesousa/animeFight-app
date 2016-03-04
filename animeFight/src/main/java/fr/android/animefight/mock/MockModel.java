@@ -1,8 +1,10 @@
 package fr.android.animefight.mock;
 
-import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
-import fr.android.animefight.bean.team.*;
+import fr.android.animefight.bean.charac.categorie.CategorieSS;
+import fr.android.animefight.bean.team.Formation;
+import fr.android.animefight.bean.team.FormationBuilder;
+import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.model.Model;
 
 import java.util.Arrays;
@@ -15,9 +17,9 @@ public class MockModel {
     public static Model factoryModel() {
         Model model = new Model();
         Formation formation = FormationBuilder.FormationWithCharacters(Arrays.asList(
-                new Character("Shinkawa"),
-                new Character("Lowtuz")));
-        Tacticien tacticien = new Tacticien("Piccolo-san", 3, 2);
+                CategorieSS.init("Shinkawa"),
+                CategorieSS.init("Lowtuz")));
+        Tacticien tacticien = new Tacticien("Piccolo-san", 3, 2, 10);
         Team team = new Team(formation, tacticien);
         model.setTeam(team);
         return model;

@@ -38,7 +38,7 @@ public class NarutoStory extends Story implements Serializable {
     @Override
     protected List<Arc> makeStory() {
         List<Arc> arc = new ArrayList<>();
-        Tacticien tacticien = new Tacticien("Piccolo-san", 3, 2);
+        Tacticien tacticien = new Tacticien("Piccolo-san", 3, 2, 10);
 
         //ARC1
         String nameArc = "Le commencement !";

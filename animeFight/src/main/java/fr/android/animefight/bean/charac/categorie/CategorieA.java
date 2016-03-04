@@ -15,6 +15,7 @@ public class CategorieA extends Categorie {
     public static Character init(String name) {
         Character tmp = new Character(name);
         tmp.setLife(100);
+        tmp.setLifeCurrent(100);
         tmp.setVitesse(50);
         tmp.setCategorie(new CategorieA());
         return tmp;

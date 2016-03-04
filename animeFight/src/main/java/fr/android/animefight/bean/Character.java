@@ -11,7 +11,7 @@ import java.io.Serializable;
  * un character doit toujours eêtre initialiser par sa categorie.
  * Exemple:
  * CategorieA.init(String nameDuCharacter) : Character
- *
+ * <p>
  * Created by rohamdi on 17/02/2016.
  */
 public class Character implements Serializable {
@@ -99,6 +99,22 @@ public class Character implements Serializable {
 
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
     }
 
     public void setVitesse(int vitesse) {

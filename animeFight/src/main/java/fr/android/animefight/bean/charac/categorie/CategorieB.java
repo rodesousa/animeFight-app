@@ -12,9 +12,12 @@ public class CategorieB extends Categorie {
     }
 
     public static Character init(String name) {
-        Character tmp = new Character("todo");
+        Character tmp = new Character(name);
         tmp.setLife(80);
+        tmp.setLifeCurrent(80);
         tmp.setVitesse(30);
+        tmp.setAttack(5);
+        tmp.setDefense(1);
         tmp.setCategorie(new CategorieB());
         return tmp;
     }

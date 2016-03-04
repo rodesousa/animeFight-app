@@ -7,8 +7,8 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="horizontal"
                   android:layout_width="fill_parent"
-                  android:layout_height="123dp"
-                  android:id="@+id/ennemi"
+                  android:layout_height="43dp"
+                  android:id="@+id/tacticiEnennemi"
                   android:weightSum="1">
 
         <!--<TextView-->
@@ -16,6 +16,24 @@
         <!--android:layout_height="113dp"-->
         <!--android:text="@string/ennemi"-->
         <!--android:textSize="30dp"/>-->
+
+    </LinearLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="123dp"
+                  android:id="@+id/ennemi"
+                  android:weightSum="1">
+
+
+        <!--<TextView-->
+        <!--android:layout_width="132dp"-->
+        <!--android:layout_height="113dp"-->
+        <!--android:text="@string/ennemi"-->
+        <!--android:textSize="30dp"/>-->
+
         <!--<TextView-->
         <!--android:layout_width="132dp"-->
         <!--android:layout_height="113dp"-->
@@ -23,25 +41,55 @@
         <!--android:textSize="30dp"/>-->
 
     </LinearLayout>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="vertical"
                   android:layout_width="fill_parent"
                   android:layout_height="103dp" android:weightSum="1" android:gravity="center">
-        <Button
-                android:id="@+id/bouton2"
+        <TextView
+                android:id="@+id/vs"
                 android:layout_width="fill_parent"
                 android:layout_height="27dp"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="@string/retour"
-                android:onClick="returnFightToStory" android:layout_weight="0.17"/>
+                android:text="@string/vs"
+                android:textColor="@android:color/black"
+                android:layout_weight="0.17"/>
+
     </LinearLayout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:id="@+id/test"
+                  android:orientation="horizontal"
+                  android:layout_width="fill_parent"
+                  android:layout_height="43dp"
+                  android:id="@+id/tacticienTeam"
+                  android:weightSum="1">
+
+        <!--<TextView-->
+        <!--android:layout_width="132dp"-->
+        <!--android:layout_height="113dp"-->
+        <!--android:text="@string/vs"-->
+        <!--android:textSize="30dp"/>-->
+
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:id="@+id/team"
                   android:orientation="horizontal"
                   android:layout_width="fill_parent"
                   android:layout_height="123dp" android:weightSum="1">
+
+        <!--<TextView-->
+        <!--android:layout_width="132dp"-->
+        <!--android:layout_height="113dp"-->
+        <!--android:text="@string/ennemi"-->
+        <!--android:textSize="30dp"/>-->
+        <!--<TextView-->
+        <!--android:layout_width="132dp"-->
+        <!--android:layout_height="113dp"-->
+        <!--android:text="@string/ennemi"-->
+        <!--android:textSize="30dp"/>-->
 
     </LinearLayout>
 

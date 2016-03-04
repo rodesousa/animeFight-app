@@ -45,10 +45,10 @@ public class ArcActivity extends Activity {
     }
 
     private void arcActivity(final View view) {
+        Fight fight = model.getWorld().getStory().getArcList().get(indiceArc).getFightList().get(view.getId());
         Intent intent = new Intent(this, FightActivity.class);
-        intent.putExtra("FigtId", view.getId());
-        intent.putExtra("Model", model);
-        intent.putExtra("ArcId", indiceArc);
+        intent.putExtra("Fight", fight);
+        intent.putExtra("Team", model.getTeam());
         startActivity(intent);
     }
 
@@ -62,7 +62,8 @@ public class ArcActivity extends Activity {
             Button button = new Button(this);
             button.setText(arc.toString());
             button.setId(i);
-            button.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            button.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
             ViewGroup.MarginLayoutParams margin = (ViewGroup.MarginLayoutParams) button.getLayoutParams();
             margin.setMargins(70, 0, 70, 0);
             button.setOnClickListener(v -> arcActivity(v));

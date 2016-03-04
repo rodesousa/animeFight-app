@@ -17,10 +17,6 @@ public class Fight implements Serializable {
     private Team teamEnnemis;
     private String name;
 
-    public Fight(Team characterList) {
-        this.teamEnnemis = characterList;
-    }
-
     public Fight(String s, Team characters) {
         this.teamEnnemis = characters;
         name = s;
@@ -38,10 +34,9 @@ public class Fight implements Serializable {
     /**
      * todo
      * pour l'instant c'est joueur vs ennemis mais à extends pour team vs team
-     * @param player
      */
-    public void initFight(final Team player) {
-        Team playerLocal = player;
+    public void initFight(final Team b) {
+        Team playerLocal = b;
         List<Option<Character>> teamEnnemi = teamEnnemis.getFormation().getCharacters().get(0);
         List<Option<Character>> tmp = playerLocal.getFormation().getCharacters().get(0);
         if (tmp.size() > teamEnnemi.size())
@@ -57,26 +52,30 @@ public class Fight implements Serializable {
 
         for (int i = 0; i < A.size(); i++) {
             if (!A.get(i).isEmpty) {
-                if (!B.get(i).isEmpty) {
+                if (B.size() > i && !B.get(i).isEmpty) {
                     if (moreSpeed(A.get(i).get(), B.get(i).get())) {
                         dammage(A.get(i).get(), B.get(i).get());
                     } else {
                         dammage(B.get(i).get(), A.get(i).get());
                     }
                 } else {
-                    touch(teamB);
+                    touch(teamB, A.get(i).get());
                 }
             } else if (!B.get(i).isEmpty)
-                touch(teamA);
+                touch(teamA, B.get(i).get());
         }
     }
 
-    private void dammage(Character character, Character character1) {
-        System.out.println("DAMMAGE");
+    private void dammage(Character atacker, Character defenser) {
+        if (defenser.getDefense() > atacker.getAttack()) {
+            defenser.setLifeCurrent(defenser.getLifeCurrent() - 1);
+        } else {
+            defenser.setLifeCurrent(defenser.getLifeCurrent() - (atacker.getAttack() - defenser.getDefense()));
+        }
     }
 
-    private void touch(Team A) {
-        System.out.println("TOUCHE");
+    private void touch(Team A, Character b) {
+        A.getTacticien().setLifeCurrent(A.getTacticien().getLifeCurrent() - 1);
     }
 
     private boolean moreSpeed(Character a, Character b) {
@@ -96,6 +95,4 @@ public class Fight implements Serializable {
 //        for (List<Option<Character>> options : list) {
 //            Collections.reverse(options);
 //        }
-//        return new Team(list, player.getTacticien());
-//    }
 }
