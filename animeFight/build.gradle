@@ -8,12 +8,8 @@ buildscript {
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'
     }
 }
-apply plugin: 'com.android.application'
 
-repositories {
-    jcenter()
-    mavenCentral()
-}
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
@@ -37,6 +33,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.1'
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile 'org.mockito:mockito-core:1.10.19'
 }
+
 apply plugin: 'com.android.application' //or apply plugin: 'java'
 apply plugin: 'me.tatarka.retrolambda'
