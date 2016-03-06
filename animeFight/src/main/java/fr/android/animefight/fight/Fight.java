@@ -1,10 +1,14 @@
 package fr.android.animefight.fight;
 
 import fr.android.animefight.bean.Character;
+import fr.android.animefight.bean.team.Formation;
 import fr.android.animefight.bean.team.Team;
+import fr.android.animefight.utils.None;
 import fr.android.animefight.utils.Option;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,6 +20,7 @@ import java.util.List;
 public class Fight implements Serializable {
     private Team teamEnnemis;
     private String name;
+    private Formation versus;
 
     public Fight(String s, Team characters) {
         this.teamEnnemis = characters;
@@ -31,24 +36,50 @@ public class Fight implements Serializable {
         return teamEnnemis;
     }
 
-    /**
-     * todo
-     * pour l'instant c'est joueur vs ennemis mais à extends pour team vs team
-     */
-    public void initFight(final Team b) {
-        Team playerLocal = b;
-        List<Option<Character>> teamEnnemi = teamEnnemis.getFormation().getCharacters().get(0);
-        List<Option<Character>> tmp = playerLocal.getFormation().getCharacters().get(0);
-        if (tmp.size() > teamEnnemi.size())
-            resolveFight(playerLocal, teamEnnemis);
-        else
-            resolveFight(teamEnnemis, playerLocal);
+//    /**
+//     * todo
+//     * pour l'instant c'est joueur vs ennemis mais à extends pour team vs team
+//     */
+//    public void initFight(final Team b) {
+//        List<List<Option<Character>>> characters = teamEnnemis.getFormation().getCharacters();
+//        List<List<Option<Character>>> characters1 = b.getFormation().getCharacters();
+//        versus = new ArrayList<List<Option<Character>>>();
+//        if (characters.size() > characters1.size()) {
+//            initList(characters, characters1);
+//        } else {
+//
+//            initList(characters1, characters);
+//        }
+//    }
 
+    public void initList(List<List<Option<Character>>> characs, List<List<Option<Character>>> characs2) {
+        List<Option<Character>> options = characs.get(0);
+        List<Option<Character>> options2 = characs2.get(0);
+        if (options.size() > options2.size()) {
+            versus = new Formation(new ArrayList<List<Option<Character>>>());
+            initVersus(characs.get(0), characs2.get(0));
+        } else {
+            versus = new Formation(new ArrayList<List<Option<Character>>>());
+            initVersus(characs.get(0), characs2.get(0));
+        }
+    }
+
+    private void initVersus(List<Option<Character>> A, List<Option<Character>> B) {
+        for (int i = 0; i < A.size(); i++) {
+            if (!A.get(i).isEmpty) {
+                if (B.size() > i && !B.get(i).isEmpty) {
+                    versus.getListCharacters().add(Arrays.asList(B.get(i), A.get(i)));
+                } else {
+                    System.out.println(A.get(i));
+                    versus.getListCharacters().add(Arrays.asList(A.get(i), new None<Character>()));
+                }
+            }
+        }
     }
 
     private void resolveFight(final Team teamA, final Team teamB) {
-        List<Option<Character>> A = teamA.getFormation().getCharacters().get(0);
-        List<Option<Character>> B = teamB.getFormation().getCharacters().get(0);
+        List<Option<Character>> A = teamA.getFormation().getListCharacters().get(0);
+        List<Option<Character>> B = teamB.getFormation().getListCharacters().get(0);
 
         for (int i = 0; i < A.size(); i++) {
             if (!A.get(i).isEmpty) {
@@ -82,17 +113,11 @@ public class Fight implements Serializable {
         return a.getVitesse() > b.getVitesse();
     }
 
-    /**
-     * pour que les combats soit moins compliquer on inverse les object pour qu'on retrouve les characteres au front
-     * dès le début de la liste
-     * méthode trop longue... si y'avait ce putain de map ...
-     *
-     * @param player
-     * @return
-     */
-//    private Team reverse(final Team player) {
-//        List<List<Option<Character>>> list = player.getFormation().getCharacters();
-//        for (List<Option<Character>> options : list) {
-//            Collections.reverse(options);
-//        }
+    public Formation getVersus() {
+        return versus;
+    }
+
+    public void setVersus(Formation versus) {
+        this.versus = versus;
+    }
 }

@@ -11,7 +11,7 @@ import java.io.Serializable;
  * un character doit toujours eêtre initialiser par sa categorie.
  * Exemple:
  * CategorieA.init(String nameDuCharacter) : Character
- * <p>
+ * <p/>
  * Created by rohamdi on 17/02/2016.
  */
 public class Character implements Serializable {
@@ -26,6 +26,7 @@ public class Character implements Serializable {
     private int vitesse;
     private String imagePath;
     private Categorie categorie;
+    private int id;
 
 
     public Character(String name) {
@@ -34,6 +35,14 @@ public class Character implements Serializable {
 
     public Character() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getImagePath() {

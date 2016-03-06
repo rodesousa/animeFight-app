@@ -9,7 +9,7 @@ public class None<T> extends Option<T> {
 
     public None() {
         isEmpty = false;
-        this.element = error();
+        this.element = null;
     }
 
     public T error() {

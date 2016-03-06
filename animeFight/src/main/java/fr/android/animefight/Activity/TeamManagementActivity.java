@@ -45,42 +45,42 @@ public class TeamManagementActivity extends Activity {
 
     //TODO troue de ball avec ta duplication
     public void selectCharacter1(View view) {
-        selectedCharacter = myTeam.getCharacter(1);
+        selectedCharacter = myTeam.getFlatCharacter(1);
         displaySelectedCharacter();
     }
 
     public void selectCharacter2(View view) {
-        selectedCharacter = myTeam.getCharacter(2);
+        selectedCharacter = myTeam.getFlatCharacter(2);
         displaySelectedCharacter();
     }
 
     public void selectCharacter3(View view) {
-        selectedCharacter = myTeam.getCharacter(3);
+        selectedCharacter = myTeam.getFlatCharacter(3);
         displaySelectedCharacter();
     }
 
     public void selectCharacter4(View view) {
-        selectedCharacter = myTeam.getCharacter(4);
+        selectedCharacter = myTeam.getFlatCharacter(4);
         displaySelectedCharacter();
     }
 
     public void selectCharacter5(View view) {
-        selectedCharacter = myTeam.getCharacter(5);
+        selectedCharacter = myTeam.getFlatCharacter(5);
         displaySelectedCharacter();
     }
 
     public void selectCharacter6(View view) {
-        selectedCharacter = myTeam.getCharacter(6);
+        selectedCharacter = myTeam.getFlatCharacter(6);
         displaySelectedCharacter();
     }
 
     public void selectCharacter7(View view) {
-        selectedCharacter = myTeam.getCharacter(7);
+        selectedCharacter = myTeam.getFlatCharacter(7);
         displaySelectedCharacter();
     }
 
     public void selectCharacter8(View view) {
-        selectedCharacter = myTeam.getCharacter(8);
+        selectedCharacter = myTeam.getFlatCharacter(8);
         displaySelectedCharacter();
     }
 

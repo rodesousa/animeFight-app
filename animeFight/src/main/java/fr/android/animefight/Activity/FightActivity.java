@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,7 +14,6 @@ import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.fight.Fight;
 import fr.android.animefight.utils.Option;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,44 +28,95 @@ public class FightActivity extends Activity {
     private LinearLayout layoutTacticienTeam;
     private LinearLayout layoutTacticienEnnemis;
     private Handler handler;
-    private List<View> views;
+    private int state = 0;
+
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            fight.initFight(team);
-            addAll();
-            handler.postDelayed(runnable, 5000);
+            if (state == 0) {
+                moveView(20);
+                state = 1;
+                handler.postDelayed(runnable, 750);
+            } else if (state == 1) {
+                moveView(-20);
+                state = 2;
+                handler.postDelayed(runnable, 750);
+            } else if (state == 2) {
+            } else {
+                if (fightIsDone()) {
+                    handler.postDelayed(runnable, 2000);
+                }
+            }
         }
     };
+
+    private void moveView(int modif) {
+        for (Option<Character> characterOption : fight.getVersus().flat()) {
+            if (!characterOption.isEmpty) {
+                System.out.println(characterOption.get().toString());
+                TextView viewById = null;
+                try {
+                    viewById = (TextView) this.layoutTeam.findViewById(characterOption.get().getId());
+                } catch (NullPointerException e) {
+                    try {
+                        viewById = (TextView) this.layoutEnnemis.findViewById(characterOption.get().getId());
+                    } catch (NullPointerException ee) {
+                    }
+                }
+                if (viewById != null) {
+                    ViewGroup.MarginLayoutParams test = (ViewGroup.MarginLayoutParams) viewById.getLayoutParams();
+                    System.out.println(viewById.getLayoutParams());
+                    viewById.setBackgroundColor(Color.YELLOW);
+                    test.topMargin += modif;
+                    viewById.requestLayout();
+                    System.out.println("MARCHE");
+                } else {
+                    System.out.println("PAS MARCHE");
+                }
+            }
+        }
+    }
+
+    private boolean fightIsDone() {
+        return team.getTacticien().getLifeCurrent() <= 0 ||
+                fight.getTeamEnnemis().getTacticien().getLifeCurrent() <= 0;
+    }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fight);
+
         fight = (Fight) getIntent().getSerializableExtra("Fight");
         team = (Team) getIntent().getSerializableExtra("Team");
+
         layoutTeam = (LinearLayout) findViewById(R.id.team);
         layoutEnnemis = (LinearLayout) findViewById(R.id.ennemi);
         layoutTacticienTeam = (LinearLayout) findViewById(R.id.tacticienTeam);
         layoutTacticienEnnemis = (LinearLayout) findViewById(R.id.tacticiEnennemi);
-        views = new ArrayList<>();
+
         addAll();
+
+        fight.initList(team.getFormation().getListCharacters(), fight.getTeamEnnemis().getFormation().getListCharacters());
+
         this.handler = new Handler();
-        handler.postDelayed(runnable, 5000);
+        handler.postDelayed(runnable, 2000);
     }
 
-    public void addAll() {
+    private void addAll() {
         layoutEnnemis.removeAllViews();
         layoutTacticienEnnemis.removeAllViews();
         layoutTacticienTeam.removeAllViews();
         layoutTeam.removeAllViews();
 
-        addTacticien(layoutTacticienEnnemis, fight.getTeamEnnemis().getTacticien(), 10);
-        addTacticien(layoutTacticienTeam, team.getTacticien(), 11);
-        addButton(layoutTeam, team.getFormation().getCharacters());
-        addButton(layoutEnnemis, fight.getTeamEnnemis().getFormation().getCharacters());
+        int teamA = 100;
+        int teamB = 200;
+        addTacticien(layoutTacticienEnnemis, team.getTacticien(), 0);
+        addTacticien(layoutTacticienTeam, fight.getTeamEnnemis().getTacticien(), 0);
+        addButton(layoutTeam, team.getFormation().getListCharacters(), teamA);
+        addButton(layoutEnnemis, fight.getTeamEnnemis().getFormation().getListCharacters(), teamB);
     }
 
-    private void addTacticien(final LinearLayout layout, Tacticien tacticien, int id) {
+    private void addTacticien(final LinearLayout layout, Tacticien tacticien, int i) {
         TextView tx = new TextView(this);
         tx.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.MATCH_PARENT));
@@ -76,10 +125,10 @@ public class FightActivity extends Activity {
         ViewGroup.MarginLayoutParams test = (ViewGroup.MarginLayoutParams) tx.getLayoutParams();
         test.setMargins(0, 0, 50, 0);
         layout.addView(tx);
-        views.add(tx);
     }
 
-    private void addButton(final LinearLayout layout, final List<List<Option<Character>>> ch) {
+    private void addButton(final LinearLayout layout, final List<List<Option<Character>>> ch, int teamB) {
+        int i = teamB;
         for (List<Option<Character>> options : ch) {
             for (Option<Character> option : options) {
                 TextView tx = new TextView(this);
@@ -89,64 +138,17 @@ public class FightActivity extends Activity {
                     tx.setText(option.get().toString() + "\n" +
                             option.get().getLifeCurrent() + "/" + option.get().getLife());
                     tx.setBackgroundColor(Color.RED);
+                    option.get().setId(i);
                 } else {
                     tx.setText("        ");
                     tx.setBackgroundColor(Color.BLUE);
                 }
                 ViewGroup.MarginLayoutParams test = (ViewGroup.MarginLayoutParams) tx.getLayoutParams();
                 test.setMargins(0, 0, 50, 0);
+                tx.setId(i);
                 layout.addView(tx);
-                views.add(tx);
             }
+            i++;
         }
     }
-
-    public Fight getFight() {
-        return fight;
-    }
-
-    public void setFight(Fight fight) {
-        this.fight = fight;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
-    public LinearLayout getLayoutTeam() {
-        return layoutTeam;
-    }
-
-    public void setLayoutTeam(LinearLayout layoutTeam) {
-        this.layoutTeam = layoutTeam;
-    }
-
-    public LinearLayout getLayoutEnnemis() {
-        return layoutEnnemis;
-    }
-
-    public void setLayoutEnnemis(LinearLayout layoutEnnemis) {
-        this.layoutEnnemis = layoutEnnemis;
-    }
-
-    public LinearLayout getLayoutTacticienTeam() {
-        return layoutTacticienTeam;
-    }
-
-    public void setLayoutTacticienTeam(LinearLayout layoutTacticienTeam) {
-        this.layoutTacticienTeam = layoutTacticienTeam;
-    }
-
-    public LinearLayout getLayoutTacticienEnnemis() {
-        return layoutTacticienEnnemis;
-    }
-
-    public void setLayoutTacticienEnnemis(LinearLayout layoutTacticienEnnemis) {
-        this.layoutTacticienEnnemis = layoutTacticienEnnemis;
-    }
 }
-

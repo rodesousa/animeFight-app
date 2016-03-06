@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * Created by rohamdi on 17/02/2016.
- * <p>
+ * <p/>
  * Tout ce qui compose une team.
  */
 public class Team implements Serializable {
@@ -34,12 +34,12 @@ public class Team implements Serializable {
     }
 
     // pour faciliter l'accès aux données
-    public List<Option<Character>> getCharacters() {
+    public List<Option<Character>> flat() {
         return formation.flat();
     }
 
     // pour faciliter l'accès aux données
-    public Character getCharacter(int i) {
-        return getCharacters().get(i).get();
+    public Character getFlatCharacter(int i) {
+        return flat().get(i).get();
     }
 }
