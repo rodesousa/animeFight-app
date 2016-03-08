@@ -51,6 +51,7 @@ public class FightActivity extends Activity {
     };
 
     private void moveView(int modif) {
+        System.out.println(fight.getVersus().getListCharacters().size());
         for (Option<Character> characterOption : fight.getVersus().flat()) {
             if (!characterOption.isEmpty) {
                 System.out.println(characterOption.get().toString());
@@ -96,7 +97,7 @@ public class FightActivity extends Activity {
 
         addAll();
 
-        fight.initList(team.getFormation().getListCharacters(), fight.getTeamEnnemis().getFormation().getListCharacters());
+        fight.initList(team.getFormation().getListCharacters());
 
         this.handler = new Handler();
         handler.postDelayed(runnable, 2000);

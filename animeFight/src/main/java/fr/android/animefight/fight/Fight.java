@@ -52,15 +52,15 @@ public class Fight implements Serializable {
 //        }
 //    }
 
-    public void initList(List<List<Option<Character>>> characs, List<List<Option<Character>>> characs2) {
+    public void initList(List<List<Option<Character>>> characs) {
         List<Option<Character>> options = characs.get(0);
-        List<Option<Character>> options2 = characs2.get(0);
+        List<Option<Character>> options2 = teamEnnemis.getFormation().getListCharacters().get(0);
         if (options.size() > options2.size()) {
             versus = new Formation(new ArrayList<List<Option<Character>>>());
-            initVersus(characs.get(0), characs2.get(0));
+            initVersus(options, options2);
         } else {
             versus = new Formation(new ArrayList<List<Option<Character>>>());
-            initVersus(characs.get(0), characs2.get(0));
+            initVersus(options2, options);
         }
     }
 

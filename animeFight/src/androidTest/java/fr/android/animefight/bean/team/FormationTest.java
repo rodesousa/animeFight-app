@@ -14,18 +14,18 @@ import java.util.Arrays;
 //@RunWith(MockitoJUnitRunner.class)
 public class FormationTest extends TestCase {
 
-    Formation formation;
+    Formation formationSimply;
 
     @Before
     public void setUp() throws Exception {
-        formation = FormationBuilder.FormationWithCharacters(Arrays.asList(CategorieB.init("testA"),
+        formationSimply = FormationBuilder.FormationWithCharacters(Arrays.asList(CategorieB.init("testA"),
                 CategorieB.init("testB")));
     }
 
     @SmallTest
     public void testflat() throws Exception {
-        Assert.assertEquals(formation.flat().size(), 2);
-        assertEquals(formation.flat().get(0).get().toString(), "testA");
-        assertEquals(formation.flat().get(1).get().toString(), "testB");
+        Assert.assertEquals(formationSimply.flat().size(), 2);
+        assertEquals(formationSimply.flat().get(0).get().toString(), "testA");
+        assertEquals(formationSimply.flat().get(1).get().toString(), "testB");
     }
 }

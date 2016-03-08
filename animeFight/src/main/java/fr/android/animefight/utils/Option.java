@@ -11,10 +11,12 @@ public class Option<T> implements Serializable {
     protected T element;
 
     protected Option() {
+        isEmpty = false;
     }
 
     protected Option(T element) {
         this.element = element;
+        isEmpty = false;
     }
 
     public T get() {

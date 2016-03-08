@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 public class None<T> extends Option<T> {
 
     public None() {
+        super();
         isEmpty = false;
         this.element = null;
     }

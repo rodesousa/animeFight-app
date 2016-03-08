@@ -19,6 +19,11 @@ public class FormationBuilder {
         return FormationWithCharacters(Collections.singletonList(charac));
     }
 
+    public static Formation FormationWithListCharacters(List<List<Option<Character>>> lists) {
+        return new Formation(lists);
+
+    }
+
     public static Formation FormationWithCharacters(List<Character> character) {
         List<Option<Character>> tmp = new ArrayList<>();
         for (Character character1 : character) {
