@@ -26,8 +26,6 @@ public class Character implements Serializable {
     private int vitesse;
     private String imagePath;
     private Categorie categorie;
-    private int id;
-
 
     public Character(String name) {
         this.name = name;
@@ -35,14 +33,6 @@ public class Character implements Serializable {
 
     public Character() {
 
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getImagePath() {

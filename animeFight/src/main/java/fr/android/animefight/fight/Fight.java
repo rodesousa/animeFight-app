@@ -1,14 +1,10 @@
 package fr.android.animefight.fight;
 
 import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.team.Formation;
 import fr.android.animefight.bean.team.Team;
-import fr.android.animefight.utils.None;
 import fr.android.animefight.utils.Option;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,7 +16,6 @@ import java.util.List;
 public class Fight implements Serializable {
     private Team teamEnnemis;
     private String name;
-    private Formation versus;
 
     public Fight(String s, Team characters) {
         this.teamEnnemis = characters;
@@ -36,44 +31,18 @@ public class Fight implements Serializable {
         return teamEnnemis;
     }
 
-//    /**
-//     * todo
-//     * pour l'instant c'est joueur vs ennemis mais à extends pour team vs team
-//     */
-//    public void initFight(final Team b) {
-//        List<List<Option<Character>>> characters = teamEnnemis.getFormation().getCharacters();
-//        List<List<Option<Character>>> characters1 = b.getFormation().getCharacters();
-//        versus = new ArrayList<List<Option<Character>>>();
-//        if (characters.size() > characters1.size()) {
-//            initList(characters, characters1);
-//        } else {
-//
-//            initList(characters1, characters);
-//        }
-//    }
-
-    public void initList(List<List<Option<Character>>> characs) {
-        List<Option<Character>> options = characs.get(0);
+    /***
+     * on initialise le combat en choisisant qui a la ligne la plus longue pour ne pas avoir un NoSuchElement
+     *
+     * @param team
+     */
+    public void initList(Team team) {
+        List<Option<Character>> options = team.getFormation().getListCharacters().get(0);
         List<Option<Character>> options2 = teamEnnemis.getFormation().getListCharacters().get(0);
         if (options.size() > options2.size()) {
-            versus = new Formation(new ArrayList<List<Option<Character>>>());
-            initVersus(options, options2);
+            resolveFight(team, teamEnnemis);
         } else {
-            versus = new Formation(new ArrayList<List<Option<Character>>>());
-            initVersus(options2, options);
-        }
-    }
-
-    private void initVersus(List<Option<Character>> A, List<Option<Character>> B) {
-        for (int i = 0; i < A.size(); i++) {
-            if (!A.get(i).isEmpty) {
-                if (B.size() > i && !B.get(i).isEmpty) {
-                    versus.getListCharacters().add(Arrays.asList(B.get(i), A.get(i)));
-                } else {
-                    System.out.println(A.get(i));
-                    versus.getListCharacters().add(Arrays.asList(A.get(i), new None<Character>()));
-                }
-            }
+            resolveFight(teamEnnemis, team);
         }
     }
 
@@ -113,11 +82,5 @@ public class Fight implements Serializable {
         return a.getVitesse() > b.getVitesse();
     }
 
-    public Formation getVersus() {
-        return versus;
-    }
-
-    public void setVersus(Formation versus) {
-        this.versus = versus;
-    }
 }
+

@@ -14,67 +14,72 @@ import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.fight.Fight;
 import fr.android.animefight.utils.Option;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Activity des combats. On recupère l'objet Formation pour le print sur la view
  * Created by rodesousa on 16/02/16.
  */
 public class FightActivity extends Activity {
+    public class Duo implements Serializable {
+        ViewGroup viewGroup;
+        Character character;
+
+        public Duo(ViewGroup viewGroup, Character character) {
+            this.viewGroup = viewGroup;
+            this.character = character;
+        }
+    }
+
     private Fight fight;
     private Team team;
-    private LinearLayout layoutTeam;
-    private LinearLayout layoutEnnemis;
-    private LinearLayout layoutTacticienTeam;
-    private LinearLayout layoutTacticienEnnemis;
     private Handler handler;
     private int state = 0;
+    private HashMap<Integer, Duo> listBattleView;
+    private Runnable runnable = new Runnable() {
 
-    Runnable runnable = new Runnable() {
         @Override
         public void run() {
             if (state == 0) {
-                moveView(20);
                 state = 1;
+                moveView(30);
                 handler.postDelayed(runnable, 750);
             } else if (state == 1) {
-                moveView(-20);
                 state = 2;
-                handler.postDelayed(runnable, 750);
+                moveView(-30);
+                handler.postDelayed(runnable, 100);
             } else if (state == 2) {
-            } else {
-                if (fightIsDone()) {
-                    handler.postDelayed(runnable, 2000);
+                fight.initList(team);
+                refreshAll();
+                state = 0;
+                if (!fightIsDone()) {
+                    handler.postDelayed(runnable, 750);
                 }
             }
         }
     };
 
-    private void moveView(int modif) {
-        System.out.println(fight.getVersus().getListCharacters().size());
-        for (Option<Character> characterOption : fight.getVersus().flat()) {
-            if (!characterOption.isEmpty) {
-                System.out.println(characterOption.get().toString());
-                TextView viewById = null;
-                try {
-                    viewById = (TextView) this.layoutTeam.findViewById(characterOption.get().getId());
-                } catch (NullPointerException e) {
-                    try {
-                        viewById = (TextView) this.layoutEnnemis.findViewById(characterOption.get().getId());
-                    } catch (NullPointerException ee) {
-                    }
-                }
-                if (viewById != null) {
-                    ViewGroup.MarginLayoutParams test = (ViewGroup.MarginLayoutParams) viewById.getLayoutParams();
-                    System.out.println(viewById.getLayoutParams());
-                    viewById.setBackgroundColor(Color.YELLOW);
-                    test.topMargin += modif;
-                    viewById.requestLayout();
-                    System.out.println("MARCHE");
-                } else {
-                    System.out.println("PAS MARCHE");
-                }
-            }
+    private void moveView(int i) {
+        Set<Integer> integers = listBattleView.keySet();
+        for (Integer integer : integers) {
+            Duo duo = listBattleView.get(integer);
+            TextView viewById = (TextView) duo.viewGroup.findViewById(integer);
+            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) viewById.getLayoutParams();
+            layoutParams.topMargin += i;
+            duo.viewGroup.requestLayout();
+        }
+    }
+
+    private void refreshAll() {
+        Set<Integer> integers = listBattleView.keySet();
+        for (Integer integer : integers) {
+            Duo duo = listBattleView.get(integer);
+            TextView tx = (TextView) duo.viewGroup.findViewById(integer);
+            tx.setText(duo.character.toString() + "\n" +
+                    duo.character.getLifeCurrent() + "/" + duo.character.getLife());
         }
     }
 
@@ -86,35 +91,26 @@ public class FightActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fight);
+        listBattleView = new HashMap<>();
 
         fight = (Fight) getIntent().getSerializableExtra("Fight");
         team = (Team) getIntent().getSerializableExtra("Team");
 
-        layoutTeam = (LinearLayout) findViewById(R.id.team);
-        layoutEnnemis = (LinearLayout) findViewById(R.id.ennemi);
-        layoutTacticienTeam = (LinearLayout) findViewById(R.id.tacticienTeam);
-        layoutTacticienEnnemis = (LinearLayout) findViewById(R.id.tacticiEnennemi);
+        LinearLayout layoutTeam = (LinearLayout) findViewById(R.id.team);
+        LinearLayout layoutEnnemis = (LinearLayout) findViewById(R.id.ennemi);
+        LinearLayout layoutTacticienTeam = (LinearLayout) findViewById(R.id.tacticienTeam);
+        LinearLayout layoutTacticienEnnemis = (LinearLayout) findViewById(R.id.tacticiEnennemi);
 
-        addAll();
 
-        fight.initList(team.getFormation().getListCharacters());
+        addTacticien(layoutTacticienEnnemis, team.getTacticien(), 0);
+        addTacticien(layoutTacticienTeam, fight.getTeamEnnemis().getTacticien(), 10);
+        addButton(layoutTeam, team.getFormation().getListCharacters(), 100);
+        addButton(layoutEnnemis, fight.getTeamEnnemis().getFormation().getListCharacters(), 200);
+
+        fight.initList(team);
 
         this.handler = new Handler();
         handler.postDelayed(runnable, 2000);
-    }
-
-    private void addAll() {
-        layoutEnnemis.removeAllViews();
-        layoutTacticienEnnemis.removeAllViews();
-        layoutTacticienTeam.removeAllViews();
-        layoutTeam.removeAllViews();
-
-        int teamA = 100;
-        int teamB = 200;
-        addTacticien(layoutTacticienEnnemis, team.getTacticien(), 0);
-        addTacticien(layoutTacticienTeam, fight.getTeamEnnemis().getTacticien(), 0);
-        addButton(layoutTeam, team.getFormation().getListCharacters(), teamA);
-        addButton(layoutEnnemis, fight.getTeamEnnemis().getFormation().getListCharacters(), teamB);
     }
 
     private void addTacticien(final LinearLayout layout, Tacticien tacticien, int i) {
@@ -125,6 +121,8 @@ public class FightActivity extends Activity {
         tx.setBackgroundColor(Color.GREEN);
         ViewGroup.MarginLayoutParams test = (ViewGroup.MarginLayoutParams) tx.getLayoutParams();
         test.setMargins(0, 0, 50, 0);
+        tx.setId(i);
+        listBattleView.put(i, new Duo(layout, tacticien));
         layout.addView(tx);
     }
 
@@ -139,17 +137,17 @@ public class FightActivity extends Activity {
                     tx.setText(option.get().toString() + "\n" +
                             option.get().getLifeCurrent() + "/" + option.get().getLife());
                     tx.setBackgroundColor(Color.RED);
-                    option.get().setId(i);
+                    tx.setId(i);
+                    listBattleView.put(i, new Duo(layout, option.get()));
+                    i++;
                 } else {
                     tx.setText("        ");
                     tx.setBackgroundColor(Color.BLUE);
                 }
                 ViewGroup.MarginLayoutParams test = (ViewGroup.MarginLayoutParams) tx.getLayoutParams();
                 test.setMargins(0, 0, 50, 0);
-                tx.setId(i);
                 layout.addView(tx);
             }
-            i++;
         }
     }
 }
