@@ -39,21 +39,23 @@ public class FightActivity extends Activity {
     private Handler handler;
     private int state = 0;
     private HashMap<Integer, Duo> listBattleView;
+    private HashMap<Integer, Duo> listTacticienView;
     private Runnable runnable = new Runnable() {
 
         @Override
         public void run() {
             if (state == 0) {
                 state = 1;
-                moveView(30);
+                moveView(30, listBattleView);
                 handler.postDelayed(runnable, 750);
             } else if (state == 1) {
                 state = 2;
-                moveView(-30);
+                moveView(-30, listBattleView);
                 handler.postDelayed(runnable, 100);
             } else if (state == 2) {
                 fight.initList(team);
-                refreshAll();
+                refreshAll(listBattleView);
+                refreshAll(listTacticienView);
                 state = 0;
                 if (!fightIsDone()) {
                     handler.postDelayed(runnable, 750);
@@ -62,22 +64,25 @@ public class FightActivity extends Activity {
         }
     };
 
-    private void moveView(int i) {
-        Set<Integer> integers = listBattleView.keySet();
+    private void moveView(int i, HashMap<Integer, Duo> hash) {
+        Set<Integer> integers = hash.keySet();
         for (Integer integer : integers) {
-            Duo duo = listBattleView.get(integer);
+            Duo duo = hash.get(integer);
             TextView viewById = (TextView) duo.viewGroup.findViewById(integer);
             ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) viewById.getLayoutParams();
+            layoutParams.setMargins(0, 0, 50, 0);
             layoutParams.topMargin += i;
             duo.viewGroup.requestLayout();
         }
     }
 
-    private void refreshAll() {
-        Set<Integer> integers = listBattleView.keySet();
+    private void refreshAll(HashMap<Integer, Duo> hash) {
+        Set<Integer> integers = hash.keySet();
         for (Integer integer : integers) {
-            Duo duo = listBattleView.get(integer);
+            Duo duo = hash.get(integer);
             TextView tx = (TextView) duo.viewGroup.findViewById(integer);
+            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) tx.getLayoutParams();
+            layoutParams.setMargins(0, 0, 50, 0);
             tx.setText(duo.character.toString() + "\n" +
                     duo.character.getLifeCurrent() + "/" + duo.character.getLife());
         }
@@ -92,6 +97,7 @@ public class FightActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fight);
         listBattleView = new HashMap<>();
+        listTacticienView = new HashMap<>();
 
         fight = (Fight) getIntent().getSerializableExtra("Fight");
         team = (Team) getIntent().getSerializableExtra("Team");
@@ -102,8 +108,8 @@ public class FightActivity extends Activity {
         LinearLayout layoutTacticienEnnemis = (LinearLayout) findViewById(R.id.tacticiEnennemi);
 
 
-        addTacticien(layoutTacticienEnnemis, team.getTacticien(), 0);
-        addTacticien(layoutTacticienTeam, fight.getTeamEnnemis().getTacticien(), 10);
+        addTacticien(layoutTacticienTeam, team.getTacticien(), 0);
+        addTacticien(layoutTacticienEnnemis, fight.getTeamEnnemis().getTacticien(), 10);
         addButton(layoutTeam, team.getFormation().getListCharacters(), 100);
         addButton(layoutEnnemis, fight.getTeamEnnemis().getFormation().getListCharacters(), 200);
 
@@ -117,12 +123,12 @@ public class FightActivity extends Activity {
         TextView tx = new TextView(this);
         tx.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.MATCH_PARENT));
-        tx.setText(tacticien.toString() + " : " + tacticien.getLifeCurrent() + "/" + tacticien.getLife());
+        tx.setText(tacticien.toString() + "\n" + tacticien.getLifeCurrent() + "/" + tacticien.getLife());
         tx.setBackgroundColor(Color.GREEN);
         ViewGroup.MarginLayoutParams test = (ViewGroup.MarginLayoutParams) tx.getLayoutParams();
         test.setMargins(0, 0, 50, 0);
         tx.setId(i);
-        listBattleView.put(i, new Duo(layout, tacticien));
+        listTacticienView.put(i, new Duo(layout, tacticien));
         layout.addView(tx);
     }
 

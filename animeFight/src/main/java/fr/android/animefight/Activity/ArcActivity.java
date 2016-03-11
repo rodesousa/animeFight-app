@@ -66,7 +66,12 @@ public class ArcActivity extends Activity {
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             ViewGroup.MarginLayoutParams margin = (ViewGroup.MarginLayoutParams) button.getLayoutParams();
             margin.setMargins(70, 0, 70, 0);
-            button.setOnClickListener(v -> arcActivity(v));
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ArcActivity.this.arcActivity(view);
+                }
+            });
             layout.addView(button);
             i++;
         }
