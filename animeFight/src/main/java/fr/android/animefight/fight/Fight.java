@@ -16,6 +16,7 @@ import java.util.List;
 public class Fight implements Serializable {
     private Team teamEnnemis;
     private String name;
+    private boolean state;
 
     public Fight(String s, Team characters) {
         this.teamEnnemis = characters;
@@ -25,6 +26,10 @@ public class Fight implements Serializable {
     @Override
     public String toString() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Team getTeamEnnemis() {
@@ -82,5 +87,12 @@ public class Fight implements Serializable {
         return a.getVitesse() > b.getVitesse();
     }
 
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
 }
 

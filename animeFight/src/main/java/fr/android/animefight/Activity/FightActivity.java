@@ -1,10 +1,13 @@
 package fr.android.animefight.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.android.animefight.R;
@@ -12,6 +15,7 @@ import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
 import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.fight.Fight;
+import fr.android.animefight.model.Model;
 import fr.android.animefight.utils.Option;
 
 import java.io.Serializable;
@@ -40,6 +44,7 @@ public class FightActivity extends Activity {
     private int state = 0;
     private HashMap<Integer, Duo> listBattleView;
     private HashMap<Integer, Duo> listTacticienView;
+    private Model model;
     private Runnable runnable = new Runnable() {
 
         @Override
@@ -89,8 +94,32 @@ public class FightActivity extends Activity {
     }
 
     private boolean fightIsDone() {
-        return team.getTacticien().getLifeCurrent() <= 0 ||
-                fight.getTeamEnnemis().getTacticien().getLifeCurrent() <= 0;
+        if (team.getTacticien().getLifeCurrent() <= 0) {
+            fight.setState(true);
+            Button viewById = (Button) this.findViewById(R.id.finalState);
+            viewById.setEnabled(true);
+            viewById.setText("YOU \n LOOSE");
+            viewById.setTextColor(Color.RED);
+            viewById.requestLayout();
+            return true;
+        } else if (fight.getTeamEnnemis().getTacticien().getLifeCurrent() <= 0) {
+            Button viewById = (Button) this.findViewById(R.id.finalState);
+            fight.setState(true);
+            viewById.setEnabled(true);
+            viewById.setText("YOU \n WIN");
+            viewById.setTextColor(Color.RED);
+            viewById.requestLayout();
+            return true;
+        }
+        return false;
+    }
+
+    public void goToArcActiviy(final View view) {
+        Intent intent = new Intent(this, ArcActivity.class);
+        intent.putExtra("ArcId", (int) getIntent().getSerializableExtra("ArcId"));
+        intent.putExtra("Model", model);
+        finish();
+        startActivity(intent);
     }
 
     public void onCreate(Bundle savedInstanceState) {
@@ -99,14 +128,18 @@ public class FightActivity extends Activity {
         listBattleView = new HashMap<>();
         listTacticienView = new HashMap<>();
 
-        fight = (Fight) getIntent().getSerializableExtra("Fight");
-        team = (Team) getIntent().getSerializableExtra("Team");
+        Button viewById = (Button) this.findViewById(R.id.finalState);
+        viewById.setEnabled(false);
+
+        model = (Model) getIntent().getSerializableExtra("Model");
+        fight = model.getWorld().getStory().getArcList().get((int) getIntent().getSerializableExtra("ArcId")).
+                getFightList().get((int) getIntent().getSerializableExtra("FightId"));
+        team = model.getTeam();
 
         LinearLayout layoutTeam = (LinearLayout) findViewById(R.id.team);
         LinearLayout layoutEnnemis = (LinearLayout) findViewById(R.id.ennemi);
         LinearLayout layoutTacticienTeam = (LinearLayout) findViewById(R.id.tacticienTeam);
         LinearLayout layoutTacticienEnnemis = (LinearLayout) findViewById(R.id.tacticiEnennemi);
-
 
         addTacticien(layoutTacticienTeam, team.getTacticien(), 0);
         addTacticien(layoutTacticienEnnemis, fight.getTeamEnnemis().getTacticien(), 10);
@@ -156,4 +189,5 @@ public class FightActivity extends Activity {
             }
         }
     }
+
 }

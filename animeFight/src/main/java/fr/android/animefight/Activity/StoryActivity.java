@@ -55,8 +55,15 @@ public class StoryActivity extends Activity {
     private void addButtons(List<Arc> arcOrStory) {
         LinearLayout layout = (LinearLayout) findViewById(R.id.story_arc);
         int i = 0;
-        for (Object arc : arcOrStory) {
+        boolean enable = false;
+        for (Arc arc : arcOrStory) {
             Button button = new Button(this);
+            if (enable) {
+                button.setEnabled(false);
+            }
+            if (!arc.isState()) {
+                enable = true;
+            }
             button.setText(arc.toString());
             button.setId(i);
             button.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));

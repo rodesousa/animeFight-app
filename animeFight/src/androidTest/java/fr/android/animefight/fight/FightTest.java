@@ -23,6 +23,6 @@ public class FightTest extends TestCase {
 
     @SmallTest
     public void test() {
-        Assert.assertEquals(2,2);
+        Assert.assertEquals(2,3);
     }
 }

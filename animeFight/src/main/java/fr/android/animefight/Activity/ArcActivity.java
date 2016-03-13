@@ -13,6 +13,7 @@ import android.widget.TextView;
 import fr.android.animefight.R;
 import fr.android.animefight.fight.Fight;
 import fr.android.animefight.model.Model;
+import fr.android.animefight.story.Arc;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ import java.util.List;
 public class ArcActivity extends Activity {
 
     private Model model;
-    private int indiceArc;
+    private Arc arc;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,24 +32,26 @@ public class ArcActivity extends Activity {
         setContentView(R.layout.story_arc);
 
         model = (Model) getIntent().getSerializableExtra("Model");
-        indiceArc = (int) getIntent().getSerializableExtra("ArcId");
+        arc = model.getWorld().getStory().getArcList().get((int) getIntent().getSerializableExtra("ArcId"));
 
         //Recup le textView pour y mettre le Titre de la story
         TextView tv = (TextView) findViewById(R.id.titre);
         tv.setTextSize(20);
         tv.setTextColor(Color.RED);
         tv.setTypeface(tv.getTypeface(), Typeface.BOLD);
-        tv.setText("Arc : \n" + model.getWorld().getStory().getArcList().get(indiceArc).toString());
+        tv.setText("Arc : \n" + arc);
 
         //add buttons
-        addButtons(model.getWorld().getStory().getArcList().get(indiceArc).getFightList());
+        addButtons(arc.getFightList());
     }
 
     private void arcActivity(final View view) {
-        Fight fight = model.getWorld().getStory().getArcList().get(indiceArc).getFightList().get(view.getId());
+        Fight fight = arc.getFightList().get(view.getId());
         Intent intent = new Intent(this, FightActivity.class);
-        intent.putExtra("Fight", fight);
-        intent.putExtra("Team", model.getTeam());
+        intent.putExtra("FightId", view.getId());
+        intent.putExtra("ArcId", (int) getIntent().getSerializableExtra("ArcId"));
+        intent.putExtra("Model", model);
+        this.finish();
         startActivity(intent);
     }
 
@@ -58,8 +61,17 @@ public class ArcActivity extends Activity {
     private void addButtons(List<Fight> arcOrStory) {
         LinearLayout layout = (LinearLayout) findViewById(R.id.story_arc);
         int i = 0;
-        for (Object arc : arcOrStory) {
+        boolean enable = false;
+        for (Fight arc : arcOrStory) {
             Button button = new Button(this);
+            if (enable) {
+                button.setEnabled(false);
+            }
+            if (!arc.isState()) {
+                System.out.println(arc);
+                System.out.println(arc.isState());
+                enable = true;
+            }
             button.setText(arc.toString());
             button.setId(i);
             button.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
@@ -76,5 +88,13 @@ public class ArcActivity extends Activity {
             i++;
         }
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        System.out.println("RDS");
+//        //add buttons
+//        addButtons(arc.getFightList());
+//    }
 
 }
