@@ -29,8 +29,8 @@ public class DbzStory extends Story implements Serializable {
         //création des starters
         Character goku = CategorieSS.init("Goku");
         Character krilin = CategorieB.init("Krilin");
-        Tacticien Bulma = new Tacticien("Bulma", 5);
-        Tacticien Chichi = new Tacticien("Chichi", 5);
+        Tacticien Bulma = new Tacticien("Bulma", 5,1,2);
+        Tacticien Chichi = new Tacticien("Chichi", 5,1,2);
 
         starterWarrior = Arrays.asList(goku, krilin);
         starterTacticien = Arrays.asList(Bulma, Chichi);
@@ -48,7 +48,7 @@ public class DbzStory extends Story implements Serializable {
     @Override
     protected List<Arc> makeStory() {
         List<Arc> arc = new ArrayList<>();
-        Tacticien tacticien = new Tacticien("Grand père Gohan", 2);
+        Tacticien tacticien = new Tacticien("Grand père Gohan", 2,1,2);
 
         //ARC1
         String nameArc = "Le commencement !";

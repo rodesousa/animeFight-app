@@ -29,8 +29,8 @@ public class OnePieceStory extends Story implements Serializable {
         //création des starters
         Character luffy = CategorieSS.init("Luffy");
         Character Baggy = CategorieB.init("Baggy");
-        Tacticien nami = new Tacticien("Nami", 5);
-        Tacticien robin = new Tacticien("Robin", 5);
+        Tacticien nami = new Tacticien("Nami", 5, 1, 2);
+        Tacticien robin = new Tacticien("Robin", 5, 1, 2);
 
         starterWarrior = Arrays.asList(luffy, Baggy);
         starterTacticien = Arrays.asList(nami, robin);
@@ -48,7 +48,7 @@ public class OnePieceStory extends Story implements Serializable {
     @Override
     protected List<Arc> makeStory() {
         List<Arc> arc = new ArrayList<>();
-        Tacticien tacticien = new Tacticien("Inconnu", 5);
+        Tacticien tacticien = new Tacticien("Inconnu", 5, 1, 2);
 
         //ARC1
         String nameArc = "Morgan !";

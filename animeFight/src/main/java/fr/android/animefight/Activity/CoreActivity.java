@@ -53,6 +53,11 @@ public class CoreActivity extends Activity {
         startActivity(intent);
     }
 
+    public void callFormationActivity(View view){
+        Intent intent = new Intent(this, FormationActivity.class);
+        intent.putExtra("Model", controller.getModel());
+        startActivity(intent);
+    }
     public void callEventTeamManagement(View view) {
         Intent intent = new Intent(this, TeamManagementActivity.class);
         startActivity(intent);

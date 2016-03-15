@@ -26,19 +26,12 @@
                 android:layout_gravity="center_horizontal"
                 android:onClick="callEventAct"/>
 
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="79dp"
-                android:text="@string/teamManagement"
-                android:layout_gravity="center_horizontal"
-                android:onClick="callEventTeamManagement"/>
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="79dp"
-                android:text="Inventory"
-                android:layout_gravity="center_horizontal"
-                android:onClick="callInventoryActivity"/>
+        <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="79dp"-->
+        <!--android:text="@string/teamManagement"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:onClick="callEventTeamManagement"/>-->
 
     </LinearLayout>
 
@@ -49,11 +42,25 @@
             android:layout_weight="0.64"
             android:paddingBottom="100dp"/>
 
-    <TextView
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/todo"
+            android:text="@string/menu"
+            android:height="100dp"
             android:gravity="center"
-            android:layout_weight="0.21"/>
+    >
+
+
+        <Button android:layout_width="wrap_content" android:layout_height="79dp" android:text="Characters"
+                android:id="@+id/button6"/>
+
+        <Button android:layout_width="wrap_content" android:layout_height="79dp" android:text="Formation"
+                android:onClick="callFormationActivity" android:id="@+id/button4"/>
+
+        <Button android:layout_width="wrap_content" android:layout_height="79dp" android:text="Inventory"
+                android:layout_gravity="center_horizontal" android:onClick="callInventoryActivity"
+                android:id="@+id/button5"/>
+    </LinearLayout>
 
 </LinearLayout>

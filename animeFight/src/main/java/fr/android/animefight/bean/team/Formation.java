@@ -23,7 +23,7 @@ import java.util.List;
  * Comme dans une formation on peut avoir plusieurs ligne du coup, List<List<Option<Character>>>
  * Created by rodesousa on 23/02/16.
  */
-public class Formation implements Serializable {
+public class Formation implements Serializable, Cloneable {
     private List<List<Option<Character>>> listCharacters;
 
     public void setCharacters(List<Option<Character>> characters, int i) {
@@ -58,4 +58,5 @@ public class Formation implements Serializable {
         }
         return list;
     }
+
 }

@@ -29,8 +29,8 @@ public class NarutoStory extends Story implements Serializable {
         //création des starters
         Character naruto = CategorieSS.init("Naruto");
         Character sasuke = CategorieSS.init("Sasuke");
-        Tacticien ramen = new Tacticien("Ramen", 1);
-        Tacticien ninja = new Tacticien("Ninja", 1);
+        Tacticien ramen = new Tacticien("Ramen", 1,1,2);
+        Tacticien ninja = new Tacticien("Ninja", 1,1,2);
 
         starterWarrior = Arrays.asList(naruto, sasuke);
         starterTacticien = Arrays.asList(ramen, ninja);
@@ -48,7 +48,7 @@ public class NarutoStory extends Story implements Serializable {
     @Override
     protected List<Arc> makeStory() {
         List<Arc> arc = new ArrayList<>();
-        Tacticien tacticien = new Tacticien("Piccolo-san", 10);
+        Tacticien tacticien = new Tacticien("Piccolo-san", 10,1,2);
 
         //ARC1
         String nameArc = "Le commencement !";

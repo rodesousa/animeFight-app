@@ -2,9 +2,11 @@ package fr.android.animefight.bean.team;
 
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
+import fr.android.animefight.utils.None;
 import fr.android.animefight.utils.Option;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,9 +23,25 @@ public class Team implements Serializable {
         this.tacticien = tacticien;
     }
 
+    /**
+     * On créer la formation para rapport au tacticien
+     * @param tacticien
+     */
     public Team(Tacticien tacticien) {
         this.tacticien = tacticien;
+        List<List<Option<Character>>> listCharacters = new ArrayList<>();
+
+        for (int i = 0; i < tacticien.getRaw(); i++) {
+            List<Option<Character>> characters = new ArrayList<>();
+            for (int i1 = 0; i1 < tacticien.getColumn(); i1++) {
+                characters.add(new None<Character>());
+            }
+            listCharacters.add(characters);
+        }
+
+        this.formation = new Formation(listCharacters);
     }
+
 
     public Tacticien getTacticien() {
         return tacticien;
