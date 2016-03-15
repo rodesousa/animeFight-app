@@ -21,7 +21,7 @@ import java.util.List;
  * C'est l'activity des différents arc. On voit l'ensemble des combats d'un arc !
  * Created by rodesousa on 15/02/16.
  */
-public class ArcActivity extends Activity {
+public class FightsActivity extends Activity {
 
     private Model model;
     private Arc arc;
@@ -32,7 +32,7 @@ public class ArcActivity extends Activity {
         setContentView(R.layout.story_arc);
 
         model = (Model) getIntent().getSerializableExtra("Model");
-        arc = model.getWorld().getStory().getArcList().get((int) getIntent().getSerializableExtra("ArcId"));
+        arc = model.getModeStory().getStory().getArcList().get((int) getIntent().getSerializableExtra("ArcId"));
 
         //Recup le textView pour y mettre le Titre de la story
         TextView tv = (TextView) findViewById(R.id.titre);
@@ -47,7 +47,7 @@ public class ArcActivity extends Activity {
 
     private void arcActivity(final View view) {
         Fight fight = arc.getFightList().get(view.getId());
-        Intent intent = new Intent(this, FightActivity.class);
+        Intent intent = new Intent(this, FightViewActivity.class);
         intent.putExtra("FightId", view.getId());
         intent.putExtra("ArcId", (int) getIntent().getSerializableExtra("ArcId"));
         intent.putExtra("Model", model);
@@ -81,7 +81,7 @@ public class ArcActivity extends Activity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ArcActivity.this.arcActivity(view);
+                    FightsActivity.this.arcActivity(view);
                 }
             });
             layout.addView(button);

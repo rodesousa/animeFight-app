@@ -17,10 +17,11 @@ import fr.android.animefight.story.Arc;
 import java.util.List;
 
 /**
- * Activity du mode story. On a l'ensemble des arcs d'une story
+ * ensemble des arcs d'une story
+ *
  * Created by rodesousa on 15/02/16.
  */
-public class StoryActivity extends Activity {
+public class ArcsActivity extends Activity {
 
     private Model model;
 
@@ -35,28 +36,27 @@ public class StoryActivity extends Activity {
         tv.setTextSize(20);
         tv.setTextColor(Color.RED);
         tv.setTypeface(tv.getTypeface(), Typeface.BOLD);
-        tv.setText("Bienvenue dans le monde de \n" + model.getWorld().getStory().toString());
+        tv.setText("Bienvenue dans le monde de \n" + model.getModeStory().getStory().toString());
 
         //add buttons
-        addButtons(model.getWorld().getStory().getArcList());
+        addButtons(model.getModeStory().getStory().getArcList());
     }
 
     private void storyActivity(View view) {
-        Intent intent = new Intent(this, ArcActivity.class);
-        model.getState().setStep(model.getState().ARCS);
+        Intent intent = new Intent(this, FightsActivity.class);
         intent.putExtra("Model", model);
         intent.putExtra("ArcId", view.getId());
         startActivity(intent);
     }
 
     /**
-     * Ajout des button dynamiquement
+     * Ajout des arcs
      */
-    private void addButtons(List<Arc> arcOrStory) {
+    private void addButtons(List<Arc> arcs) {
         LinearLayout layout = (LinearLayout) findViewById(R.id.story_arc);
         int i = 0;
         boolean enable = false;
-        for (Arc arc : arcOrStory) {
+        for (Arc arc : arcs) {
             Button button = new Button(this);
             if (enable) {
                 button.setEnabled(false);

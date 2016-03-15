@@ -19,10 +19,10 @@
         </activity>
         <activity android:name=".Activity.CoreActivity"/>
         <activity android:name=".Activity.EventActivity"/>
-        <activity android:name=".Activity.StoryActivity"/>
-        <activity android:name=".Activity.FightActivity"/>
+        <activity android:name=".Activity.ArcsActivity"/>
+        <activity android:name=".Activity.FightViewActivity"/>
         <activity android:name=".Activity.TeamManagementActivity"/>
-        <activity android:name=".Activity.ArcActivity"/>
+        <activity android:name=".Activity.FightsActivity"/>
         <activity android:name=".Activity.InspectActivity"/>
         <activity android:name=".Activity.SelectActivity"/>
     </application>

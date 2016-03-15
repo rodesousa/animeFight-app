@@ -44,8 +44,7 @@ public class CoreActivity extends Activity {
     }
 
     public void callStory(View view) {
-        Intent intent = new Intent(this, StoryActivity.class);
-        controller.getModel().getState().setStep(controller.getModel().getState().STORIES);
+        Intent intent = new Intent(this, ArcsActivity.class);
         intent.putExtra("Model", controller.getModel());
         startActivity(intent);
     }
@@ -62,17 +61,17 @@ public class CoreActivity extends Activity {
 
 
     public void choiceNaruto(View view) {
-        controller.getModel().getWorld().setStory("Naruto");
+        controller.getModel().getModeStory().setStory("Naruto");
         initThis();
     }
 
     public void choiceOP(View view) {
-        controller.getModel().getWorld().setStory("One Piece");
+        controller.getModel().getModeStory().setStory("One Piece");
         initThis();
     }
 
     public void choiceDBZ(View view) {
-        controller.getModel().getWorld().setStory("Dragon Ball");
+        controller.getModel().getModeStory().setStory("Dragon Ball");
         initThis();
     }
 

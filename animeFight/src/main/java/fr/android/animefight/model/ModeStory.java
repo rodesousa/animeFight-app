@@ -10,21 +10,20 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by rodesousa on 18/02/16.
+ * Le mode story
  * <p/>
- * L'objet model le plus haut qui concerne le mode stor
+ * Created by rodesousa on 18/02/16.
  */
-public class World implements Serializable {
+public class ModeStory implements Serializable {
     private Story story;
     private List<Story> stories;
 
-    public World() {
+    public ModeStory() {
         stories = Arrays.asList(DbzStory.getDBZ(), NarutoStory.getNARUTO(), OnePieceStory.getONEPIECE());
     }
 
     public void setStory(final String name) {
-        //Refaire avec un vrai filter et pas de la merde !
-        //todo
+        //todo Refaire avec un vrai filter et pas de la merde !
         for (Story str : stories) {
             if (str.toString() == name) {
                 this.story = str;

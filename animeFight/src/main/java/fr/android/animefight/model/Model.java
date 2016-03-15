@@ -1,36 +1,35 @@
 package fr.android.animefight.model;
 
-import fr.android.animefight.bean.team.Team;
-
 import java.io.Serializable;
 
 /**
+ * UN model comporte:
+ * l'état du jeu @state
+ * le mode story @modeStory
+ * le player @player
  * Created by rodesousa on 17/02/16.
  */
 public class Model implements Serializable {
-    private Team team;
     private final State state;
-    private World world;
+    private final ModeStory modeStory;
+    private final Player player;
 
     public Model() {
-        team = null;
         state = new State();
-        world = new World();
-    }
-
-    public Team getTeam() {
-        return team;
+        modeStory = new ModeStory();
+        player = new Player();
     }
 
     public State getState() {
         return state;
     }
 
-    public World getWorld() {
-        return world;
+    public ModeStory getModeStory() {
+        return modeStory;
     }
 
-    public void setTeam(Team t) {
-        this.team = t;
+    public Player getPlayer() {
+        return player;
     }
 }
+

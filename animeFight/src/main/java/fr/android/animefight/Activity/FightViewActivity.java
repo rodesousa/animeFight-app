@@ -24,10 +24,15 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Activity des combats. On recupère l'objet Formation pour le print sur la view
+ * Activity des combats
+ *
  * Created by rodesousa on 16/02/16.
  */
-public class FightActivity extends Activity {
+public class FightViewActivity extends Activity {
+    /**
+     * Objet qui permet de simplifier la liaison entre un lajout et un character.
+     * Cela permet de pouvoir refresh le layaout selon le personnage modifier
+     */
     public class Duo implements Serializable {
         ViewGroup viewGroup;
         Character character;
@@ -45,8 +50,11 @@ public class FightActivity extends Activity {
     private HashMap<Integer, Duo> listBattleView;
     private HashMap<Integer, Duo> listTacticienView;
     private Model model;
+    /**
+     * todo créer une class que pour runnable
+     * " engine " du combat.
+     */
     private Runnable runnable = new Runnable() {
-
         @Override
         public void run() {
             if (state == 0) {
@@ -69,6 +77,11 @@ public class FightActivity extends Activity {
         }
     };
 
+    /**
+     * Permet d'effectuer les animations lors d'un duel
+     * @param i
+     * @param hash
+     */
     private void moveView(int i, HashMap<Integer, Duo> hash) {
         Set<Integer> integers = hash.keySet();
         for (Integer integer : integers) {
@@ -81,6 +94,10 @@ public class FightActivity extends Activity {
         }
     }
 
+    /**
+     * on rafrachit le perso avec son layout
+     * @param hash
+     */
     private void refreshAll(HashMap<Integer, Duo> hash) {
         Set<Integer> integers = hash.keySet();
         for (Integer integer : integers) {
@@ -93,6 +110,11 @@ public class FightActivity extends Activity {
         }
     }
 
+    /**
+     * On regarde si le combat est done !
+     *
+     * @return
+     */
     private boolean fightIsDone() {
         if (team.getTacticien().getLifeCurrent() <= 0) {
             fight.setState(true);
@@ -114,8 +136,12 @@ public class FightActivity extends Activity {
         return false;
     }
 
+    /**
+     * On revient ds lactivity precedente. Pour garder letat des objets modifies on doit re injecter le contexte
+     * @param view
+     */
     public void goToArcActiviy(final View view) {
-        Intent intent = new Intent(this, ArcActivity.class);
+        Intent intent = new Intent(this, FightsActivity.class);
         intent.putExtra("ArcId", (int) getIntent().getSerializableExtra("ArcId"));
         intent.putExtra("Model", model);
         finish();
@@ -132,9 +158,9 @@ public class FightActivity extends Activity {
         viewById.setEnabled(false);
 
         model = (Model) getIntent().getSerializableExtra("Model");
-        fight = model.getWorld().getStory().getArcList().get((int) getIntent().getSerializableExtra("ArcId")).
+        fight = model.getModeStory().getStory().getArcList().get((int) getIntent().getSerializableExtra("ArcId")).
                 getFightList().get((int) getIntent().getSerializableExtra("FightId"));
-        team = model.getTeam();
+        team = model.getPlayer().getTeam();
 
         LinearLayout layoutTeam = (LinearLayout) findViewById(R.id.team);
         LinearLayout layoutEnnemis = (LinearLayout) findViewById(R.id.ennemi);
@@ -143,8 +169,8 @@ public class FightActivity extends Activity {
 
         addTacticien(layoutTacticienTeam, team.getTacticien(), 0);
         addTacticien(layoutTacticienEnnemis, fight.getTeamEnnemis().getTacticien(), 10);
-        addButton(layoutTeam, team.getFormation().getListCharacters(), 100);
-        addButton(layoutEnnemis, fight.getTeamEnnemis().getFormation().getListCharacters(), 200);
+        addCharacters(layoutTeam, team.getFormation().getListCharacters(), 100);
+        addCharacters(layoutEnnemis, fight.getTeamEnnemis().getFormation().getListCharacters(), 200);
 
         fight.initList(team);
 
@@ -165,8 +191,8 @@ public class FightActivity extends Activity {
         layout.addView(tx);
     }
 
-    private void addButton(final LinearLayout layout, final List<List<Option<Character>>> ch, int teamB) {
-        int i = teamB;
+    private void addCharacters(final LinearLayout layout, final List<List<Option<Character>>> ch, final int indice) {
+        int i = indice;
         for (List<Option<Character>> options : ch) {
             for (Option<Character> option : options) {
                 TextView tx = new TextView(this);

@@ -21,7 +21,7 @@ public class MockModel {
                 CategorieSS.init("Lowtuz")));
         Tacticien tacticien = new Tacticien("L", 3, 2, 10);
         Team team = new Team(formation, tacticien);
-        model.setTeam(team);
+        model.getPlayer().setTeam(team);
         return model;
     }
 }
