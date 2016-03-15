@@ -58,6 +58,10 @@ public class CoreActivity extends Activity {
         startActivity(intent);
     }
 
+    public void callInventoryActivity(View view) {
+        Intent intent = new Intent(this, InventoryActivity.class);
+        startActivity(intent);
+    }
 
     public void choiceNaruto(View view) {
         controller.getModel().getModeStory().setStory("Naruto");

@@ -25,5 +25,6 @@
         <activity android:name=".Activity.FightsActivity"/>
         <activity android:name=".Activity.InspectActivity"/>
         <activity android:name=".Activity.SelectActivity"/>
+        <activity android:name=".Activity.InventoryActivity"/>
     </application>
 </manifest>

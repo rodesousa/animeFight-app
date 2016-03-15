@@ -25,12 +25,20 @@
                 android:text="@string/event"
                 android:layout_gravity="center_horizontal"
                 android:onClick="callEventAct"/>
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="79dp"
-            android:text="@string/teamManagement"
-            android:layout_gravity="center_horizontal"
-            android:onClick="callEventTeamManagement"/>
+                android:layout_width="wrap_content"
+                android:layout_height="79dp"
+                android:text="@string/teamManagement"
+                android:layout_gravity="center_horizontal"
+                android:onClick="callEventTeamManagement"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="79dp"
+                android:text="Inventory"
+                android:layout_gravity="center_horizontal"
+                android:onClick="callInventoryActivity"/>
 
     </LinearLayout>
 
