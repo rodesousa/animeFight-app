@@ -19,7 +19,7 @@ public class MockModel {
         Formation formation = FormationBuilder.FormationWithCharacters(Arrays.asList(
                 CategorieSS.init("Shinkawa"),
                 CategorieSS.init("Lowtuz")));
-        Tacticien tacticien = new Tacticien("L", 3, 2, 10);
+        Tacticien tacticien = new Tacticien("L",10);
         Team team = new Team(formation, tacticien);
         model.getPlayer().setTeam(team);
         return model;

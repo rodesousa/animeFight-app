@@ -3,6 +3,7 @@ package fr.android.animefight.story.onepiece.arc;
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
 import fr.android.animefight.bean.charac.categorie.CategorieB;
+import fr.android.animefight.bean.charac.categorie.CategorieSS;
 import fr.android.animefight.bean.team.Formation;
 import fr.android.animefight.bean.team.FormationBuilder;
 import fr.android.animefight.bean.team.Team;
@@ -24,6 +25,15 @@ public class OnePieceStory extends Story implements Serializable {
 
     private OnePieceStory() {
         super("One Piece");
+
+        //création des starters
+        Character luffy = CategorieSS.init("Luffy");
+        Character Baggy = CategorieB.init("Baggy");
+        Tacticien nami = new Tacticien("Nami", 5);
+        Tacticien robin = new Tacticien("Robin", 5);
+
+        starterWarrior = Arrays.asList(luffy, Baggy);
+        starterTacticien = Arrays.asList(nami, robin);
     }
 
     public static OnePieceStory getONEPIECE() {
@@ -38,7 +48,7 @@ public class OnePieceStory extends Story implements Serializable {
     @Override
     protected List<Arc> makeStory() {
         List<Arc> arc = new ArrayList<>();
-        Tacticien tacticien = new Tacticien("Piccolo-san", 3, 2, 5);
+        Tacticien tacticien = new Tacticien("Inconnu", 5);
 
         //ARC1
         String nameArc = "Morgan !";

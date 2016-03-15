@@ -27,7 +27,6 @@ public class CoreActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // on check si un model existe deja
         Model model = (Model) getIntent().getSerializableExtra("Model");
 
         if (model != null) {
@@ -77,9 +76,9 @@ public class CoreActivity extends Activity {
 
     private void initThis() {
         controller.getModel().getState().setBegining(false);
-        this.finish();
         Intent intent = new Intent(this, CoreActivity.class);
         intent.putExtra("Model", controller.getModel());
+        this.finish();
         startActivity(intent);
     }
 }

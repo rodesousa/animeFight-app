@@ -1,5 +1,8 @@
 package fr.android.animefight.story;
 
+import fr.android.animefight.bean.Character;
+import fr.android.animefight.bean.Tacticien;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,6 +13,8 @@ import java.util.List;
 public abstract class Story implements Serializable {
     private List<Arc> arcList;
     private String name;
+    protected List<Character> starterWarrior;
+    protected List<Tacticien> starterTacticien;
 
     public Story(final String name) {
         this.name = name;
@@ -21,18 +26,28 @@ public abstract class Story implements Serializable {
         return name;
     }
 
+    public List<Character> getStarterWarrior() {
+        return starterWarrior;
+    }
+
+    public List<Tacticien> getStarterTacticien() {
+        return starterTacticien;
+    }
+
     public List<Arc> getArcList() {
         return arcList;
     }
 
     /**
      * Declaration de la story
+     *
      * @return
      */
     protected abstract List<Arc> makeStory();
 
     /**
      * En cas de déserialisation
+     *
      * @return
      */
     protected abstract Object readResolve();
