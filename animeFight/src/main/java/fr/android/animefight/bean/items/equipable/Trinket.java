@@ -10,8 +10,5 @@ public class Trinket extends Equipable {
         super(name);
     }
 
-    @Override
-    public String getImagePath() {
-        return "trinket_"+this.getName();
-    }
+
 }

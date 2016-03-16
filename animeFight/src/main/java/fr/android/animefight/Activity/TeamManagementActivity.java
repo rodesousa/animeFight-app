@@ -33,9 +33,9 @@ public class TeamManagementActivity extends Activity {
     }
 
     public void displaySelectedCharacter() {
-        String variableValue = selectedCharacter.getImagePath();
-        int drawableID = this.getBaseContext().getResources().getIdentifier(variableValue, "drawable", getPackageName());
-        this.mainImage.setImageResource(drawableID);
+//        String variableValue = selectedCharacter.getImagePath();
+//        int drawableID = this.getBaseContext().getResources().getIdentifier(variableValue, "drawable", getPackageName());
+//        this.mainImage.setImageResource(drawableID);
     }
 
     public void returnStoryToCore(View view) {
@@ -85,17 +85,17 @@ public class TeamManagementActivity extends Activity {
     }
 
     public void callWeaponInspect(View view) {
-        Intent intent = new Intent(this, InspectActivity.class);
+        Intent intent = new Intent(this, InspectActivityOld.class);
         startActivity(intent);
     }
 
     public void callArmorInspect(View view) {
-        Intent intent = new Intent(this, InspectActivity.class);
+        Intent intent = new Intent(this, InspectActivityOld.class);
         startActivity(intent);
     }
 
     public void callTrinketInspect(View view) {
-        Intent intent = new Intent(this, InspectActivity.class);
+        Intent intent = new Intent(this, InspectActivityOld.class);
         startActivity(intent);
     }
 

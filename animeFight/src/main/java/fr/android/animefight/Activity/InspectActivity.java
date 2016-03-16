@@ -1,44 +1,52 @@
 package fr.android.animefight.Activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
+import android.widget.Button;
+import android.widget.LinearLayout;
 import fr.android.animefight.R;
-import fr.android.animefight.bean.items.Equipable;
-import fr.android.animefight.mock.MockEquipable;
+import fr.android.animefight.bean.Character;
+import fr.android.animefight.model.Model;
 
 /**
- * Created by rohamdi on 22/02/2016.
+ * Liste des personnages qui permet de voir en detail un personnage
+ * Created by rodesousa on 16/03/16.
  */
 public class InspectActivity extends Activity {
-    private Equipable mainEquipable;
-    private ImageView mainImage;
-    private TextView mainText;
+    private Model model;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inspect);
 
-        mainEquipable= MockEquipable.getArmor();
+        model = (Model) getIntent().getSerializableExtra("Model");
 
-        mainImage = (ImageView) findViewById(R.id.inspectImage);
-        mainText = (TextView) findViewById(R.id.inspectDescription);
-        displaySelectedItem();
+        LinearLayout linearLayout = (LinearLayout) this.findViewById(R.id.inspect);
+        int i = 0;
+
+        for (Character character : model.getPlayer().getCharacters()) {
+            Button button = new Button(this);
+            button.setText("" + character);
+            button.setId(i);
+            button.setOnClickListener(new View.OnClickListener() {
+                public void onClick(final View v) {
+                    selectCharcter(v);
+                }
+            });
+            linearLayout.addView(button);
+            i++;
+        }
 
     }
 
-    public void displaySelectedItem(){
-        String variableValue = mainEquipable.getImagePath();
-        int drawableID = this.getBaseContext().getResources().getIdentifier(variableValue, "drawable", getPackageName());
-        this.mainImage.setImageResource(drawableID);
-        //this.mainText.setText(mainEquipable.getDescription());
-    }
-
-    public void returnInspectToTeam(View view){
+    private void selectCharcter(View view) {
+        Intent intent = new Intent(this, CharacterSelectActivity.class);
+        intent.putExtra("Model", model);
+        intent.putExtra("characterId", view.getId());
         this.finish();
+        startActivity(intent);
     }
 }

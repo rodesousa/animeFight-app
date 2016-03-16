@@ -17,7 +17,7 @@ public abstract class Equipable implements Item {
         this.name = name;
     }
 
-    public String getName() {
+    public String toString() {
         return name;
     }
 

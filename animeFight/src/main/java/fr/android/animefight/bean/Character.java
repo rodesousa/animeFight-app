@@ -4,6 +4,7 @@ import fr.android.animefight.bean.charac.Categorie;
 import fr.android.animefight.bean.items.equipable.Armor;
 import fr.android.animefight.bean.items.equipable.Trinket;
 import fr.android.animefight.bean.items.equipable.Weapon;
+import fr.android.animefight.utils.Option;
 
 import java.io.Serializable;
 
@@ -16,15 +17,16 @@ import java.io.Serializable;
  */
 public class Character implements Serializable {
     private String name;
-    private Armor armor;
-    private Weapon weapon;
+    private Option<Armor> head;
+    private Option<Armor> armor;
+    private Option<Weapon> weapon;
     private Trinket trinket;
     private int life;
     private int lifeCurrent;
     private int defense;
     private int attack;
     private int vitesse;
-    private String imagePath;
+    private int imagePath;
     private Categorie categorie;
 
     public Character(String name) {
@@ -35,20 +37,24 @@ public class Character implements Serializable {
 
     }
 
-    public String getImagePath() {
-        return "char_" + this.toString();
+    public void setImagePath(int imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public Option<Armor> getHead() {
+        return head;
+    }
+
+    public void setHead(Option<Armor> head) {
+        this.head = head;
+    }
+
+    public int getImagePath() {
+        return this.imagePath;
     }
 
     public Trinket getTrinket() {
         return trinket;
-    }
-
-    public Weapon getWeapon() {
-        return weapon;
-    }
-
-    public Armor getArmor() {
-        return armor;
     }
 
     @Override
@@ -58,14 +64,6 @@ public class Character implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setArmor(Armor armor) {
-        this.armor = armor;
-    }
-
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
     }
 
     public void setTrinket(Trinket trinket) {
@@ -110,6 +108,22 @@ public class Character implements Serializable {
 
     public int getAttack() {
         return attack;
+    }
+
+    public Option<Weapon> getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Option<Weapon> weapon) {
+        this.weapon = weapon;
+    }
+
+    public Option<Armor> getArmor() {
+        return armor;
+    }
+
+    public void setArmor(Option<Armor> armor) {
+        this.armor = armor;
     }
 
     public void setAttack(int attack) {

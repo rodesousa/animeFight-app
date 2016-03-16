@@ -16,8 +16,4 @@ public class Skill implements Item {
         this.name = name;
     }
 
-    @Override
-    public String getImagePath() {
-        return "skill_"+this.getName();
-    }
 }

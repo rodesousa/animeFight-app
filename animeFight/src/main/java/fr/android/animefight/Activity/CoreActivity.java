@@ -42,6 +42,12 @@ public class CoreActivity extends Activity {
             setContentView(R.layout.core);
     }
 
+    public void callShowCharacters(View view) {
+        Intent intent = new Intent(this, InspectActivity.class);
+        intent.putExtra("Model", controller.getModel());
+        startActivity(intent);
+    }
+
     public void callStory(View view) {
         Intent intent = new Intent(this, ArcsActivity.class);
         intent.putExtra("Model", controller.getModel());
@@ -53,11 +59,12 @@ public class CoreActivity extends Activity {
         startActivity(intent);
     }
 
-    public void callFormationActivity(View view){
+    public void callFormationActivity(View view) {
         Intent intent = new Intent(this, FormationActivity.class);
         intent.putExtra("Model", controller.getModel());
         startActivity(intent);
     }
+
     public void callEventTeamManagement(View view) {
         Intent intent = new Intent(this, TeamManagementActivity.class);
         startActivity(intent);

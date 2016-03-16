@@ -16,8 +16,4 @@ public class Consumable implements Item {
         this.name = name;
     }
 
-    @Override
-    public String getImagePath() {
-        return "consumable_" + this.getName();
-    }
 }

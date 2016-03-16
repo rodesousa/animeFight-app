@@ -23,10 +23,12 @@
         <activity android:name=".Activity.FightViewActivity"/>
         <activity android:name=".Activity.TeamManagementActivity"/>
         <activity android:name=".Activity.FightsActivity"/>
-        <activity android:name=".Activity.InspectActivity"/>
+        <activity android:name=".Activity.InspectActivityOld"/>
         <activity android:name=".Activity.SelectActivity"/>
         <activity android:name=".Activity.InventoryActivity"/>
         <activity android:name=".Activity.FormationActivity"/>
         <activity android:name=".Activity.ChooseFighterActivity"/>
+        <activity android:name=".Activity.CharacterSelectActivity"/>
+        <activity android:name=".Activity.InspectActivity"/>
     </application>
 </manifest>

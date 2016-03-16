@@ -9,8 +9,9 @@ public class Weapon extends Equipable {
     public Weapon(String name) {
         super(name);
     }
-    @Override
-    public String getImagePath() {
-        return "weapon_"+this.getName();
-    }
+
+//    @Override
+//    public String getImagePath() {
+//        return "weapon_"+this.getName();
+//    }
 }

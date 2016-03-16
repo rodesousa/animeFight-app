@@ -10,8 +10,8 @@ public class Armor extends Equipable {
         super(name);
     }
 
-    @Override
-    public String getImagePath() {
-        return "armor_"+this.getName();
-    }
+//    @Override
+//    public String getImagePath() {
+//        return "armor_"+this.getName();
+//    }
 }
