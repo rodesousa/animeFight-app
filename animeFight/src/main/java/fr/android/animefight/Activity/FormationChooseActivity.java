@@ -13,7 +13,7 @@ import fr.android.animefight.model.Model;
 /**
  * Created by rodesousa on 15/03/16.
  */
-public class ChooseFighterActivity extends Activity {
+public class FormationChooseActivity extends Activity {
 
     private Model model;
     private int indice;
@@ -42,6 +42,24 @@ public class ChooseFighterActivity extends Activity {
             i++;
         }
 
+        Button button = new Button(this);
+        button.setText("Remove");
+        button.setId(999);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(final View v) {
+                removeCharcter(v);
+            }
+        });
+        linearLayout.addView(button);
+    }
+
+    private void removeCharcter(View view) {
+        Intent intent = new Intent(this, FormationActivity.class);
+        intent.putExtra("Model", model);
+        intent.putExtra("placeId", indice);
+        intent.putExtra("removeId", view.getId());
+        this.finish();
+        startActivity(intent);
     }
 
     private void selectCharcter(View view) {

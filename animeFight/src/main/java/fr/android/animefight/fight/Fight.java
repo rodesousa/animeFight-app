@@ -66,7 +66,7 @@ public class Fight implements Serializable {
                 } else {
                     touch(teamB, A.get(i).get());
                 }
-            } else if (!B.get(i).isEmpty)
+            } else if (B.size() > i && !B.get(i).isEmpty)
                 touch(teamA, B.get(i).get());
         }
     }

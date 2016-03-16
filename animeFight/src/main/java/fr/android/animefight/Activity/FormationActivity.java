@@ -8,6 +8,7 @@ import android.widget.*;
 import fr.android.animefight.R;
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.model.Model;
+import fr.android.animefight.utils.None;
 import fr.android.animefight.utils.Option;
 import fr.android.animefight.utils.Some;
 
@@ -28,13 +29,17 @@ public class FormationActivity extends Activity {
 
         int placeId = -999;
         int characterId = -999;
+        int removeId = -999;
 
         model = (Model) getIntent().getSerializableExtra("Model");
         try {
             placeId = (int) getIntent().getSerializableExtra("placeId");
             characterId = (int) getIntent().getSerializableExtra("characterId");
         } catch (NullPointerException e) {
-
+            try {
+                removeId = (int) getIntent().getSerializableExtra("removeId");
+            } catch (NullPointerException ee) {
+            }
         }
 
         // print tacticien
@@ -64,8 +69,15 @@ public class FormationActivity extends Activity {
                     }
                 });
                 if (!character.isEmpty) {
-                    button.setText(character.get() + "");
+                    if (removeId == 999) {
+                        button.setText("    ");
+                        characters.set(idi, new None<Character>());
+                    } else {
+                        button.setText(character.get() + "");
+                    }
                 } else if ((idi + idj) == placeId) {
+                    // La case est vide et on a selectionner un perso ! On regarde si le placeId est égal a la somme
+                    // des 2 indices... vu que les indices des slots sont la sommes de ces 2 indices
                     button.setText(model.getPlayer().getCharacters().get(characterId) + "");
                     characters.set(idi, new Some<Character>(model.getPlayer().getCharacters().get(characterId)));
                 }
@@ -82,14 +94,14 @@ public class FormationActivity extends Activity {
     }
 
     private void chooseCharacter(View view) {
-        Intent intent = new Intent(this, ChooseFighterActivity.class);
+        Intent intent = new Intent(this, FormationChooseActivity.class);
         intent.putExtra("Model", model);
         intent.putExtra("placeId", view.getId());
         this.finish();
         startActivity(intent);
     }
 
-    public void validate(View view){
+    public void validate(View view) {
         Intent intent = new Intent(this, CoreActivity.class);
         intent.putExtra("Model", model);
         this.finish();

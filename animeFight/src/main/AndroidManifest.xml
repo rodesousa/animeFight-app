@@ -27,7 +27,7 @@
         <activity android:name=".Activity.SelectActivity"/>
         <activity android:name=".Activity.InventoryActivity"/>
         <activity android:name=".Activity.FormationActivity"/>
-        <activity android:name=".Activity.ChooseFighterActivity"/>
+        <activity android:name=".Activity.FormationChooseActivity"/>
         <activity android:name=".Activity.CharacterSelectActivity"/>
         <activity android:name=".Activity.InspectActivity"/>
     </application>

@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.*;
 import fr.android.animefight.R;
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
@@ -25,7 +23,7 @@ import java.util.Set;
 
 /**
  * Activity des combats
- *
+ * <p/>
  * Created by rodesousa on 16/02/16.
  */
 public class FightViewActivity extends Activity {
@@ -79,6 +77,7 @@ public class FightViewActivity extends Activity {
 
     /**
      * Permet d'effectuer les animations lors d'un duel
+     *
      * @param i
      * @param hash
      */
@@ -88,7 +87,7 @@ public class FightViewActivity extends Activity {
             Duo duo = hash.get(integer);
             TextView viewById = (TextView) duo.viewGroup.findViewById(integer);
             ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) viewById.getLayoutParams();
-            layoutParams.setMargins(0, 0, 50, 0);
+            layoutParams.setMargins(10, 0, 50, 30);
             layoutParams.topMargin += i;
             duo.viewGroup.requestLayout();
         }
@@ -96,6 +95,7 @@ public class FightViewActivity extends Activity {
 
     /**
      * on rafrachit le perso avec son layout
+     *
      * @param hash
      */
     private void refreshAll(HashMap<Integer, Duo> hash) {
@@ -104,7 +104,7 @@ public class FightViewActivity extends Activity {
             Duo duo = hash.get(integer);
             TextView tx = (TextView) duo.viewGroup.findViewById(integer);
             ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) tx.getLayoutParams();
-            layoutParams.setMargins(0, 0, 50, 0);
+            layoutParams.setMargins(10, 0, 50, 30);
             tx.setText(duo.character.toString() + "\n" +
                     duo.character.getLifeCurrent() + "/" + duo.character.getLife());
         }
@@ -138,6 +138,7 @@ public class FightViewActivity extends Activity {
 
     /**
      * On revient ds lactivity precedente. Pour garder letat des objets modifies on doit re injecter le contexte
+     *
      * @param view
      */
     public void goToArcActiviy(final View view) {
@@ -162,8 +163,8 @@ public class FightViewActivity extends Activity {
                 getFightList().get((int) getIntent().getSerializableExtra("FightId"));
         team = model.getPlayer().getTeam();
 
-        LinearLayout layoutTeam = (LinearLayout) findViewById(R.id.team);
-        LinearLayout layoutEnnemis = (LinearLayout) findViewById(R.id.ennemi);
+        TableLayout layoutTeam = (TableLayout) findViewById(R.id.team);
+        TableLayout layoutEnnemis = (TableLayout) findViewById(R.id.ennemi);
         LinearLayout layoutTacticienTeam = (LinearLayout) findViewById(R.id.tacticienTeam);
         LinearLayout layoutTacticienEnnemis = (LinearLayout) findViewById(R.id.tacticiEnennemi);
 
@@ -185,19 +186,23 @@ public class FightViewActivity extends Activity {
         tx.setText(tacticien.toString() + "\n" + tacticien.getLifeCurrent() + "/" + tacticien.getLife());
         tx.setBackgroundColor(Color.GREEN);
         ViewGroup.MarginLayoutParams test = (ViewGroup.MarginLayoutParams) tx.getLayoutParams();
-        test.setMargins(0, 0, 50, 0);
+        test.setMargins(10, 0, 50, 30);
         tx.setId(i);
         listTacticienView.put(i, new Duo(layout, tacticien));
         layout.addView(tx);
     }
 
-    private void addCharacters(final LinearLayout layout, final List<List<Option<Character>>> ch, final int indice) {
+    private void addCharacters(final TableLayout layout, final List<List<Option<Character>>> listCharacters, final int indice) {
+
         int i = indice;
-        for (List<Option<Character>> options : ch) {
-            for (Option<Character> option : options) {
+        for (List<Option<Character>> listCharacter : listCharacters) {
+            TableRow tableRow = new TableRow(this);
+            TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                    TableRow.LayoutParams.MATCH_PARENT);
+            tableRow.setLayoutParams(layoutParams);
+            for (Option<Character> option : listCharacter) {
                 TextView tx = new TextView(this);
-                tx.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.MATCH_PARENT));
+                tx.setLayoutParams(layoutParams);
                 if (!option.isEmpty) {
                     tx.setText(option.get().toString() + "\n" +
                             option.get().getLifeCurrent() + "/" + option.get().getLife());
@@ -206,14 +211,16 @@ public class FightViewActivity extends Activity {
                     listBattleView.put(i, new Duo(layout, option.get()));
                     i++;
                 } else {
-                    tx.setText("        ");
+                    tx.setText("        \n ");
                     tx.setBackgroundColor(Color.BLUE);
                 }
                 ViewGroup.MarginLayoutParams test = (ViewGroup.MarginLayoutParams) tx.getLayoutParams();
-                test.setMargins(0, 0, 50, 0);
-                layout.addView(tx);
+                test.setMargins(10, 0, 50, 30);
+                tableRow.addView(tx);
             }
+            layout.addView(tableRow);
         }
+
     }
 
 }

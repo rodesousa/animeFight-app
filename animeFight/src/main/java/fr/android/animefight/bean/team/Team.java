@@ -20,14 +20,19 @@ public class Team implements Serializable {
 
     public Team(Formation characters, Tacticien tacticien) {
         this.formation = characters;
-        this.tacticien = tacticien;
+        initFormation(tacticien);
+    }
+
+    public Team(Tacticien tacticien) {
+        initFormation(tacticien);
     }
 
     /**
      * On créer la formation para rapport au tacticien
+     *
      * @param tacticien
      */
-    public Team(Tacticien tacticien) {
+    private void initFormation(Tacticien tacticien) {
         this.tacticien = tacticien;
         List<List<Option<Character>>> listCharacters = new ArrayList<>();
 

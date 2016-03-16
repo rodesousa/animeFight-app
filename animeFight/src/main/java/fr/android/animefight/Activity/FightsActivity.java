@@ -46,13 +46,14 @@ public class FightsActivity extends Activity {
     }
 
     private void arcActivity(final View view) {
-        Fight fight = arc.getFightList().get(view.getId());
-        Intent intent = new Intent(this, FightViewActivity.class);
-        intent.putExtra("FightId", view.getId());
-        intent.putExtra("ArcId", (int) getIntent().getSerializableExtra("ArcId"));
-        intent.putExtra("Model", model);
-        this.finish();
-        startActivity(intent);
+        if (model.getPlayer().getTeam().getFormation().isFightable()) {
+            Intent intent = new Intent(this, FightViewActivity.class);
+            intent.putExtra("FightId", view.getId());
+            intent.putExtra("ArcId", (int) getIntent().getSerializableExtra("ArcId"));
+            intent.putExtra("Model", model);
+            this.finish();
+            startActivity(intent);
+        }
     }
 
     /**
@@ -89,12 +90,5 @@ public class FightsActivity extends Activity {
         }
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        System.out.println("RDS");
-//        //add buttons
-//        addButtons(arc.getFightList());
-//    }
 
 }

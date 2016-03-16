@@ -10,6 +10,7 @@ import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.fight.Fight;
 import fr.android.animefight.story.Arc;
 import fr.android.animefight.story.Story;
+import fr.android.animefight.utils.Some;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,8 +30,8 @@ public class DbzStory extends Story implements Serializable {
         //création des starters
         Character goku = CategorieSS.init("Goku");
         Character krilin = CategorieB.init("Krilin");
-        Tacticien Bulma = new Tacticien("Bulma", 5,1,2);
-        Tacticien Chichi = new Tacticien("Chichi", 5,1,2);
+        Tacticien Bulma = new Tacticien("Bulma", 5, 1, 2);
+        Tacticien Chichi = new Tacticien("Chichi", 5, 1, 2);
 
         starterWarrior = Arrays.asList(goku, krilin);
         starterTacticien = Arrays.asList(Bulma, Chichi);
@@ -48,17 +49,20 @@ public class DbzStory extends Story implements Serializable {
     @Override
     protected List<Arc> makeStory() {
         List<Arc> arc = new ArrayList<>();
-        Tacticien tacticien = new Tacticien("Grand père Gohan", 2,1,2);
+        Tacticien tacticien = new Tacticien("Grand père Gohan", 2, 1, 2);
 
         //ARC1
         String nameArc = "Le commencement !";
-        Formation bulma = FormationBuilder.FormationWithCharacter(CategorieB.init("Bulma"));
+        Character bulma1 = CategorieB.init("Bulma");
+        Formation bulma = FormationBuilder.FormationWithCharacter(bulma1);
         Formation ptero = FormationBuilder.FormationWithCharacter(CategorieB.init("Ptero"));
 
+        Team team1 = new Team(bulma, tacticien);
+        team1.getFormation().getListCharacters().get(0).set(0, new Some<Character>(bulma1));
         arc.add(
                 new Arc(nameArc,
                         Arrays.asList(
-                                new Fight("Qui est elle ?", new Team(bulma, tacticien)),
+                                new Fight("Qui est elle ?", team1),
                                 new Fight("Sauvons la", new Team(ptero, tacticien))
                         )));
         return arc;

@@ -10,6 +10,7 @@ import fr.android.animefight.bean.team.FormationBuilder;
 import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.model.Model;
 import fr.android.animefight.utils.None;
+import fr.android.animefight.utils.Some;
 
 import java.util.Arrays;
 
@@ -34,6 +35,7 @@ public class MockModel {
         lowtuz.setHead(new None<Armor>());
         lowtuz.setImagePath(R.drawable.char_kenshin);
         shinkawa.setImagePath(R.drawable.char_goku);
+        team.getFormation().getListCharacters().get(0).set(0, new Some<Character>(lowtuz));
         model.getPlayer().setTeam(team);
         model.getPlayer().getCharacters().addAll(Arrays.asList(lowtuz, shinkawa));
         model.getPlayer().getTacticiens().add(tacticien);
