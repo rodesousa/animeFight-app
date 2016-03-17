@@ -1,6 +1,7 @@
 package fr.android.animefight.bean.charac.categorie;
 
 import fr.android.animefight.bean.Character;
+import fr.android.animefight.bean.Perso;
 import fr.android.animefight.bean.charac.Categorie;
 
 /**
@@ -12,13 +13,9 @@ public class CategorieA extends Categorie {
         super("A");
     }
 
-    public static Character init(String name) {
-        Character tmp = new Character(name);
-        tmp.setLife(100);
-        tmp.setLifeCurrent(100);
-        tmp.setVitesse(50);
-        tmp.setCategorie(new CategorieA());
-        return tmp;
+    @Override
+    public Character init(Perso perso) {
+        return declareCharacter(perso, 100, 50, 10, 2);
     }
 
 }

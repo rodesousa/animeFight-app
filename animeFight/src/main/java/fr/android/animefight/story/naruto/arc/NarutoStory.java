@@ -2,8 +2,7 @@ package fr.android.animefight.story.naruto.arc;
 
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
-import fr.android.animefight.bean.charac.categorie.CategorieB;
-import fr.android.animefight.bean.charac.categorie.CategorieSS;
+import fr.android.animefight.bean.perso.BuilderPersoNaruto;
 import fr.android.animefight.bean.team.Formation;
 import fr.android.animefight.bean.team.FormationBuilder;
 import fr.android.animefight.bean.team.Team;
@@ -27,10 +26,10 @@ public class NarutoStory extends Story implements Serializable {
         super("Naruto");
 
         //création des starters
-        Character naruto = CategorieSS.init("Naruto");
-        Character sasuke = CategorieSS.init("Sasuke");
-        Tacticien ramen = new Tacticien("Ramen", 1,1,2);
-        Tacticien ninja = new Tacticien("Ninja", 1,1,2);
+        Character naruto = BuilderPersoNaruto.naruto();
+        Character sasuke = BuilderPersoNaruto.sasuke();
+        Tacticien ramen = new Tacticien("Ramen", 1, 1, 2);
+        Tacticien ninja = new Tacticien("Ninja", 1, 1, 2);
 
         starterWarrior = Arrays.asList(naruto, sasuke);
         starterTacticien = Arrays.asList(ramen, ninja);
@@ -48,7 +47,7 @@ public class NarutoStory extends Story implements Serializable {
     @Override
     protected List<Arc> makeStory() {
         List<Arc> arc = new ArrayList<>();
-        Tacticien tacticien = new Tacticien("Piccolo-san", 10,1,2);
+        Tacticien tacticien = new Tacticien("Piccolo-san", 10, 1, 2);
 
         //ARC1
         String nameArc = "Le commencement !";
@@ -56,8 +55,8 @@ public class NarutoStory extends Story implements Serializable {
         Formation konoha = FormationBuilder.FormationWithCharacters(Arrays.asList(
                 new Character("Ninja Konoha 1"),
                 new Character("Ninja Konoha 2")));
-        Formation misuki = FormationBuilder.FormationWithCharacter(CategorieB.init("Misuki"));
-        Formation iruka = FormationBuilder.FormationWithCharacter(CategorieB.init("Iruka"));
+        Formation misuki = FormationBuilder.FormationWithCharacter(BuilderPersoNaruto.misuki());
+        Formation iruka = FormationBuilder.FormationWithCharacter(BuilderPersoNaruto.iruka());
 
         arc.add(
                 new Arc(nameArc,

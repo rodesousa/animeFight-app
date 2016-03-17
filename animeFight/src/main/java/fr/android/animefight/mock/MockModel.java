@@ -1,15 +1,11 @@
 package fr.android.animefight.mock;
 
-import fr.android.animefight.R;
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
-import fr.android.animefight.bean.charac.categorie.CategorieSS;
-import fr.android.animefight.bean.items.equipable.Armor;
-import fr.android.animefight.bean.team.Formation;
-import fr.android.animefight.bean.team.FormationBuilder;
+import fr.android.animefight.bean.perso.BuilderPersoDbz;
+import fr.android.animefight.bean.perso.BuilderPersoNaruto;
 import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.model.Model;
-import fr.android.animefight.utils.None;
 import fr.android.animefight.utils.Some;
 
 import java.util.Arrays;
@@ -21,23 +17,13 @@ public class MockModel {
 
     public static Model factoryModel() {
         Model model = new Model();
-        Character shinkawa = CategorieSS.init("Shinkawa");
-        Character lowtuz = CategorieSS.init("Lowtuz");
-        Formation formation = FormationBuilder.FormationWithCharacters(Arrays.asList(
-                shinkawa, lowtuz
-        ));
+        Character goku = BuilderPersoDbz.goku();
+        Character naruto = BuilderPersoNaruto.naruto();
         Tacticien tacticien = new Tacticien("L", 10, 2, 3);
-//        Team team = new Team(formation, tacticien);
         Team team = new Team(tacticien);
-        shinkawa.setArmor(new None<Armor>());
-        shinkawa.setHead(new None<Armor>());
-        lowtuz.setArmor(new None<Armor>());
-        lowtuz.setHead(new None<Armor>());
-        lowtuz.setImagePath(R.drawable.char_kenshin);
-        shinkawa.setImagePath(R.drawable.char_goku);
-        team.getFormation().getListCharacters().get(0).set(0, new Some<Character>(lowtuz));
+        team.getFormation().getListCharacters().get(0).set(0, new Some<Character>(naruto));
         model.getPlayer().setTeam(team);
-        model.getPlayer().getCharacters().addAll(Arrays.asList(lowtuz, shinkawa));
+        model.getPlayer().getCharacters().addAll(Arrays.asList(naruto, goku));
         model.getPlayer().getTacticiens().add(tacticien);
 
         return model;

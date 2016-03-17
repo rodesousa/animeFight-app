@@ -1,6 +1,11 @@
 package fr.android.animefight.bean.charac;
 
+import fr.android.animefight.R;
 import fr.android.animefight.bean.Character;
+import fr.android.animefight.bean.Perso;
+import fr.android.animefight.bean.charac.categorie.CategorieSS;
+import fr.android.animefight.bean.items.equipable.Armor;
+import fr.android.animefight.utils.None;
 
 import java.io.Serializable;
 
@@ -20,9 +25,27 @@ public abstract class Categorie implements Serializable {
         return name;
     }
 
-    public static Character init(String name) {
-        return null;
+    /**
+     * Surcharger cette méthode dans toutes les categories !
+     * @return
+     */
+    public Character init(Perso perso) {
+        Perso unknow = new Perso(new CategorieSS(), R.drawable.char_unknown, R.drawable.naru, "Unknow");
+        return declareCharacter(unknow, 0, 0, 0, 0);
     }
 
-    ;
+    public Character declareCharacter(Perso perso, int life, int vitesse, int attack, int defense) {
+        Character character = new Character(perso.getName());
+        character.setLife(life);
+        character.setLifeCurrent(life);
+        character.setVitesse(vitesse);
+        character.setAttack(attack);
+        character.setDefense(defense);
+        character.setCategorie(perso.getCategorie());
+        character.setImagePath(perso.getImage());
+        character.setArmor(new None<Armor>());
+        character.setHead(new None<Armor>());
+        return character;
+    }
+
 }

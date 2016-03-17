@@ -2,8 +2,7 @@ package fr.android.animefight.story.onepiece.arc;
 
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
-import fr.android.animefight.bean.charac.categorie.CategorieB;
-import fr.android.animefight.bean.charac.categorie.CategorieSS;
+import fr.android.animefight.bean.perso.BuilderPersoOnePiece;
 import fr.android.animefight.bean.team.Formation;
 import fr.android.animefight.bean.team.FormationBuilder;
 import fr.android.animefight.bean.team.Team;
@@ -27,8 +26,9 @@ public class OnePieceStory extends Story implements Serializable {
         super("One Piece");
 
         //création des starters
-        Character luffy = CategorieSS.init("Luffy");
-        Character Baggy = CategorieB.init("Baggy");
+        Character luffy = BuilderPersoOnePiece.luffy();
+        Character Baggy = BuilderPersoOnePiece.baggy();
+
         Tacticien nami = new Tacticien("Nami", 5, 1, 2);
         Tacticien robin = new Tacticien("Robin", 5, 1, 2);
 
@@ -55,10 +55,10 @@ public class OnePieceStory extends Story implements Serializable {
         Formation first = FormationBuilder.FormationWithCharacters(Arrays.asList(
                 new Character("Coby"),
                 new Character("Nami")));
-        Formation alvida = FormationBuilder.FormationWithCharacter(CategorieB.init("Alvida"));
-        Formation zorro = FormationBuilder.FormationWithCharacter(CategorieB.init("Zorro"));
-        Formation hermep = FormationBuilder.FormationWithCharacter(CategorieB.init("Hermep"));
-        Formation last = FormationBuilder.FormationWithCharacter(CategorieB.init("Morgan"));
+        Formation alvida = FormationBuilder.FormationWithCharacter(BuilderPersoOnePiece.alvida());
+        Formation zorro = FormationBuilder.FormationWithCharacter(BuilderPersoOnePiece.zorro());
+        Formation hermep = FormationBuilder.FormationWithCharacter(BuilderPersoOnePiece.hermep());
+        Formation last = FormationBuilder.FormationWithCharacter(BuilderPersoOnePiece.morgan());
 
         arc.add(
                 new Arc(nameArc,

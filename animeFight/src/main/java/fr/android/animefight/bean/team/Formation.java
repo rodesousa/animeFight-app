@@ -26,16 +26,8 @@ import java.util.List;
 public class Formation implements Serializable, Cloneable {
     private List<List<Option<Character>>> listCharacters;
 
-    public void setCharacters(List<Option<Character>> characters, int i) {
-        listCharacters.set(i, characters);
-    }
-
     public List<List<Option<Character>>> getListCharacters() {
         return listCharacters;
-    }
-
-    public void setListCharacters(List<List<Option<Character>>> listCharacters) {
-        this.listCharacters = listCharacters;
     }
 
     public Formation(List<List<Option<Character>>> listCharacters) {

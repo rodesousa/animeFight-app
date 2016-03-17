@@ -1,7 +1,7 @@
 package fr.android.animefight.bean.team;
 
 import android.test.suitebuilder.annotation.SmallTest;
-import fr.android.animefight.bean.charac.categorie.CategorieB;
+import fr.android.animefight.bean.perso.BuilderPersoNaruto;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,14 +18,14 @@ public class FormationTest extends TestCase {
 
     @Before
     public void setUp() throws Exception {
-        formationSimply = FormationBuilder.FormationWithCharacters(Arrays.asList(CategorieB.init("testA"),
-                CategorieB.init("testB")));
+        formationSimply = FormationBuilder.FormationWithCharacters(Arrays.asList(BuilderPersoNaruto.iruka(),
+                BuilderPersoNaruto.misuki()));
     }
 
     @SmallTest
     public void testflat() throws Exception {
         Assert.assertEquals(formationSimply.flat().size(), 2);
-        assertEquals(formationSimply.flat().get(0).get().toString(), "testA");
-        assertEquals(formationSimply.flat().get(1).get().toString(), "testB");
+        assertEquals(formationSimply.flat().get(0).get().toString(), "Iruka");
+        assertEquals(formationSimply.flat().get(1).get().toString(), "Misuki");
     }
 }

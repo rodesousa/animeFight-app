@@ -2,8 +2,7 @@ package fr.android.animefight.story.dragonball.arc;
 
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
-import fr.android.animefight.bean.charac.categorie.CategorieB;
-import fr.android.animefight.bean.charac.categorie.CategorieSS;
+import fr.android.animefight.bean.perso.BuilderPersoDbz;
 import fr.android.animefight.bean.team.Formation;
 import fr.android.animefight.bean.team.FormationBuilder;
 import fr.android.animefight.bean.team.Team;
@@ -28,8 +27,8 @@ public class DbzStory extends Story implements Serializable {
         super("Dragon Ball");
 
         //création des starters
-        Character goku = CategorieSS.init("Goku");
-        Character krilin = CategorieB.init("Krilin");
+        Character goku = BuilderPersoDbz.goku();
+        Character krilin = BuilderPersoDbz.krilin();
         Tacticien Bulma = new Tacticien("Bulma", 5, 1, 2);
         Tacticien Chichi = new Tacticien("Chichi", 5, 1, 2);
 
@@ -53,9 +52,10 @@ public class DbzStory extends Story implements Serializable {
 
         //ARC1
         String nameArc = "Le commencement !";
-        Character bulma1 = CategorieB.init("Bulma");
+        Character bulma1 = BuilderPersoDbz.bulma();
+        Character ptero1 = BuilderPersoDbz.ptero();
         Formation bulma = FormationBuilder.FormationWithCharacter(bulma1);
-        Formation ptero = FormationBuilder.FormationWithCharacter(CategorieB.init("Ptero"));
+        Formation ptero = FormationBuilder.FormationWithCharacter(ptero1);
 
         Team team1 = new Team(bulma, tacticien);
         team1.getFormation().getListCharacters().get(0).set(0, new Some<Character>(bulma1));
