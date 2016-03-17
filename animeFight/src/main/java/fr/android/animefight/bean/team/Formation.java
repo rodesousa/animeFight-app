@@ -69,4 +69,15 @@ public class Formation implements Serializable, Cloneable {
         return false;
     }
 
+    public boolean findIt(Character character) {
+        for (List<Option<Character>> listCharacter : listCharacters) {
+            for (Option<Character> characterOption : listCharacter) {
+                if (!characterOption.isEmpty)
+                    if (characterOption.get().equals(character))
+                        return true;
+            }
+        }
+        return false;
+    }
+
 }

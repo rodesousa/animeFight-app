@@ -31,6 +31,9 @@ public class FormationChooseActivity extends Activity {
         int i = 0;
         for (Character character : model.getPlayer().getCharacters()) {
             Button button = new Button(this);
+            if (model.getPlayer().getTeam().getFormation().findIt(character)) {
+                button.setEnabled(false);
+            }
             button.setText("" + character);
             button.setId(i);
             button.setOnClickListener(new View.OnClickListener() {
