@@ -7,16 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import fr.android.animefight.R;
-import fr.android.animefight.bean.Character;
+import fr.android.animefight.bean.Tacticien;
 import fr.android.animefight.model.Model;
 
 /**
- * Created by rodesousa on 15/03/16.
+ * Created by rodesousa on 18/03/16.
  */
-public class FormationChooseActivity extends Activity {
-
+public class FormationChooseTacticienActivity extends Activity {
     private Model model;
-    private int indice;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,17 +22,16 @@ public class FormationChooseActivity extends Activity {
         setContentView(R.layout.choosefighter);
 
         model = (Model) getIntent().getSerializableExtra("Model");
-        indice = (int) getIntent().getSerializableExtra("placeId");
 
         LinearLayout linearLayout = (LinearLayout) this.findViewById(R.id.chooseFighter);
 
         int i = 0;
-        for (Character character : model.getPlayer().getCharacters()) {
+        for (Tacticien tacticien : model.getPlayer().getTacticiens()) {
             Button button = new Button(this);
-            if (model.getPlayer().getTeam().getFormation().findIt(character)) {
+            if (model.getPlayer().fintTacticien(tacticien)) {
                 button.setEnabled(false);
             }
-            button.setText("" + character);
+            button.setText("" + tacticien);
             button.setId(i);
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(final View v) {
@@ -45,22 +42,19 @@ public class FormationChooseActivity extends Activity {
             i++;
         }
 
-        Button button = new Button(this);
-        button.setText("Remove");
-        button.setId(999);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button back = new Button(this);
+        back.setText("back");
+        back.setOnClickListener(new View.OnClickListener() {
             public void onClick(final View v) {
-                removeCharcter(v);
+                backFormation(v);
             }
         });
-        linearLayout.addView(button);
+        linearLayout.addView(back);
     }
 
-    private void removeCharcter(View view) {
+    private void backFormation(View view) {
         Intent intent = new Intent(this, FormationActivity.class);
         intent.putExtra("Model", model);
-        intent.putExtra("placeId", indice);
-        intent.putExtra("removeId", view.getId());
         this.finish();
         startActivity(intent);
     }
@@ -68,8 +62,7 @@ public class FormationChooseActivity extends Activity {
     private void selectCharcter(View view) {
         Intent intent = new Intent(this, FormationActivity.class);
         intent.putExtra("Model", model);
-        intent.putExtra("placeId", indice);
-        intent.putExtra("characterId", view.getId());
+        intent.putExtra("indiceTacticien", view.getId());
         this.finish();
         startActivity(intent);
     }

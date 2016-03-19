@@ -55,4 +55,12 @@ public class Player implements Serializable {
     public void setTeam(Team team) {
         this.team = team;
     }
+
+    public boolean fintTacticien(Tacticien tacticien) {
+        for (Tacticien tacticien1 : tacticiens) {
+            if (tacticien1 == tacticien)
+                return true;
+        }
+        return false;
+    }
 }

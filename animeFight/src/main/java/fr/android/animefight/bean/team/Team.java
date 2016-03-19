@@ -47,6 +47,9 @@ public class Team implements Serializable {
         this.formation = new Formation(listCharacters);
     }
 
+    public void setTacticien(Tacticien tacticien) {
+        this.tacticien = tacticien;
+    }
 
     public Tacticien getTacticien() {
         return tacticien;

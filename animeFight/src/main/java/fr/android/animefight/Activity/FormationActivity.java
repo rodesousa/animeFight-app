@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import fr.android.animefight.R;
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.model.Model;
@@ -30,8 +33,10 @@ public class FormationActivity extends Activity {
         int placeId = -999;
         int characterId = -999;
         int removeId = -999;
+        int indiceTacticien = -999;
 
         model = (Model) getIntent().getSerializableExtra("Model");
+
         try {
             placeId = (int) getIntent().getSerializableExtra("placeId");
             characterId = (int) getIntent().getSerializableExtra("characterId");
@@ -42,8 +47,18 @@ public class FormationActivity extends Activity {
             }
         }
 
+        try {
+            indiceTacticien = (int) getIntent().getSerializableExtra("indiceTacticien");
+        } catch (NullPointerException e) {
+        }
+
+        // si on change de tacticien
+        if (indiceTacticien != -999) {
+            model.getPlayer().getTeam().setTacticien(model.getPlayer().getTacticiens().get(indiceTacticien));
+        }
+
         // print tacticien
-        TextView formationTacticien = (TextView) findViewById(R.id.formationTacticien);
+        Button formationTacticien = (Button) findViewById(R.id.formationTacticien);
         formationTacticien.setText("Tacticien:  " + model.getPlayer().getTeam().getTacticien());
 
         //print formation
@@ -94,7 +109,7 @@ public class FormationActivity extends Activity {
     }
 
     private void chooseCharacter(View view) {
-        Intent intent = new Intent(this, FormationChooseActivity.class);
+        Intent intent = new Intent(this, FormationChooseCharacterActivity.class);
         intent.putExtra("Model", model);
         intent.putExtra("placeId", view.getId());
         this.finish();
@@ -103,6 +118,13 @@ public class FormationActivity extends Activity {
 
     public void validate(View view) {
         Intent intent = new Intent(this, CoreActivity.class);
+        intent.putExtra("Model", model);
+        this.finish();
+        startActivity(intent);
+    }
+
+    public void chooseTacticien(View view) {
+        Intent intent = new Intent(this, FormationChooseTacticienActivity.class);
         intent.putExtra("Model", model);
         this.finish();
         startActivity(intent);
