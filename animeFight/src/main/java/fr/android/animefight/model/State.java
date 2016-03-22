@@ -7,19 +7,9 @@ import java.io.Serializable;
  * <p/>
  * L'etat du jeu
  */
-public class State implements Serializable {
-    private boolean begining;
-
-    public State() {
-        this.begining = true;
-    }
-
-    public boolean isBegining() {
-        return begining;
-    }
-
-    public void setBegining(boolean begining) {
-        this.begining = begining;
-    }
+public enum State implements Serializable {
+    BEGINING,
+    STARTER,
+    CORE;
 
 }

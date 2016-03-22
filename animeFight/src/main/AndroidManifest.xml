@@ -28,8 +28,10 @@
         <activity android:name=".Activity.InventoryActivity"/>
         <activity android:name=".Activity.FormationActivity"/>
         <activity android:name=".Activity.FormationChooseCharacterActivity"/>
-        <activity android:name=".Activity.CharacterSelectActivity"/>
+        <activity android:name=".Activity.InspectCharacterActivity"/>
         <activity android:name=".Activity.InspectActivity"/>
         <activity android:name=".Activity.FormationChooseTacticienActivity"/>
+        <activity android:name=".Activity.StarterActivityOld"/>
+        <activity android:name=".Activity.StarterActivity"/>
     </application>
 </manifest>

@@ -1,6 +1,5 @@
 package fr.android.animefight.controller;
 
-import fr.android.animefight.mock.MockModel;
 import fr.android.animefight.model.Model;
 
 import java.io.Serializable;
@@ -13,7 +12,8 @@ public class MainController implements Serializable {
     private Model model;
 
     public MainController() {
-        this.model = MockModel.factoryModel();
+//        this.model = MockModel.factoryModel();
+        model = new Model();
     }
 
     public MainController(Model model) {

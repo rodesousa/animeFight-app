@@ -10,22 +10,26 @@ import java.io.Serializable;
  * Created by rodesousa on 17/02/16.
  */
 public class Model implements Serializable {
-    private final State state;
+    private State state;
     private final ModeStory modeStory;
     private final Player player;
 
     public Model() {
-        state = new State();
+        state = State.BEGINING;
         modeStory = new ModeStory();
         player = new Player();
+    }
+
+    public ModeStory getModeStory() {
+        return modeStory;
     }
 
     public State getState() {
         return state;
     }
 
-    public ModeStory getModeStory() {
-        return modeStory;
+    public void setState(State state) {
+        this.state = state;
     }
 
     public Player getPlayer() {

@@ -13,7 +13,7 @@ import fr.android.animefight.utils.Option;
  * L'activity qui permet de voir les stats et de pouvoir equiper un perso
  * Created by rodesousa on 16/03/16.
  */
-public class CharacterSelectActivity extends Activity {
+public class InspectCharacterActivity extends Activity {
 
     private Model model;
     private int indice;

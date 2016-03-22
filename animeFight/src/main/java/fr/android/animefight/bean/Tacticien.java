@@ -1,5 +1,7 @@
 package fr.android.animefight.bean;
 
+import fr.android.animefight.R;
+
 import java.io.Serializable;
 
 /**
@@ -16,6 +18,11 @@ public class Tacticien extends Character implements Serializable {
         this.setLifeCurrent(life);
         this.column = column;
         this.raw = raw;
+        this.setImagePath(R.drawable.char_unknown);
+    }
+
+    public Tacticien(Character bulma, int i, int i1) {
+
     }
 
     public int getColumn() {

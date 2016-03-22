@@ -7,6 +7,10 @@ import android.view.View;
 import fr.android.animefight.R;
 import fr.android.animefight.controller.MainController;
 import fr.android.animefight.model.Model;
+import fr.android.animefight.model.State;
+import fr.android.animefight.story.dragonball.arc.DbzStory;
+import fr.android.animefight.story.naruto.arc.NarutoStory;
+import fr.android.animefight.story.onepiece.arc.OnePieceStory;
 
 /**
  * Created by rodesousa on 13/02/16.
@@ -36,10 +40,17 @@ public class CoreActivity extends Activity {
         }
 
         // On regarde si le joueur est nouveau ou pas
-        if (controller.getModel().getState().isBegining())
-            setContentView(R.layout.begin);
-        else
-            setContentView(R.layout.core);
+        switch (controller.getModel().getState()) {
+            case BEGINING:
+                setContentView(R.layout.begin);
+                break;
+            case STARTER:
+                setContentView(R.layout.starter);
+                break;
+            case CORE:
+                setContentView(R.layout.core);
+                break;
+        }
     }
 
     public void callShowCharacters(View view) {
@@ -76,25 +87,30 @@ public class CoreActivity extends Activity {
     }
 
     public void choiceNaruto(View view) {
-        controller.getModel().getModeStory().setStory("Naruto");
-        initThis();
-    }
-
-    public void choiceOP(View view) {
-        controller.getModel().getModeStory().setStory("One Piece");
-        initThis();
-    }
-
-    public void choiceDBZ(View view) {
-        controller.getModel().getModeStory().setStory("Dragon Ball");
-        initThis();
-    }
-
-    private void initThis() {
-        controller.getModel().getState().setBegining(false);
-        Intent intent = new Intent(this, CoreActivity.class);
+        Intent intent = new Intent(this, StarterActivity.class);
+        controller.getModel().setState(State.STARTER);
         intent.putExtra("Model", controller.getModel());
+        intent.putExtra("Story", NarutoStory.getNARUTO());
         this.finish();
         startActivity(intent);
     }
+
+    public void choiceOP(View view) {
+        Intent intent = new Intent(this, StarterActivity.class);
+        controller.getModel().setState(State.STARTER);
+        intent.putExtra("Model", controller.getModel());
+        intent.putExtra("Story", OnePieceStory.getONEPIECE());
+        this.finish();
+        startActivity(intent);
+    }
+
+    public void choiceDBZ(View view) {
+        Intent intent = new Intent(this, StarterActivity.class);
+        controller.getModel().setState(State.STARTER);
+        intent.putExtra("Model", controller.getModel());
+        intent.putExtra("Story", DbzStory.getDBZ());
+        this.finish();
+        startActivity(intent);
+    }
+
 }

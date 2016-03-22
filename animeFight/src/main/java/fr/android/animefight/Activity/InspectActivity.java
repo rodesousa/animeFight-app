@@ -43,7 +43,7 @@ public class InspectActivity extends Activity {
     }
 
     private void selectCharcter(View view) {
-        Intent intent = new Intent(this, CharacterSelectActivity.class);
+        Intent intent = new Intent(this, InspectCharacterActivity.class);
         intent.putExtra("Model", model);
         intent.putExtra("characterId", view.getId());
         this.finish();
