@@ -84,7 +84,7 @@ public class FormationActivity extends Activity {
                     }
                 });
                 if (!character.isEmpty) {
-                    if (removeId == 999) {
+                    if (removeId == 999 && (partA + partB) == idAB) {
                         button.setText("");
                         characters.set(partA, new None<Character>());
                     } else {
