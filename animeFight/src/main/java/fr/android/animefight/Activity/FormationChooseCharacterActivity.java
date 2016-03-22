@@ -25,6 +25,7 @@ public class FormationChooseCharacterActivity extends Activity {
 
         model = (Model) getIntent().getSerializableExtra("Model");
         indice = (int) getIntent().getSerializableExtra("placeId");
+        boolean empty = (boolean) getIntent().getSerializableExtra("empty");
 
         LinearLayout linearLayout = (LinearLayout) this.findViewById(R.id.chooseFighter);
 
@@ -53,6 +54,8 @@ public class FormationChooseCharacterActivity extends Activity {
                 removeCharcter(v);
             }
         });
+        if (empty)
+            button.setEnabled(false);
         linearLayout.addView(button);
 
         Button back = new Button(this);
