@@ -12,11 +12,13 @@ import android.widget.TextView;
 import fr.android.animefight.R;
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
+import fr.android.animefight.bean.perso.BuilderPersoDbz;
 import fr.android.animefight.bean.team.Team;
 import fr.android.animefight.model.Model;
 import fr.android.animefight.model.State;
 import fr.android.animefight.story.Story;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -126,7 +128,8 @@ public class StarterActivity extends Activity {
         Character character = (Character) toolsCharacters.characters.get(toolsCharacters.indice);
         Tacticien tacticien = (Tacticien) toolsTacticien.characters.get(toolsTacticien.indice);
 
-        model.getPlayer().setCharacters(Collections.singletonList(character));
+        model.getPlayer().setCharacters(Arrays.asList(character, BuilderPersoDbz.ptero()));
+//        model.getPlayer().setCharacters(Collections.singletonList(character));
         model.getPlayer().setTacticiens(Collections.singletonList(tacticien));
 
         if (model.getPlayer().getTeam() == null)

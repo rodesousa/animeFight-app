@@ -22,14 +22,8 @@ public class ModeStory implements Serializable {
         stories = Arrays.asList(DbzStory.getDBZ(), NarutoStory.getNARUTO(), OnePieceStory.getONEPIECE());
     }
 
-    public void setStory(final String name) {
-        //todo Refaire avec un vrai filter et pas de la merde !
-        for (Story str : stories) {
-            if (str.toString() == name) {
-                this.story = str;
-                break;
-            }
-        }
+    public void setStory(final Story story) {
+        this.story = story;
     }
 
     public List<Story> getStories() {

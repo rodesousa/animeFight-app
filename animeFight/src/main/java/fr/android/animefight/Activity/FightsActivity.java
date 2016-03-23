@@ -82,7 +82,7 @@ public class FightsActivity extends Activity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    FightsActivity.this.arcActivity(view);
+                    arcActivity(view);
                 }
             });
             layout.addView(button);

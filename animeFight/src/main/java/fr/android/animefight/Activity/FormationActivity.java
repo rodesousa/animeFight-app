@@ -87,6 +87,9 @@ public class FormationActivity extends Activity {
                     if (removeId == 999 && (partA + partB) == idAB) {
                         button.setText("");
                         characters.set(partA, new None<Character>());
+                    } else if ((partA + partB) == idAB) {
+                        button.setText(model.getPlayer().getCharacters().get(characterId) + "");
+                        characters.set(partA, new Some<Character>(model.getPlayer().getCharacters().get(characterId)));
                     } else {
                         button.setText(character.get() + "");
                     }

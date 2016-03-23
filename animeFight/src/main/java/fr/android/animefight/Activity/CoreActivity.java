@@ -8,8 +8,8 @@ import fr.android.animefight.R;
 import fr.android.animefight.controller.MainController;
 import fr.android.animefight.model.Model;
 import fr.android.animefight.model.State;
+import fr.android.animefight.story.Story;
 import fr.android.animefight.story.dragonball.arc.DbzStory;
-import fr.android.animefight.story.naruto.arc.NarutoStory;
 import fr.android.animefight.story.onepiece.arc.OnePieceStory;
 
 /**
@@ -76,39 +76,29 @@ public class CoreActivity extends Activity {
         startActivity(intent);
     }
 
-    public void callEventTeamManagement(View view) {
-        Intent intent = new Intent(this, TeamManagementActivity.class);
-        startActivity(intent);
-    }
-
     public void callInventoryActivity(View view) {
         Intent intent = new Intent(this, InventoryActivity.class);
         startActivity(intent);
     }
 
     public void choiceNaruto(View view) {
-        Intent intent = new Intent(this, StarterActivity.class);
-        controller.getModel().setState(State.STARTER);
-        intent.putExtra("Model", controller.getModel());
-        intent.putExtra("Story", NarutoStory.getNARUTO());
-        this.finish();
-        startActivity(intent);
+        beginGame(view, OnePieceStory.getONEPIECE());
     }
 
     public void choiceOP(View view) {
-        Intent intent = new Intent(this, StarterActivity.class);
-        controller.getModel().setState(State.STARTER);
-        intent.putExtra("Model", controller.getModel());
-        intent.putExtra("Story", OnePieceStory.getONEPIECE());
-        this.finish();
-        startActivity(intent);
+        beginGame(view, OnePieceStory.getONEPIECE());
     }
 
     public void choiceDBZ(View view) {
+        beginGame(view, DbzStory.getDBZ());
+    }
+
+    private void beginGame(View view, Story story) {
         Intent intent = new Intent(this, StarterActivity.class);
         controller.getModel().setState(State.STARTER);
+        controller.getModel().getModeStory().setStory(story);
         intent.putExtra("Model", controller.getModel());
-        intent.putExtra("Story", DbzStory.getDBZ());
+        intent.putExtra("Story", story);
         this.finish();
         startActivity(intent);
     }
