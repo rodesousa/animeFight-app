@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity;
+package fr.android.animefight.Activity.home.inventory;
 
 import android.app.Activity;
 import android.os.Bundle;

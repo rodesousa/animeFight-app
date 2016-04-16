@@ -14,7 +14,7 @@ public class CategorieSS extends Categorie {
 
     @Override
     public Character init(Perso perso) {
-        return declareCharacter(perso, 100, 50, 10, 2);
+        return declareCharacter(perso, 10, 50, 10, 2);
     }
 
 }

@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity;
+package fr.android.animefight.Activity.starter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,17 +9,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import fr.android.animefight.Activity.home.CoreActivity;
 import fr.android.animefight.R;
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
 import fr.android.animefight.bean.perso.BuilderPersoDbz;
-import fr.android.animefight.bean.team.Team;
+import fr.android.animefight.bean.perso.Team;
 import fr.android.animefight.model.Model;
 import fr.android.animefight.model.State;
 import fr.android.animefight.story.Story;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -128,12 +128,11 @@ public class StarterActivity extends Activity {
         Character character = (Character) toolsCharacters.characters.get(toolsCharacters.indice);
         Tacticien tacticien = (Tacticien) toolsTacticien.characters.get(toolsTacticien.indice);
 
-        model.getPlayer().setCharacters(Arrays.asList(character, BuilderPersoDbz.ptero()));
-//        model.getPlayer().setCharacters(Collections.singletonList(character));
-        model.getPlayer().setTacticiens(Collections.singletonList(tacticien));
+        model.getPlayer().getCharacters().addAll(Arrays.asList(character, BuilderPersoDbz.ptero()));
+        model.getPlayer().getTacticiens().add(tacticien);
 
         if (model.getPlayer().getTeam() == null)
-            model.getPlayer().setTeam(new Team(tacticien));
+            model.getPlayer().setTeam(new Team(model.getPlayer().copy(), tacticien));
 
         model.setState(State.CORE);
         Intent intent = new Intent(this, CoreActivity.class);

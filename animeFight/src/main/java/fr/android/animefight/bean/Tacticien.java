@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class Tacticien extends Character implements Serializable {
     private int column;
     private int raw;
+    private int sizeCharacters = 5;
 
     public Tacticien(String name, int life, int raw, int column) {
         super(name);
@@ -39,5 +40,13 @@ public class Tacticien extends Character implements Serializable {
 
     public void setRaw(int raw) {
         this.raw = raw;
+    }
+
+    public int getSizeCharacters() {
+        return sizeCharacters;
+    }
+
+    public void setSizeCharacters(int sizeCharacters) {
+        this.sizeCharacters = sizeCharacters;
     }
 }

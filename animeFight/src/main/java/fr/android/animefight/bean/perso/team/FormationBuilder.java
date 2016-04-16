@@ -1,4 +1,4 @@
-package fr.android.animefight.bean.team;
+package fr.android.animefight.bean.perso.team;
 
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.utils.Option;

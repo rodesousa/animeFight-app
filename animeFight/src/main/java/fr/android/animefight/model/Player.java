@@ -3,7 +3,7 @@ package fr.android.animefight.model;
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Inventory;
 import fr.android.animefight.bean.Tacticien;
-import fr.android.animefight.bean.team.Team;
+import fr.android.animefight.bean.perso.Team;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,6 +26,14 @@ public class Player implements Serializable {
         this.team = null;
         this.tacticiens = new ArrayList<>();
         this.characters = new ArrayList<>();
+    }
+
+    public List<Character> copy() {
+        List<Character> charactersCopy = new ArrayList<>();
+        for (Character character : characters) {
+            charactersCopy.add(character);
+        }
+        return charactersCopy;
     }
 
     public Inventory getInventory() {
@@ -63,4 +71,5 @@ public class Player implements Serializable {
         }
         return false;
     }
+
 }

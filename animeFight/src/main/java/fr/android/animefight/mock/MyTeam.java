@@ -1,6 +1,6 @@
 package fr.android.animefight.mock;
 
-import fr.android.animefight.bean.team.Team;
+import fr.android.animefight.bean.perso.Team;
 
 /**
  * Created by rohamdi on 17/02/2016.

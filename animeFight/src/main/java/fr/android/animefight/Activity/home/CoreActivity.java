@@ -1,9 +1,15 @@
-package fr.android.animefight.Activity;
+package fr.android.animefight.Activity.home;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import fr.android.animefight.Activity.event.EventActivity;
+import fr.android.animefight.Activity.InspectActivity;
+import fr.android.animefight.Activity.starter.StarterActivity;
+import fr.android.animefight.Activity.home.formation.FormationActivity;
+import fr.android.animefight.Activity.home.inventory.InventoryActivity;
+import fr.android.animefight.Activity.home.story.ChooseArcsActivity;
 import fr.android.animefight.R;
 import fr.android.animefight.controller.MainController;
 import fr.android.animefight.model.Model;
@@ -60,7 +66,7 @@ public class CoreActivity extends Activity {
     }
 
     public void callStory(View view) {
-        Intent intent = new Intent(this, ArcsActivity.class);
+        Intent intent = new Intent(this, ChooseArcsActivity.class);
         intent.putExtra("Model", controller.getModel());
         startActivity(intent);
     }

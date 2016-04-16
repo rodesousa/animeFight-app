@@ -1,4 +1,4 @@
-package fr.android.animefight.bean.team;
+package fr.android.animefight.bean.perso.team;
 
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.utils.Option;
@@ -25,6 +25,7 @@ import java.util.List;
  */
 public class Formation implements Serializable, Cloneable {
     private List<List<Option<Character>>> listCharacters;
+    private List<Character> characters = new ArrayList<>();
 
     public List<List<Option<Character>>> getListCharacters() {
         return listCharacters;
@@ -32,6 +33,22 @@ public class Formation implements Serializable, Cloneable {
 
     public Formation(List<List<Option<Character>>> listCharacters) {
         this.listCharacters = listCharacters;
+    }
+
+    public List<Character> copy() {
+        List<Character> charactersCopy = new ArrayList<>();
+        for (Character character : characters) {
+            charactersCopy.add(character);
+        }
+        return charactersCopy;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
     }
 
     /**

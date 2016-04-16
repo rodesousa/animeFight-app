@@ -2,11 +2,9 @@ package fr.android.animefight.model;
 
 import fr.android.animefight.story.Story;
 import fr.android.animefight.story.dragonball.arc.DbzStory;
-import fr.android.animefight.story.naruto.arc.NarutoStory;
-import fr.android.animefight.story.onepiece.arc.OnePieceStory;
 
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +17,10 @@ public class ModeStory implements Serializable {
     private List<Story> stories;
 
     public ModeStory() {
-        stories = Arrays.asList(DbzStory.getDBZ(), NarutoStory.getNARUTO(), OnePieceStory.getONEPIECE());
+        stories = new ArrayList<>();
+        stories.add(DbzStory.getDBZ());
+//        stories = Arrays.asList(DbzStory.getDBZ(), NarutoStory.getNARUTO(), OnePieceStory.getONEPIECE());
+//        stories = Arrays.asList(DbzStory.getDBZ());
     }
 
     public void setStory(final Story story) {

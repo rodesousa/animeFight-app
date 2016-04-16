@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity;
+package fr.android.animefight.Activity.home.formation;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import fr.android.animefight.model.Model;
 /**
  * Created by rodesousa on 18/03/16.
  */
-public class FormationChooseTacticienActivity extends Activity {
+public class FormationChooseTacticienActivityOld extends Activity {
     private Model model;
 
     @Override

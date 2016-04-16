@@ -3,9 +3,7 @@ package fr.android.animefight.story.onepiece.arc;
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
 import fr.android.animefight.bean.perso.BuilderPersoOnePiece;
-import fr.android.animefight.bean.team.Formation;
-import fr.android.animefight.bean.team.FormationBuilder;
-import fr.android.animefight.bean.team.Team;
+import fr.android.animefight.bean.perso.Team;
 import fr.android.animefight.fight.Fight;
 import fr.android.animefight.story.Arc;
 import fr.android.animefight.story.Story;
@@ -13,6 +11,7 @@ import fr.android.animefight.story.Story;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -25,15 +24,15 @@ public class OnePieceStory extends Story implements Serializable {
     private OnePieceStory() {
         super("One Piece");
 
-        //création des starters
-        Character luffy = BuilderPersoOnePiece.luffy();
-        Character Baggy = BuilderPersoOnePiece.baggy();
-
-        Tacticien nami = new Tacticien("Nami", 5, 1, 2);
-        Tacticien robin = new Tacticien("Robin", 5, 1, 2);
-
-        starterWarrior = Arrays.asList(luffy, Baggy);
-        starterTacticien = Arrays.asList(nami, robin);
+//        //création des starters
+//        Character luffy = BuilderPersoOnePiece.luffy();
+//        Character Baggy = BuilderPersoOnePiece.baggy();
+//
+//        Tacticien nami = new Tacticien("Nami", 5, 1, 2);
+//        Tacticien robin = new Tacticien("Robin", 5, 1, 2);
+//
+//        starterWarrior = Arrays.asList(luffy, Baggy);
+//        starterTacticien = Arrays.asList(nami, robin);
     }
 
     public static OnePieceStory getONEPIECE() {
@@ -52,13 +51,13 @@ public class OnePieceStory extends Story implements Serializable {
 
         //ARC1
         String nameArc = "Morgan !";
-        Formation first = FormationBuilder.FormationWithCharacters(Arrays.asList(
+        List<Character> first = Arrays.asList(
                 new Character("Coby"),
-                new Character("Nami")));
-        Formation alvida = FormationBuilder.FormationWithCharacter(BuilderPersoOnePiece.alvida());
-        Formation zorro = FormationBuilder.FormationWithCharacter(BuilderPersoOnePiece.zorro());
-        Formation hermep = FormationBuilder.FormationWithCharacter(BuilderPersoOnePiece.hermep());
-        Formation last = FormationBuilder.FormationWithCharacter(BuilderPersoOnePiece.morgan());
+                new Character("Nami"));
+        List<Character> alvida = Collections.singletonList(BuilderPersoOnePiece.alvida());
+        List<Character> zorro = Collections.singletonList(BuilderPersoOnePiece.zorro());
+        List<Character> hermep = Collections.singletonList(BuilderPersoOnePiece.hermep());
+        List<Character> last = Collections.singletonList(BuilderPersoOnePiece.morgan());
 
         arc.add(
                 new Arc(nameArc,

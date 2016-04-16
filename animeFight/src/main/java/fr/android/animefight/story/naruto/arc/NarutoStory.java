@@ -3,9 +3,7 @@ package fr.android.animefight.story.naruto.arc;
 import fr.android.animefight.bean.Character;
 import fr.android.animefight.bean.Tacticien;
 import fr.android.animefight.bean.perso.BuilderPersoNaruto;
-import fr.android.animefight.bean.team.Formation;
-import fr.android.animefight.bean.team.FormationBuilder;
-import fr.android.animefight.bean.team.Team;
+import fr.android.animefight.bean.perso.Team;
 import fr.android.animefight.fight.Fight;
 import fr.android.animefight.story.Arc;
 import fr.android.animefight.story.Story;
@@ -13,6 +11,7 @@ import fr.android.animefight.story.Story;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -25,14 +24,14 @@ public class NarutoStory extends Story implements Serializable {
     private NarutoStory() {
         super("Naruto");
 
-        //création des starters
-        Character naruto = BuilderPersoNaruto.naruto();
-        Character sasuke = BuilderPersoNaruto.sasuke();
-        Tacticien ramen = new Tacticien("Ramen", 1, 1, 2);
-        Tacticien ninja = new Tacticien("Ninja", 1, 1, 2);
-
-        starterWarrior = Arrays.asList(naruto, sasuke);
-        starterTacticien = Arrays.asList(ramen, ninja);
+//        //création des starters
+//        Character naruto = BuilderPersoNaruto.naruto();
+//        Character sasuke = BuilderPersoNaruto.sasuke();
+//        Tacticien ramen = new Tacticien("Ramen", 1, 1, 2);
+//        Tacticien ninja = new Tacticien("Ninja", 1, 1, 2);
+//
+//        starterWarrior = Arrays.asList(naruto, sasuke);
+//        starterTacticien = Arrays.asList(ramen, ninja);
     }
 
     public static NarutoStory getNARUTO() {
@@ -52,11 +51,11 @@ public class NarutoStory extends Story implements Serializable {
         //ARC1
         String nameArc = "Le commencement !";
 
-        Formation konoha = FormationBuilder.FormationWithCharacters(Arrays.asList(
+        List<Character> konoha = Arrays.asList(
                 new Character("Ninja Konoha 1"),
-                new Character("Ninja Konoha 2")));
-        Formation misuki = FormationBuilder.FormationWithCharacter(BuilderPersoNaruto.misuki());
-        Formation iruka = FormationBuilder.FormationWithCharacter(BuilderPersoNaruto.iruka());
+                new Character("Ninja Konoha 2"));
+        List<Character> misuki = Collections.singletonList(BuilderPersoNaruto.misuki());
+        List<Character> iruka = Collections.singletonList(BuilderPersoNaruto.iruka());
 
         arc.add(
                 new Arc(nameArc,

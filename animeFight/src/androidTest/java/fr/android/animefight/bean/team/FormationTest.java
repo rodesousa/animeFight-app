@@ -2,6 +2,8 @@ package fr.android.animefight.bean.team;
 
 import android.test.suitebuilder.annotation.SmallTest;
 import fr.android.animefight.bean.perso.BuilderPersoNaruto;
+import fr.android.animefight.bean.perso.team.Formation;
+import fr.android.animefight.bean.perso.team.FormationBuilder;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;

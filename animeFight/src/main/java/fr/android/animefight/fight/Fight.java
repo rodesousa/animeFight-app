@@ -1,11 +1,10 @@
 package fr.android.animefight.fight;
 
 import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.team.Team;
-import fr.android.animefight.utils.Option;
+import fr.android.animefight.bean.items.Treasure;
+import fr.android.animefight.bean.perso.Team;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by rodesousa on 19/02/16.
@@ -17,10 +16,26 @@ public class Fight implements Serializable {
     private Team teamEnnemis;
     private String name;
     private boolean state;
+    private int lvl;
+    private Treasure treasure;
 
     public Fight(String s, Team characters) {
         this.teamEnnemis = characters;
         name = s;
+    }
+
+    public Fight(String s, Team characters, Treasure t) {
+        this.teamEnnemis = characters;
+        name = s;
+        treasure = t;
+    }
+
+    public Treasure getTreasure() {
+        return treasure;
+    }
+
+    public void setTreasure(Treasure treasure) {
+        this.treasure = treasure;
     }
 
     @Override
@@ -36,43 +51,43 @@ public class Fight implements Serializable {
         return teamEnnemis;
     }
 
-    /***
-     * on initialise le combat en choisisant qui a la ligne la plus longue pour ne pas avoir un NoSuchElement
-     *
-     * @param team
-     */
-    public void initList(Team team) {
-        List<Option<Character>> options = team.getFormation().getListCharacters().get(0);
-        List<Option<Character>> options2 = teamEnnemis.getFormation().getListCharacters().get(0);
-        if (options.size() > options2.size()) {
-            resolveFight(team, teamEnnemis);
-        } else {
-            resolveFight(teamEnnemis, team);
-        }
-    }
+//    /***
+//     * on initialise le combat en choisisant qui a la ligne la plus longue pour ne pas avoir un NoSuchElement
+//     *
+//     * @param team
+//     */
+//    public void initList(Team team) {
+//        List<Character> characters1 = team.getCharacters();
+//        List<Character> characters2 = teamEnnemis.getCharacters();
+//        if (characters1.size() > characters2.size()) {
+//            resolveFight(team, teamEnnemis);
+//        } else {
+//            resolveFight(teamEnnemis, team);
+//        }
+//    }
 
-    private void resolveFight(final Team teamA, final Team teamB) {
-        List<Option<Character>> A = teamA.getFormation().getListCharacters().get(0);
-        List<Option<Character>> B = teamB.getFormation().getListCharacters().get(0);
+//    private void resolveFight(final Team teamA, final Team teamB) {
+//        List<Character> A = teamA.getCharacters();
+//        List<Character> B = teamB.getCharacters();
+//
+//        for (int i = 0; i < A.size(); i++) {
+//            if (!A.get(i).isEmpty) {
+//                if (B.size() > i) {
+//                    if (moreSpeed(A.get(i), B.get(i))) {
+//                        dammage(A.get(i)., B.get(i).);
+//                    } else {
+//                        dammage(B.get(i)., A.get(i).);
+//                    }
+//                } else {
+//                    touch(teamB, A.get(i).);
+//                }
+//            } else if (B.size() > i)
+//                touch(teamA, B.get(i));
+//        }
+//    }
 
-        for (int i = 0; i < A.size(); i++) {
-            if (!A.get(i).isEmpty) {
-                if (B.size() > i && !B.get(i).isEmpty) {
-                    if (moreSpeed(A.get(i).get(), B.get(i).get())) {
-                        dammage(A.get(i).get(), B.get(i).get());
-                    } else {
-                        dammage(B.get(i).get(), A.get(i).get());
-                    }
-                } else {
-                    touch(teamB, A.get(i).get());
-                }
-            } else if (B.size() > i && !B.get(i).isEmpty)
-                touch(teamA, B.get(i).get());
-        }
-    }
-
-    private void dammage(Character atacker, Character defenser) {
-        if (defenser.getDefense() > atacker.getAttack()) {
+    public void dammage(Character atacker, Character defenser) {
+        if (defenser.getDefense() >= atacker.getAttack()) {
             defenser.setLifeCurrent(defenser.getLifeCurrent() - 1);
         } else {
             defenser.setLifeCurrent(defenser.getLifeCurrent() - (atacker.getAttack() - defenser.getDefense()));
@@ -83,12 +98,20 @@ public class Fight implements Serializable {
         A.getTacticien().setLifeCurrent(A.getTacticien().getLifeCurrent() - 1);
     }
 
-    private boolean moreSpeed(Character a, Character b) {
+    public boolean moreSpeed(Character a, Character b) {
         return a.getVitesse() > b.getVitesse();
     }
 
     public boolean isState() {
         return state;
+    }
+
+    public int getLvl() {
+        return lvl;
+    }
+
+    public void setLvl(int lvl) {
+        this.lvl = lvl;
     }
 
     public void setState(boolean state) {

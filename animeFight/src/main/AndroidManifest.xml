@@ -17,21 +17,19 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.CoreActivity"/>
-        <activity android:name=".Activity.EventActivity"/>
-        <activity android:name=".Activity.ArcsActivity"/>
-        <activity android:name=".Activity.FightViewActivity"/>
-        <activity android:name=".Activity.TeamManagementActivity"/>
-        <activity android:name=".Activity.FightsActivity"/>
+        <activity android:name=".Activity.home.CoreActivity"/>
+        <activity android:name=".Activity.event.EventActivity"/>
+        <activity android:name=".Activity.home.story.ChooseArcsActivity"/>
+        <activity android:name=".Activity.fight.SimpleFightActivity"/>
+        <activity android:name=".Activity.fight.ChooseFightsActivity"/>
         <activity android:name=".Activity.InspectActivityOld"/>
         <activity android:name=".Activity.SelectActivity"/>
-        <activity android:name=".Activity.InventoryActivity"/>
-        <activity android:name=".Activity.FormationActivity"/>
-        <activity android:name=".Activity.FormationChooseCharacterActivity"/>
+        <activity android:name=".Activity.home.inventory.InventoryActivity"/>
+        <activity android:name=".Activity.home.formation.FormationActivity"/>
+        <activity android:name=".Activity.home.formation.FormationChooseCharacterActivity"/>
         <activity android:name=".Activity.InspectCharacterActivity"/>
         <activity android:name=".Activity.InspectActivity"/>
-        <activity android:name=".Activity.FormationChooseTacticienActivity"/>
-        <activity android:name=".Activity.StarterActivityOld"/>
-        <activity android:name=".Activity.StarterActivity"/>
+        <activity android:name=".Activity.home.formation.FormationChooseTacticienActivityOld"/>
+        <activity android:name=".Activity.starter.StarterActivity"/>
     </application>
 </manifest>
