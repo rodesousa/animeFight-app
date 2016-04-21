@@ -2,7 +2,7 @@ package fr.android.animefight.controller.fight;
 
 import android.os.Handler;
 import fr.android.animefight.Activity.fight.SimpleFightActivity;
-import fr.android.animefight.bean.Character;
+import fr.android.animefight.bean.charac.Character;
 import fr.android.animefight.bean.inventory.CaseInventory;
 import fr.android.animefight.bean.perso.Team;
 import fr.android.animefight.fight.Fight;
@@ -156,7 +156,7 @@ public class ControllerFight implements Runnable {
             state = 0;
         } else if (listAllie.size() > listTeamFight.size()) {
             if (!fight.getTreasure().isOpenned()) {
-                view.getModel().getPlayer().getInventory().getCases().add(new CaseInventory(1, fight.getTreasure().getItemList().get(0)));
+                view.getModel().getPlayer().getInventory().getCases().add(new CaseInventory(fight.getTreasure().getItemList().get(0)));
                 fight.getTreasure().setOpenned(true);
             }
         } else

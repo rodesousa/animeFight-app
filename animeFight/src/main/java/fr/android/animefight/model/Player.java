@@ -1,8 +1,8 @@
 package fr.android.animefight.model;
 
-import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.Inventory;
-import fr.android.animefight.bean.Tacticien;
+import fr.android.animefight.bean.charac.Character;
+import fr.android.animefight.bean.inventory.Inventory;
+import fr.android.animefight.bean.charac.Tacticien;
 import fr.android.animefight.bean.perso.Team;
 
 import java.io.Serializable;

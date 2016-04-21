@@ -11,15 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import fr.android.animefight.Activity.home.CoreActivity;
 import fr.android.animefight.R;
-import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.Tacticien;
-import fr.android.animefight.bean.perso.BuilderPersoDbz;
-import fr.android.animefight.bean.perso.Team;
+import fr.android.animefight.bean.charac.Character;
+import fr.android.animefight.bean.charac.Tacticien;
+import fr.android.animefight.controller.roulette.ControllerRoulette;
 import fr.android.animefight.model.Model;
 import fr.android.animefight.model.State;
-import fr.android.animefight.story.Story;
+import fr.android.animefight.model.story.Story;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -28,7 +26,7 @@ import java.util.List;
  * Created by rodesousa on 22/03/16.
  */
 public class StarterActivity extends Activity {
-    private Model model;
+    private ControllerRoulette roulette;
     private Tools toolsCharacters;
     private Tools toolsTacticien;
     private int countImage = 0;
@@ -118,25 +116,18 @@ public class StarterActivity extends Activity {
             };
         }
 
-
     }
 
     /**
      * on enregistre les donnée et Core !
      */
     private void finalStep() {
-        Character character = (Character) toolsCharacters.characters.get(toolsCharacters.indice);
-        Tacticien tacticien = (Tacticien) toolsTacticien.characters.get(toolsTacticien.indice);
+        roulette.finalStep((Character) toolsCharacters.characters.get(toolsCharacters.indice),
+                (Tacticien) toolsTacticien.characters.get(toolsTacticien.indice));
 
-        model.getPlayer().getCharacters().addAll(Arrays.asList(character, BuilderPersoDbz.ptero()));
-        model.getPlayer().getTacticiens().add(tacticien);
-
-        if (model.getPlayer().getTeam() == null)
-            model.getPlayer().setTeam(new Team(model.getPlayer().copy(), tacticien));
-
-        model.setState(State.CORE);
+        roulette.getModel().setState(State.CORE);
         Intent intent = new Intent(this, CoreActivity.class);
-        intent.putExtra("Model", model);
+        intent.putExtra("Model", roulette.getModel());
         this.finish();
         startActivity(intent);
     }
@@ -145,8 +136,8 @@ public class StarterActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.starter);
+        roulette = new ControllerRoulette((Model) getIntent().getSerializableExtra("Model"));
 
-        model = (Model) getIntent().getSerializableExtra("Model");
         List<Character> characters = ((Story) getIntent().getSerializableExtra("Story")).getStarterWarrior();
         List<Tacticien> tacticiens = ((Story) getIntent().getSerializableExtra("Story")).getStarterTacticien();
         Button button = (Button) findViewById(R.id.buttonDestiny);
@@ -163,7 +154,6 @@ public class StarterActivity extends Activity {
                 startDice(v);
             }
         });
-
     }
 
 

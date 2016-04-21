@@ -1,7 +1,7 @@
 package fr.android.animefight.model;
 
-import fr.android.animefight.story.Story;
-import fr.android.animefight.story.dragonball.arc.DbzStory;
+import fr.android.animefight.model.story.Story;
+import fr.android.animefight.model.story.dragonball.arc.DbzStory;
 
 import java.io.Serializable;
 import java.util.ArrayList;

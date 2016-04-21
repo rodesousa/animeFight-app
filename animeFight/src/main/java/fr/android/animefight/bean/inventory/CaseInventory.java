@@ -1,6 +1,6 @@
 package fr.android.animefight.bean.inventory;
 
-import fr.android.animefight.bean.Item;
+import fr.android.animefight.bean.items.Item;
 
 import java.io.Serializable;
 
@@ -8,20 +8,10 @@ import java.io.Serializable;
  * Created by rodesousa on 15/03/16.
  */
 public class CaseInventory implements Serializable{
-    private int count;
     private Item item;
 
-    public CaseInventory(int count, Item item) {
-        this.count = count;
+    public CaseInventory(Item item) {
         this.item = item;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 
     public Item getItem() {

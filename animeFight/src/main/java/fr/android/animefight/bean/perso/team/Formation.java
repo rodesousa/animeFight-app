@@ -1,6 +1,6 @@
 package fr.android.animefight.bean.perso.team;
 
-import fr.android.animefight.bean.Character;
+import fr.android.animefight.bean.charac.Character;
 import fr.android.animefight.utils.Option;
 
 import java.io.Serializable;

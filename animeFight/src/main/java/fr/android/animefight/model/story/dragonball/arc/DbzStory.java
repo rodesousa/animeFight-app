@@ -1,15 +1,15 @@
-package fr.android.animefight.story.dragonball.arc;
+package fr.android.animefight.model.story.dragonball.arc;
 
-import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.Item;
-import fr.android.animefight.bean.Tacticien;
-import fr.android.animefight.bean.items.Orb;
-import fr.android.animefight.bean.items.Treasure;
+import fr.android.animefight.bean.charac.Character;
+import fr.android.animefight.bean.charac.Tacticien;
+import fr.android.animefight.bean.items.Item;
+import fr.android.animefight.bean.items.treasure.Treasure;
 import fr.android.animefight.bean.perso.BuilderPersoDbz;
 import fr.android.animefight.bean.perso.Team;
 import fr.android.animefight.fight.Fight;
-import fr.android.animefight.story.Arc;
-import fr.android.animefight.story.Story;
+import fr.android.animefight.mock.MockItem;
+import fr.android.animefight.model.story.Arc;
+import fr.android.animefight.model.story.Story;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class DbzStory extends Story implements Serializable {
         List<Character> bulma = Collections.singletonList(bulma1);
         List<Character> ptero = Collections.singletonList(ptero1);
         List<Item> items = new ArrayList<>();
-        items.add(new Orb());
+        items.add(MockItem.orb());
 
         Arc arc = new Arc(nameArc,
                 Arrays.asList(

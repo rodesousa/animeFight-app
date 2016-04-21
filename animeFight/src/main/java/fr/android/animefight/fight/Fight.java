@@ -1,7 +1,7 @@
 package fr.android.animefight.fight;
 
-import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.items.Treasure;
+import fr.android.animefight.bean.charac.Character;
+import fr.android.animefight.bean.items.treasure.Treasure;
 import fr.android.animefight.bean.perso.Team;
 
 import java.io.Serializable;

@@ -1,12 +1,12 @@
-package fr.android.animefight.story.onepiece.arc;
+package fr.android.animefight.model.story.onepiece.arc;
 
-import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.Tacticien;
+import fr.android.animefight.bean.charac.Character;
+import fr.android.animefight.bean.charac.Tacticien;
 import fr.android.animefight.bean.perso.BuilderPersoOnePiece;
 import fr.android.animefight.bean.perso.Team;
 import fr.android.animefight.fight.Fight;
-import fr.android.animefight.story.Arc;
-import fr.android.animefight.story.Story;
+import fr.android.animefight.model.story.Arc;
+import fr.android.animefight.model.story.Story;
 
 import java.io.Serializable;
 import java.util.ArrayList;

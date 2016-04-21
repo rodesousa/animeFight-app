@@ -1,8 +1,7 @@
 package fr.android.animefight.bean.charac.categorie;
 
-import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.Perso;
-import fr.android.animefight.bean.charac.Categorie;
+import fr.android.animefight.bean.charac.Character;
+import fr.android.animefight.bean.perso.Perso;
 
 /**
  * Created by rodesousa on 01/03/16.

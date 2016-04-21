@@ -13,7 +13,7 @@ import android.widget.TextView;
 import fr.android.animefight.Activity.fight.ChooseFightsActivity;
 import fr.android.animefight.R;
 import fr.android.animefight.model.Model;
-import fr.android.animefight.story.Arc;
+import fr.android.animefight.model.story.Arc;
 
 import java.util.List;
 

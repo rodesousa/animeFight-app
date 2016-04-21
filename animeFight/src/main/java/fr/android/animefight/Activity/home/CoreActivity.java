@@ -4,19 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import fr.android.animefight.Activity.event.EventActivity;
 import fr.android.animefight.Activity.InspectActivity;
-import fr.android.animefight.Activity.starter.StarterActivity;
+import fr.android.animefight.Activity.event.EventActivity;
 import fr.android.animefight.Activity.home.formation.FormationActivity;
 import fr.android.animefight.Activity.home.inventory.InventoryActivity;
 import fr.android.animefight.Activity.home.story.ChooseArcsActivity;
+import fr.android.animefight.Activity.starter.StarterActivity;
 import fr.android.animefight.R;
 import fr.android.animefight.controller.MainController;
 import fr.android.animefight.model.Model;
 import fr.android.animefight.model.State;
-import fr.android.animefight.story.Story;
-import fr.android.animefight.story.dragonball.arc.DbzStory;
-import fr.android.animefight.story.onepiece.arc.OnePieceStory;
+import fr.android.animefight.model.story.Story;
+import fr.android.animefight.model.story.dragonball.arc.DbzStory;
+import fr.android.animefight.model.story.onepiece.arc.OnePieceStory;
 
 /**
  * Created by rodesousa on 13/02/16.
@@ -84,6 +84,7 @@ public class CoreActivity extends Activity {
 
     public void callInventoryActivity(View view) {
         Intent intent = new Intent(this, InventoryActivity.class);
+        intent.putExtra("Model", controller.getModel());
         startActivity(intent);
     }
 

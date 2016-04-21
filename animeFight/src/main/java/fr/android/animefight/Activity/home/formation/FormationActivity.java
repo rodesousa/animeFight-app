@@ -9,8 +9,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import fr.android.animefight.Activity.home.CoreActivity;
 import fr.android.animefight.R;
-import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.Tacticien;
+import fr.android.animefight.bean.charac.Character;
+import fr.android.animefight.bean.charac.Tacticien;
 import fr.android.animefight.model.Model;
 
 import java.util.List;

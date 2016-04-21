@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import fr.android.animefight.R;
-import fr.android.animefight.bean.Character;
+import fr.android.animefight.bean.charac.Character;
 import fr.android.animefight.model.Model;
 
 import java.util.List;

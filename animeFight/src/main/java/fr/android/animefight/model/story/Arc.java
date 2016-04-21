@@ -1,4 +1,4 @@
-package fr.android.animefight.story;
+package fr.android.animefight.model.story;
 
 import fr.android.animefight.fight.Fight;
 

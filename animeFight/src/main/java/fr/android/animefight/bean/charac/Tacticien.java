@@ -1,14 +1,12 @@
-package fr.android.animefight.bean;
+package fr.android.animefight.bean.charac;
 
 import fr.android.animefight.R;
-
-import java.io.Serializable;
 
 /**
  * Created by rodesousa on 22/02/16.
  * todo
  */
-public class Tacticien extends Character implements Serializable {
+public class Tacticien extends Character {
     private int column;
     private int raw;
     private int sizeCharacters = 5;

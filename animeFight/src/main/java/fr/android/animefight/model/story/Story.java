@@ -1,7 +1,7 @@
-package fr.android.animefight.story;
+package fr.android.animefight.model.story;
 
-import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.Tacticien;
+import fr.android.animefight.bean.charac.Character;
+import fr.android.animefight.bean.charac.Tacticien;
 
 import java.io.Serializable;
 import java.util.List;

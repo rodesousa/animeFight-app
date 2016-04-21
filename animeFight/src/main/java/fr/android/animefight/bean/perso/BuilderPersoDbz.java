@@ -1,8 +1,7 @@
 package fr.android.animefight.bean.perso;
 
 import fr.android.animefight.R;
-import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.Perso;
+import fr.android.animefight.bean.charac.Character;
 import fr.android.animefight.bean.charac.categorie.CategorieA;
 import fr.android.animefight.bean.charac.categorie.CategorieSS;
 

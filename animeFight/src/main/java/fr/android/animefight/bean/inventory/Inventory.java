@@ -1,6 +1,4 @@
-package fr.android.animefight.bean;
-
-import fr.android.animefight.bean.inventory.CaseInventory;
+package fr.android.animefight.bean.inventory;
 
 import java.io.Serializable;
 import java.util.ArrayList;

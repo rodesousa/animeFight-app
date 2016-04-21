@@ -1,6 +1,6 @@
-package fr.android.animefight.bean;
+package fr.android.animefight.bean.charac;
 
-import fr.android.animefight.bean.charac.Categorie;
+import fr.android.animefight.bean.charac.categorie.Categorie;
 import fr.android.animefight.bean.items.equipable.Armor;
 import fr.android.animefight.bean.items.equipable.Trinket;
 import fr.android.animefight.bean.items.equipable.Weapon;

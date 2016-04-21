@@ -1,10 +1,9 @@
-package fr.android.animefight.bean.charac;
+package fr.android.animefight.bean.charac.categorie;
 
 import fr.android.animefight.R;
-import fr.android.animefight.bean.Character;
-import fr.android.animefight.bean.Perso;
-import fr.android.animefight.bean.charac.categorie.CategorieSS;
+import fr.android.animefight.bean.charac.Character;
 import fr.android.animefight.bean.items.equipable.Armor;
+import fr.android.animefight.bean.perso.Perso;
 import fr.android.animefight.utils.None;
 
 import java.io.Serializable;

@@ -1,11 +1,14 @@
-package fr.android.animefight.bean;
+package fr.android.animefight.bean.perso;
 
-import fr.android.animefight.bean.charac.Categorie;
+import fr.android.animefight.bean.charac.categorie.Categorie;
+import fr.android.animefight.bean.charac.Character;
+
+import java.io.Serializable;
 
 /**
  * Created by rodesousa on 17/03/16.
  */
-public class Perso {
+public class Perso implements Serializable{
 
     private Categorie categorie;
     private int image;
