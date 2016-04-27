@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="fill_parent"
-            android:id="@+id/descriptif" android:layout_gravity="center_horizontal"
+            android:id="@+id/descriptifCharacter" android:layout_gravity="center_horizontal"
             android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
 
