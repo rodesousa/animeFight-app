@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import fr.android.animefight.Activity.InspectActivity;
+import fr.android.animefight.Activity.home.character.InspectActivity;
 import fr.android.animefight.Activity.event.EventActivity;
 import fr.android.animefight.Activity.home.formation.FormationActivity;
 import fr.android.animefight.Activity.home.inventory.InventoryActivity;

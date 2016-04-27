@@ -22,13 +22,12 @@
         <activity android:name=".Activity.home.story.ChooseArcsActivity"/>
         <activity android:name=".Activity.fight.SimpleFightActivity"/>
         <activity android:name=".Activity.fight.ChooseFightsActivity"/>
-        <activity android:name=".Activity.InspectActivityOld"/>
-        <activity android:name=".Activity.SelectActivity"/>
+        <activity android:name=".Activity.home.character.InspectActivityOld"/>
         <activity android:name=".Activity.home.inventory.InventoryActivity"/>
         <activity android:name=".Activity.home.formation.FormationActivity"/>
         <activity android:name=".Activity.home.formation.FormationChooseCharacterActivity"/>
-        <activity android:name=".Activity.InspectCharacterActivity"/>
-        <activity android:name=".Activity.InspectActivity"/>
+        <activity android:name=".Activity.home.character.InspectCharacterActivity"/>
+        <activity android:name=".Activity.home.character.InspectActivity"/>
         <activity android:name=".Activity.home.formation.FormationChooseTacticienActivityOld"/>
         <activity android:name=".Activity.starter.StarterActivity"/>
     </application>
