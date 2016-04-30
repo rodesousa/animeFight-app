@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity.home.formation;
+package fr.android.animefight.activity.home.formation;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import fr.android.animefight.Activity.home.CoreActivity;
+import fr.android.animefight.activity.home.CoreActivity;
 import fr.android.animefight.R;
 import fr.android.animefight.bean.charac.Character;
 import fr.android.animefight.bean.charac.Tacticien;

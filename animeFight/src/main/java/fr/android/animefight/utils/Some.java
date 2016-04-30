@@ -8,4 +8,5 @@ public class Some<T> extends Option {
         super(element);
         isEmpty = false;
     }
+
 }

@@ -10,6 +10,7 @@ public abstract class Item implements Serializable {
     private String name;
     private String description;
     private int count;
+    private TypeItem type;
 
     public String getDescription() {
         return description;
@@ -23,11 +24,16 @@ public abstract class Item implements Serializable {
         return imagePath;
     }
 
-    public Item(int imagePath, String name, String description) {
+    public Item(int imagePath, String name, String description, TypeItem type) {
         this.imagePath = imagePath;
         this.name = name;
         this.description = description;
         this.count = 1;
+        this.type = type;
+    }
+
+    public String getType(){
+        return type.get();
     }
 
     public int getCount() {
@@ -36,5 +42,9 @@ public abstract class Item implements Serializable {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public interface TypeItem{
+        public String get();
     }
 }

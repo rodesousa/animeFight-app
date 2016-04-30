@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity.event;
+package fr.android.animefight.activity.event;
 
 import android.app.Activity;
 import android.os.Bundle;

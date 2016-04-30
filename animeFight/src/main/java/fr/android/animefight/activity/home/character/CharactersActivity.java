@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity.home.character;
+package fr.android.animefight.activity.home.character;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,26 +8,27 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import fr.android.animefight.R;
 import fr.android.animefight.bean.charac.Character;
+import fr.android.animefight.controller.characters.CharactersController;
 import fr.android.animefight.model.Model;
 
 /**
  * Liste des personnages qui permet de voir en detail un personnage
  * Created by rodesousa on 16/03/16.
  */
-public class InspectActivity extends Activity {
-    private Model model;
+public class CharactersActivity extends Activity {
+    private CharactersController controller;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inspect);
 
-        model = (Model) getIntent().getSerializableExtra("Model");
+        controller = new CharactersController((Model) getIntent().getSerializableExtra("Model"));
 
         LinearLayout linearLayout = (LinearLayout) this.findViewById(R.id.inspect);
         int i = 0;
 
-        for (Character character : model.getPlayer().getCharacters()) {
+        for (Character character : controller.getModel().getPlayer().getCharacters()) {
             Button button = new Button(this);
             button.setText("" + character);
             button.setId(i);
@@ -39,14 +40,12 @@ public class InspectActivity extends Activity {
             linearLayout.addView(button);
             i++;
         }
-
     }
 
     private void selectCharcter(View view) {
-        Intent intent = new Intent(this, InspectCharacterActivity.class);
-        intent.putExtra("Model", model);
-        intent.putExtra("characterId", view.getId());
+        Intent intent = controller.inspectCharacter(view, this);
         this.finish();
         startActivity(intent);
     }
+
 }

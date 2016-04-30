@@ -1,10 +1,10 @@
-package fr.android.animefight.Activity;
+package fr.android.animefight.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import fr.android.animefight.Activity.home.CoreActivity;
+import fr.android.animefight.activity.home.CoreActivity;
 import fr.android.animefight.R;
 
 /**

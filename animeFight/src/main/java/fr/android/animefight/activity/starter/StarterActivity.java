@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity.starter;
+package fr.android.animefight.activity.starter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import fr.android.animefight.Activity.home.CoreActivity;
+import fr.android.animefight.activity.home.CoreActivity;
 import fr.android.animefight.R;
 import fr.android.animefight.bean.charac.Character;
 import fr.android.animefight.bean.charac.Tacticien;

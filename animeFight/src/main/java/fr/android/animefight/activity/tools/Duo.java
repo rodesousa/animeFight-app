@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity.tools;
+package fr.android.animefight.activity.tools;
 
 import android.view.ViewGroup;
 

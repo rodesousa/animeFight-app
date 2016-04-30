@@ -15,13 +15,13 @@ public class Treasure extends Item implements Serializable {
     private List<Item> itemList;
 
     public Treasure(int xp, List<Item> itemList) {
-        super(R.drawable.dbzicon, "Tresor", "Ceci est un trésor");
+        super(R.drawable.dbzicon, "Tresor", "Ceci est un trésor", TypeTreasure.TREASURE);
         this.xp = xp;
         this.itemList = itemList;
     }
 
     public Treasure(int imagePath, String name, String description) {
-        super(imagePath, name, description);
+        super(imagePath, name, description, TypeTreasure.TREASURE);
     }
 
     public boolean isOpenned() {
@@ -46,5 +46,20 @@ public class Treasure extends Item implements Serializable {
 
     public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
+    }
+
+    public enum TypeTreasure implements TypeItem {
+        TREASURE("Treasure");
+
+        private String value;
+
+        TypeTreasure(String v) {
+            value = v;
+        }
+
+        @Override
+        public String get() {
+            return value;
+        }
     }
 }

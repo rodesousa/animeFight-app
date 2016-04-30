@@ -7,12 +7,17 @@ import java.io.Serializable;
 /**
  * Created by rodesousa on 16/04/16.
  */
-public abstract class Controller implements Serializable {
+public class Controller implements Serializable {
 
-    private Model model;
+    protected Model model;
 
     public Controller(Model model) {
         this.model = model;
+    }
+
+
+    public Controller() {
+        this.model = new Model();
     }
 
     public Model getModel() {

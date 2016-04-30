@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity.fight;
+package fr.android.animefight.activity.fight;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import fr.android.animefight.Activity.tools.Duo;
+import fr.android.animefight.activity.tools.Duo;
 import fr.android.animefight.R;
 import fr.android.animefight.bean.charac.Character;
 import fr.android.animefight.bean.charac.Tacticien;

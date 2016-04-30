@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity.home.formation;
+package fr.android.animefight.activity.home.formation;
 
 import android.app.Activity;
 import android.content.Intent;

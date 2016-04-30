@@ -1,4 +1,4 @@
-package fr.android.animefight.Activity.home.character;
+package fr.android.animefight.activity.home.character;
 
 import android.app.Activity;
 

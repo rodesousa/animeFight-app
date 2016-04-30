@@ -32,5 +32,7 @@ public class ControllerRoulette {
             model.getPlayer().setTeam(new Team(model.getPlayer().copy(), tacticien));
 
         model.getPlayer().getInventory().getCases().add(new CaseInventory(MockItem.orb()));
+        model.getPlayer().getInventory().getCases().add(new CaseInventory(MockItem.weapon()));
+        model.getPlayer().getInventory().getCases().add(new CaseInventory(MockItem.armor()));
     }
 }

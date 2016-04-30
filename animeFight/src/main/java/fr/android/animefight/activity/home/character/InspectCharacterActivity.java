@@ -1,14 +1,15 @@
-package fr.android.animefight.Activity.home.character;
+package fr.android.animefight.activity.home.character;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import fr.android.animefight.R;
 import fr.android.animefight.bean.items.equipable.Armor;
-import fr.android.animefight.controller.inspectCharacter.ControllerInspect;
-import fr.android.animefight.model.Model;
+import fr.android.animefight.controller.characters.CharactersController;
 import fr.android.animefight.utils.Option;
 
 /**
@@ -17,15 +18,15 @@ import fr.android.animefight.utils.Option;
  */
 public class InspectCharacterActivity extends Activity {
 
-    private ControllerInspect controller;
+    private CharactersController controller;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.charaselect);
 
-        int indice = (int) getIntent().getSerializableExtra("characterId");
-        controller =  new ControllerInspect((Model) getIntent().getSerializableExtra("Model"), indice);
+        //init controller
+        controller = (CharactersController) getIntent().getSerializableExtra("Controller");
 
         TableLayout linearLayout = (TableLayout) this.findViewById(R.id.stuffCharacter);
         linearLayout.setBackgroundResource(controller.getCharacter().getImagePath());
@@ -48,8 +49,19 @@ public class InspectCharacterActivity extends Activity {
                 "Atk :" + controller.getCharacter().getAttack() + "\n" +
                 "Def :" + controller.getCharacter().getDefense() + "\n" +
                 "Life :" + controller.getCharacter().getLifeCurrent() + "/" +
-                controller.getCharacter().getLifeCurrent() +"\n" +
+                controller.getCharacter().getLifeCurrent() + "\n" +
                 "");
 
     }
+
+    public void addWeapon(View view) {
+        Intent intent = controller.addWeapon(this);
+        startActivity(intent);
+    }
+
+    public void addArmor(View view) {
+        Intent intent = controller.addArmor(this);
+        startActivity(intent);
+    }
+
 }

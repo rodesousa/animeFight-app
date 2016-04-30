@@ -1,17 +1,17 @@
-package fr.android.animefight.Activity.home;
+package fr.android.animefight.activity.home;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import fr.android.animefight.Activity.home.character.InspectActivity;
-import fr.android.animefight.Activity.event.EventActivity;
-import fr.android.animefight.Activity.home.formation.FormationActivity;
-import fr.android.animefight.Activity.home.inventory.InventoryActivity;
-import fr.android.animefight.Activity.home.story.ChooseArcsActivity;
-import fr.android.animefight.Activity.starter.StarterActivity;
 import fr.android.animefight.R;
-import fr.android.animefight.controller.MainController;
+import fr.android.animefight.activity.event.EventActivity;
+import fr.android.animefight.activity.home.character.CharactersActivity;
+import fr.android.animefight.activity.home.formation.FormationActivity;
+import fr.android.animefight.activity.home.inventory.InventoryActivity;
+import fr.android.animefight.activity.home.story.ChooseArcsActivity;
+import fr.android.animefight.activity.starter.StarterActivity;
+import fr.android.animefight.controller.Controller;
 import fr.android.animefight.model.Model;
 import fr.android.animefight.model.State;
 import fr.android.animefight.model.story.Story;
@@ -23,7 +23,7 @@ import fr.android.animefight.model.story.onepiece.arc.OnePieceStory;
  */
 public class CoreActivity extends Activity {
 
-    private MainController controller;
+    private Controller controller;
 
     /**
      * Cette méthode est le point de départ de l'application
@@ -40,9 +40,9 @@ public class CoreActivity extends Activity {
         Model model = (Model) getIntent().getSerializableExtra("Model");
 
         if (model != null) {
-            this.controller = new MainController(model);
+            this.controller = new Controller(model);
         } else {
-            this.controller = new MainController();
+            this.controller = new Controller();
         }
 
         // On regarde si le joueur est nouveau ou pas
@@ -60,7 +60,7 @@ public class CoreActivity extends Activity {
     }
 
     public void callShowCharacters(View view) {
-        Intent intent = new Intent(this, InspectActivity.class);
+        Intent intent = new Intent(this, CharactersActivity.class);
         intent.putExtra("Model", controller.getModel());
         startActivity(intent);
     }
@@ -84,7 +84,7 @@ public class CoreActivity extends Activity {
 
     public void callInventoryActivity(View view) {
         Intent intent = new Intent(this, InventoryActivity.class);
-        intent.putExtra("Model", controller.getModel());
+        intent.putExtra("Controller", controller);
         startActivity(intent);
     }
 

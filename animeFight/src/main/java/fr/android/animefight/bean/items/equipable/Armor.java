@@ -6,7 +6,7 @@ package fr.android.animefight.bean.items.equipable;
 public class Armor extends Equipable {
 
     public Armor(int imagePath, String name, String description) {
-        super(imagePath, name, description);
+        super(imagePath, name, description, TypeEquip.Armor);
     }
 
 //    @Override

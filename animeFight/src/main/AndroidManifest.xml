@@ -9,7 +9,7 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".Activity.MyActivity"
+                android:name=".activity.MyActivity"
                 android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -17,18 +17,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.home.CoreActivity"/>
-        <activity android:name=".Activity.event.EventActivity"/>
-        <activity android:name=".Activity.home.story.ChooseArcsActivity"/>
-        <activity android:name=".Activity.fight.SimpleFightActivity"/>
-        <activity android:name=".Activity.fight.ChooseFightsActivity"/>
-        <activity android:name=".Activity.home.character.InspectActivityOld"/>
-        <activity android:name=".Activity.home.inventory.InventoryActivity"/>
-        <activity android:name=".Activity.home.formation.FormationActivity"/>
-        <activity android:name=".Activity.home.formation.FormationChooseCharacterActivity"/>
-        <activity android:name=".Activity.home.character.InspectCharacterActivity"/>
-        <activity android:name=".Activity.home.character.InspectActivity"/>
-        <activity android:name=".Activity.home.formation.FormationChooseTacticienActivityOld"/>
-        <activity android:name=".Activity.starter.StarterActivity"/>
+        <activity android:name=".activity.home.CoreActivity"/>
+        <activity android:name=".activity.event.EventActivity"/>
+        <activity android:name=".activity.home.story.ChooseArcsActivity"/>
+        <activity android:name=".activity.fight.SimpleFightActivity"/>
+        <activity android:name=".activity.fight.ChooseFightsActivity"/>
+        <activity android:name=".activity.home.character.InspectActivityOld"/>
+        <activity android:name=".activity.home.inventory.InventoryActivity"/>
+        <activity android:name=".activity.home.formation.FormationActivity"/>
+        <activity android:name=".activity.home.formation.FormationChooseCharacterActivity"/>
+        <activity android:name=".activity.home.character.InspectCharacterActivity"/>
+        <activity android:name=".activity.home.character.CharactersActivity"/>
+        <activity android:name=".activity.home.formation.FormationChooseTacticienActivityOld"/>
+        <activity android:name=".activity.starter.StarterActivity"/>
     </application>
 </manifest>

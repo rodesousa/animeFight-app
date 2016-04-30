@@ -1,7 +1,7 @@
 package fr.android.animefight.controller.fight;
 
 import android.os.Handler;
-import fr.android.animefight.Activity.fight.SimpleFightActivity;
+import fr.android.animefight.activity.fight.SimpleFightActivity;
 import fr.android.animefight.bean.charac.Character;
 import fr.android.animefight.bean.inventory.CaseInventory;
 import fr.android.animefight.bean.perso.Team;
