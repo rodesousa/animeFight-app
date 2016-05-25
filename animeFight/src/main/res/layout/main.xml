@@ -4,21 +4,69 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:weightSum="1" android:background="@drawable/main">
+
     <TextView
             android:layout_width="134dp"
             android:layout_height="48dp"
-            android:text="@string/appName"
+            android:text="AnimeFight"
             android:layout_marginLeft="0dp"
-            android:layout_marginTop="107dp"
+            android:textSize="25sp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
             android:textColor="#ff2423"
             android:gravity="center" android:layout_gravity="center_horizontal"/>
-    <Button
+
+    <TextView
             android:layout_width="wrap_content"
-            android:layout_height="79dp"
-            android:text="@string/enter"
+            android:layout_height="wrap_content"
+            android:text="login"
+            android:textSize="25dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FF0000"
+            android:id="@+id/textView4" />
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your login"
+            android:id="@+id/editText"  android:background="#66ffffff"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="password"
+            android:textSize="25dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FF0000"
+            android:id="@+id/textView5" />
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Enter your Password"
+            android:ems="10"
+            android:id="@+id/editText2" android:layout_gravity="center_horizontal" android:background="#66ffffff"
+            android:autoText="false"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:alpha="0.7"
+            android:background="#bd002f"
+            android:text="Login"
             android:id="@+id/button"
-            android:layout_gravity="center_horizontal"
             android:onClick="callCoreAct" />
+
+    <Button
+            android:layout_width="match_parent"
+            android:background="#bd002f"
+            android:alpha="0.7"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Sign up"
+            android:id="@+id/button2" android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
 
