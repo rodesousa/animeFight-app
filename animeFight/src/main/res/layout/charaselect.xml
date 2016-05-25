@@ -14,7 +14,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:layout_above="@+id/descriptif">
+            android:layout_alignParentEnd="true" android:layout_above="@+id/descriptifCharacter">
 
         <TableRow
                 android:layout_width="match_parent"
