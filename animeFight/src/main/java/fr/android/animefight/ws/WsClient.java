@@ -14,6 +14,8 @@ import java.io.UnsupportedEncodingException;
  */
 public class WsClient {
 
+    public static String Login = "https://sleepy-everglades-20389.herokuapp.com/signin";
+
     public static void get(String url, AsyncResponse asyncResponse, Context applicationContext) {
         //curl --header "Content-type: application/json" --request POST --data '{"name": "Toto", "password": "aa"}' https://sleepy-everglades-20389.herokuapp.com/signin
         AsyncHttpClient client = init();
@@ -23,21 +25,17 @@ public class WsClient {
     }
 
 
-    public static void login(String url, AsyncResponse asyncResponse, Context applicationContext) throws JSONException, UnsupportedEncodingException {
+    public static void login(AsyncResponse asyncResponse, Context applicationContext, String login, String password) throws JSONException, UnsupportedEncodingException {
         AsyncHttpClient client = init();
         RequestParams requestParams = new RequestParams();
 
         HttpResponse responseHandler = new HttpResponse(asyncResponse);
 
         JSONObject jsonParams = new JSONObject();
-        jsonParams.put("name", "Toto");
-        jsonParams.put("password", "aa");
+        jsonParams.put("name", login);
+        jsonParams.put("password", password);
         StringEntity entity = new StringEntity(jsonParams.toString());
-        client.post(applicationContext,url, entity, "application/json", responseHandler);
-
-//        client.addHeader(AsyncHttpClient.HEADER_CONTENT_TYPE, "application/json");
-
-//        client.post(url, requestParams, responseHandler);
+        client.post(applicationContext, Login, entity, "application/json", responseHandler);
     }
 
     public static AsyncHttpClient init() {

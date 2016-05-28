@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter your login"
-            android:id="@+id/editText"  android:background="#66ffffff"/>
+            android:id="@+id/login"  android:background="#66ffffff"/>
 
     <TextView
             android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
             android:inputType="textPassword"
             android:hint="Enter your Password"
             android:ems="10"
-            android:id="@+id/editText2" android:layout_gravity="center_horizontal" android:background="#66ffffff"
+            android:id="@+id/password" android:layout_gravity="center_horizontal" android:background="#66ffffff"
             android:autoText="false"/>
 
     <Button
