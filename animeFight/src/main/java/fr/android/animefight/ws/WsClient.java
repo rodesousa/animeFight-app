@@ -7,11 +7,12 @@ import com.loopj.android.http.AsyncHttpClient;
  */
 public class WsClient {
 
-    public static boolean get(String url) {
+    public static void get(String url, AsyncResponse asyncResponse) {
         AsyncHttpClient client = new AsyncHttpClient();
-        HttpResponse responseHandler = new HttpResponse();
+        client.setMaxConnections(5);
+
+        HttpResponse responseHandler = new HttpResponse(asyncResponse);
         client.get(url, responseHandler);
-        return responseHandler.isSucces();
     }
 
 }
